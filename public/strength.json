@@ -1,0 +1,36 @@
+{
+  "currencies": [
+    {
+      "code": "AUD",
+      "strength": 6
+    },
+    {
+      "code": "CAD",
+      "strength": 7
+    },
+    {
+      "code": "CHF",
+      "strength": 4
+    },
+    {
+      "code": "EUR",
+      "strength": 5
+    },
+    {
+      "code": "GBP",
+      "strength": 3
+    },
+    {
+      "code": "JPY",
+      "strength": 2
+    },
+    {
+      "code": "NZD",
+      "strength": 6
+    },
+    {
+      "code": "USD",
+      "strength": 8
+    }
+  ]
+}
