@@ -30,7 +30,6 @@ export default function CurrencyList() {
     <div className="flex justify-center py-10">
       {/* Card Section */}
       <div className="bg-white shadow-lg rounded-2xl w-full max-w-5xl">
-        {/* Header */}
         <div
           className="flex items-center justify-between p-4 rounded-t-2xl shadow-sm"
           style={{ backgroundColor: "#F8F8FF" }}
