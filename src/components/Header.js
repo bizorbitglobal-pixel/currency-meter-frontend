@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Button from "./Button";
 
 export default function Header() {
@@ -8,9 +9,11 @@ export default function Header() {
       {/* Left logo/title */}
       <h1 className="text-xl font-bold">Currency Strength Meter</h1>
 
-      {/* Right buttons */}
+      {/* Right navigation */}
       <div className="flex items-center gap-4">
-        <a href="/blog" className="hover:text-blue-600">Blog</a>
+        <Link href="/blog" className="hover:text-blue-600">
+          Blog
+        </Link>
       </div>
     </header>
   );
