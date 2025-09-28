@@ -1,7 +1,11 @@
-// app/terms/page.js
-"use client";
-
 import AddSlot from "@/components/AddSlot";
+
+// ✅ This works because this file is a Server Component by default
+export const metadata = {
+  title: "Terms | Currency Meter",
+  description:
+    "Understand the terms and conditions governing the use of our website.",
+};
 
 export default function TermsPage() {
   return (

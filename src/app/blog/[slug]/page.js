@@ -31,6 +31,28 @@ const blogs = {
   },
 };
 
+// Dynamic SEO metadata
+export async function generateMetadata({ params }) {
+  const post = blogs[params.slug];
+  if (!post) return {};
+
+  // Use first line of content as description
+  const description = post.content.split("\n").find(line => line.trim())?.trim() || post.title;
+
+  return {
+    title: post.title,
+    description,
+    openGraph: {
+      title: post.title,
+      description,
+    },
+    twitter: {
+      title: post.title,
+      description,
+    },
+  };
+}
+
 export default function BlogDetail({ params }) {
   const post = blogs[params.slug];
   if (!post) return notFound();
@@ -46,7 +68,6 @@ export default function BlogDetail({ params }) {
         {post.content.split("\n").map((para, idx) => (
           <div key={idx} className="space-y-4">
             <p>{para.trim()}</p>
-
             {/* Insert inline ads between paragraphs */}
             {idx % 2 === 0 && <AddSlot slot={`blog-detail-inline-${idx}`} />}
           </div>

@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import CurrencyList from "@/components/CurrencyList";
 import Section from "@/components/Section";
 import Footer from "@/components/Footer";
+import Faqs from "@/components/Faqs";
 import AddSlot from "@/components/AddSlot";
 
 export default function Home() {
@@ -58,6 +59,7 @@ export default function Home() {
       />
 
       {/* Footer */}
+      <Faqs />  
       <Footer />
     </main>
   );

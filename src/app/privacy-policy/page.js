@@ -1,7 +1,12 @@
 // app/privacy-policy/page.js
-"use client";
 
 import AddSlot from "@/components/AddSlot";
+
+export const metadata = {
+  title: "Privacy Policy | Currency Meter",
+  description:
+    "Learn about our privacy practices and how we protect your data.",
+};
 
 export default function PrivacyPolicy() {
   return (
