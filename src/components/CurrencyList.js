@@ -1,34 +1,23 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CurrencyCard from "./CurrencyCard";
 import Button from "./Button";
-
-const initialData = [
-  { code: "AUD", strength: 6, trend: "neutral" },
-  { code: "CAD", strength: 7, trend: "neutral" },
-  { code: "CHF", strength: 8, trend: "up" },
-  { code: "EUR", strength: 4, trend: "neutral" },
-  { code: "GBP", strength: 3, trend: "neutral" },
-  { code: "JPY", strength: 2, trend: "down" },
-  { code: "NZD", strength: 5, trend: "neutral" },
-  { code: "USD", strength: 6, trend: "neutral" },
-];
+import { fetchCurrencyData } from "../api/currencyApi";
 
 export default function CurrencyList() {
-  const [currencies, setCurrencies] = useState(initialData);
+  const [currencies, setCurrencies] = useState([]);
 
-  const refresh = () => {
-    setCurrencies((prev) =>
-      prev.map((c) => ({
-        ...c,
-        strength: Math.floor(Math.random() * 9),
-      }))
-    );
+  const loadData = async () => {
+    const data = await fetchCurrencyData();
+    setCurrencies(data);
   };
+
+  useEffect(() => {
+    loadData();
+  }, []);
 
   return (
     <div className="flex justify-center py-10">
-      {/* Card Section */}
       <div className="bg-white shadow-lg rounded-2xl w-full max-w-5xl">
         <div
           className="flex items-center justify-between p-4 rounded-t-2xl shadow-sm"
@@ -43,14 +32,13 @@ export default function CurrencyList() {
             Currency Strength Meter
           </h2>
           <Button
-            onClick={refresh}
+            onClick={loadData}
             className="bg-white text-black rounded-full px-4 py-2 shadow hover:bg-gray-100 transition"
           >
             Refresh
           </Button>
         </div>
 
-        {/* Body */}
         <div className="p-8">
           <div className="flex flex-wrap justify-center gap-6">
             {currencies.map((currency) => (
@@ -61,6 +49,21 @@ export default function CurrencyList() {
                 trend={currency.trend}
               />
             ))}
+            {/* Histogram legend */}
+            <div className="flex flex-start w-full text-xs font-medium gap-4">
+              <div className="flex items-center gap-1">
+                <div className="h-3 w-3 bg-red-500 rounded-sm"></div>
+                Weak
+              </div>
+              <div className="flex items-center gap-1">
+                <div className="h-3 w-3 bg-yellow-400 rounded-sm"></div>
+                Neutral
+              </div>
+              <div className="flex items-center gap-1">
+                <div className="h-3 w-3 bg-green-500 rounded-sm"></div>
+                Strong
+              </div>
+            </div>
           </div>
         </div>
       </div>

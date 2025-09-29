@@ -12,16 +12,6 @@ export default function Navbar() {
           <Link href="/blog" className="text-gray-700 hover:text-blue-600">
             Blog
           </Link>
-
-          {/* External link (can stay as <a>) */}
-          <a
-            href="https://play.google.com/store"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-green-500 text-white px-3 py-1 rounded-md text-sm"
-          >
-            Get it on Playstore
-          </a>
         </div>
       </div>
     </nav>
