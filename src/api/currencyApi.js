@@ -1,5 +1,5 @@
 const API_URL =
-  "https://currency-meter.onrender.com/api/currency-data?currencies=EUR,GBP,CAD,PLN,INR&source=USD";
+  "https://api.currencylayer.com/live?access_key=d71119345598612a7f326efca0d4e074&source=USD&currencies=EUR,GBP,CAD,PLN,INR";
 
 // Simple USD-based strength calculation
 const calculateStrength = (rate) => {
@@ -11,7 +11,7 @@ const calculateStrength = (rate) => {
 
 export const fetchCurrencyData = async () => {
   try {
-    const res = await fetch(API_URL);
+    const res = await fetch(API_URL)
     const data = await res.json();
 
     if (data.success && data.quotes) {
