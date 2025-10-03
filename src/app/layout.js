@@ -51,6 +51,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <meta name="google-adsense-account" content="ca-pub-7433238339097067" />
+      </head>
       {/* ✅ Next.js injects metadata here automatically */}
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
