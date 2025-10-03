@@ -5,6 +5,6 @@ export default function robots() {
       allow: '*',
       disallow: '/private/',
     },
-    sitemap: 'https://currencystrengthmeter.com/sitemap.xml',
+    sitemap: 'https://www.currencystrengthsmeters.com/sitemap.xml',
   }
 }

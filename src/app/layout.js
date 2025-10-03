@@ -22,11 +22,11 @@ export const metadata = {
     title: "Currency Strength Meter | Real-Time Forex Strength Analysis",
     description:
       "Track live forex currency strength with our free Currency Strength Meter. Instantly compare the strongest and weakest currencies in real-time to boost your forex trading strategies and improve market analysis.",
-    url: "https://www.currencystrengthmeter.com",
+    url: "https://www.currencystrengthsmeters.com/",
     siteName: "Currency Strength Meter",
     images: [
       {
-        url: "https://www.currencystrengthmeter.com/og-image.png",
+        url: "https://www.currencystrengthsmeters.com//og-image.png",
         width: 1200,
         height: 630,
         alt: "Currency Strength Meter",
@@ -40,7 +40,7 @@ export const metadata = {
     title: "Currency Strength Meter | Real-Time Forex Strength Analysis",
     description:
       "Track live forex currency strength with our free Currency Strength Meter. Instantly compare the strongest and weakest currencies in real-time to boost your forex trading strategies and improve market analysis.",
-    images: ["https://www.currencystrengthmeter.com/og-image.png"],
+    images: ["https://www.currencystrengthsmeters.com//og-image.png"],
   },
   icons: {
     icon: "/favicon.ico",
