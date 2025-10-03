@@ -1,6 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
-import { Analytics } from '@vercel/analytics/next';
 import "./globals.css";
 
 const geistSans = Geist({
@@ -54,7 +53,6 @@ export default function RootLayout({ children }) {
       {/* ✅ Next.js injects metadata here automatically */}
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
-        <Analytics />
         {/* Google Tag Manager */}
         {/* <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
