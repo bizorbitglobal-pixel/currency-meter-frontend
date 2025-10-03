@@ -53,6 +53,17 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <meta name="google-adsense-account" content="ca-pub-7433238339097067" />
+        {/* <!-- Google tag (gtag.js) --> */}
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-P81G6N8EHJ"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){
+          dataLayer.push(arguments)
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-P81G6N8EHJ');
+      </script>
       </head>
       {/* ✅ Next.js injects metadata here automatically */}
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
