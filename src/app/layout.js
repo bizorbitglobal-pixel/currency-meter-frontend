@@ -1,7 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import { Analytics } from '@vercel/analytics/next';
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +27,7 @@ export const metadata = {
     siteName: "Currency Strength Meter",
     images: [
       {
-        url: "https://www.currencystrengthsmeters.com//og-image.png",
+        url: "https://www.currencystrengthsmeters.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "Currency Strength Meter",
@@ -52,40 +52,36 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <meta name="google-adsense-account" content="ca-pub-7433238339097067" />
-        {/* <!-- Google tag (gtag.js) --> */}
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-P81G6N8EHJ"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){
-          dataLayer.push(arguments)
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-P81G6N8EHJ');
-      </script>
+        {/* Google AdSense verification meta */}
+        <meta
+          name="google-adsense-account"
+          content="ca-pub-7433238339097067"
+        />
       </head>
-      {/* ✅ Next.js injects metadata here automatically */}
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
         <Analytics />
-        {/* Google Tag Manager */}
-        {/* <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-M3ZWWFT8');</script> */}
-       {/* End Google Tag Manager  */}
-       {/* Google Tag Manager (noscript) */}
-      {/* <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M3ZWWFT8"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> */}
-      {/* End Google Tag Manager (noscript) */}
-      {/* Google AdSense script should be placed here */}
+
+        {/* ✅ Google Analytics gtag.js */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-P81G6N8EHJ"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-P81G6N8EHJ');
+          `}
+        </Script>
+
+        {/* ✅ Google AdSense script */}
         <Script
           id="adsense-script"
           async
           strategy="afterInteractive"
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXX"
+          src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-7433238339097067"
           crossOrigin="anonymous"
         />
       </body>
