@@ -58,7 +58,7 @@ export default function CurrencyList() {
 
   return (
     <div className="flex justify-center py-10">
-      <div className="bg-white shadow-lg rounded-2xl w-full max-w-5xl relative overflow-hidden">
+      <div className="bg-white shadow-lg rounded-2xl w-full max-w-6xl relative overflow-hidden">
         {/* Top Progress Bar */}
         {loading && (
           <div className="absolute top-0 left-0 w-full h-1 bg-gray-200">
@@ -69,6 +69,7 @@ export default function CurrencyList() {
           </div>
         )}
 
+        {/* Header */}
         <div
           className="flex items-center justify-between p-4 rounded-t-2xl shadow-sm"
           style={{ backgroundColor: "#F8F8FF" }}
@@ -93,8 +94,9 @@ export default function CurrencyList() {
           </Button>
         </div>
 
+        {/* Currencies Row */}
         <div className="p-8">
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="grid grid-cols-2 gap-6 sm:flex sm:flex-row sm:overflow-x-auto">
             {currencies.map((currency) => (
               <CurrencyCard
                 key={currency.code}
@@ -103,21 +105,21 @@ export default function CurrencyList() {
                 trend={currency.trend}
               />
             ))}
+          </div>
 
-            {/* Histogram legend */}
-            <div className="flex flex-start w-full text-xs font-medium gap-4">
-              <div className="flex items-center gap-1">
-                <div className="h-3 w-3 bg-red-500 rounded-sm"></div>
-                Weak
-              </div>
-              <div className="flex items-center gap-1">
-                <div className="h-3 w-3 bg-yellow-400 rounded-sm"></div>
-                Neutral
-              </div>
-              <div className="flex items-center gap-1">
-                <div className="h-3 w-3 bg-green-500 rounded-sm"></div>
-                Strong
-              </div>
+          {/* Histogram Legend */}
+          <div className="flex flex-start w-full text-xs font-medium gap-4 mt-6">
+            <div className="flex items-center gap-1">
+              <div className="h-3 w-3 bg-red-500 rounded-sm"></div>
+              Weak
+            </div>
+            <div className="flex items-center gap-1">
+              <div className="h-3 w-3 bg-yellow-400 rounded-sm"></div>
+              Neutral
+            </div>
+            <div className="flex items-center gap-1">
+              <div className="h-3 w-3 bg-green-500 rounded-sm"></div>
+              Strong
             </div>
           </div>
         </div>
