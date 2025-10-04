@@ -57,6 +57,18 @@ export default function RootLayout({ children }) {
           name="google-adsense-account"
           content="ca-pub-7433238339097067"
         />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        {/* JSON-LD Structured Data for Organization */}
+        <Script id="organization-schema" type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            url: "https://www.currencystrengthsmeters.com",
+            logo: "https://www.currencystrengthsmeters.com/favicon-32x32.png",
+          })}
+        </Script>
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
