@@ -96,6 +96,19 @@ export default function RootLayout({ children }) {
           src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-7433238339097067"
           crossOrigin="anonymous"
         />
+
+        {/* ✅ AdSense Ad Slot */}
+        <ins
+          className="adsbygoogle"
+          style={{ display: "block" }}
+          data-ad-client="ca-pub-7433238339097067"
+          data-ad-slot="1627966618"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        />
+        <Script id="adsense-init" strategy="afterInteractive">
+          {`(adsbygoogle = window.adsbygoogle || []).push({});`}
+        </Script>
       </body>
     </html>
   );
