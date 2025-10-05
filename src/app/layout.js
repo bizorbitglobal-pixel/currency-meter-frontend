@@ -14,10 +14,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Currency Strength Meter | Live Forex Currency Strength & Weakness Analysis | Live Currency Strength Meter | Currency Strength Indicator | Forex Heatmap / Strength Meter",
+  title: "Currency Strength Meter |  Live Currency Strength Meter | Live Forex Currency Strength & Weakness Analysis | Currency Strength Indicator",
+  siteName: "Currency Strength Meter",
   description:
-    "Analyze real-time forex currency strength and weakness. Identify the strongest and weakest currencies instantly to improve your trading decisions. Free Currency Strength Meter tool for traders.",
+    "Currency Strength Meter is a live forex tool that tracks the strength and weakness of global currencies. Use our Currency Strength Meter to analyze real-time forex trends and identify the strongest and weakest currencies instantly. The Currency Strength Meter helps traders make better trading decisions with accurate data and easy analysis. Best Currency Strength Meter for forex traders.",
   keywords: [
+    "currencystrengthmeter.org",
     "currency strength meter",
     "live forex strength",
     "forex currency strength",
@@ -218,12 +220,18 @@ export const metadata = {
     "forex cloud strength analyzer",
     "forex API for currency strength",
     "forex developer tools strength meter",
-    "forex customizable dashboard meter"
+    "forex customizable dashboard meter",
+    "best currency strength meter online free",
+    "most accurate currency strength meter",
+    "forex real-time currency strength comparison",
+    "forex live currency strength ranking",
+    "forex currency strength meter for professionals",
+    "forex currency strength meter for experts"
   ],
   openGraph: {
-    title: "Currency Strength Meter | Live Forex Currency Strength & Weakness Analysis | Live Currency Strength Meter | Currency Strength Indicator | Forex Heatmap / Strength Meter",
+    title: "Currency Strength Meter |  Live Currency Strength Meter | Live Forex Currency Strength & Weakness Analysis | Currency Strength Indicator",
     description:
-      "Track live forex currency strength with our free Currency Strength Meter. Instantly compare the strongest and weakest currencies in real-time to boost your forex trading strategies and improve market analysis.",
+      "Currency Strength Meter is a live forex tool that tracks the strength and weakness of global currencies. Use our Currency Strength Meter to analyze real-time forex trends and identify the strongest and weakest currencies instantly. The Currency Strength Meter helps traders make better trading decisions with accurate data and easy analysis. Best Currency Strength Meter for forex traders.",
     url: "https://www.currencystrengthsmeters.com/",
     siteName: "Currency Strength Meter",
     images: [
@@ -258,9 +266,12 @@ export default function RootLayout({ children }) {
           name="google-adsense-account"
           content="ca-pub-7433238339097067"
         />
+        <meta name="application-name" content="Currency Strength Meter" />
+        <meta name="apple-mobile-web-app-title" content="Currency Strength Meter" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         {/* JSON-LD Structured Data for Organization */}
         <Script id="organization-schema" type="application/ld+json">
           {JSON.stringify({
@@ -268,6 +279,24 @@ export default function RootLayout({ children }) {
             "@type": "Organization",
             url: "https://www.currencystrengthsmeters.com",
             logo: "https://www.currencystrengthsmeters.com/favicon-32x32.png",
+          })}
+        </Script>
+        <Script id="website-structured-data" type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Currency Strength Meter",
+            "alternateName": "Live Currency Strength Meter",
+            "url": "https://www.currencystrengthsmeters.com/",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Currency Strength Meter",
+              "url": "https://www.currencystrengthsmeters.com",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.currencystrengthsmeters.com/favicon.ico"
+              }
+            },
           })}
         </Script>
       </head>
