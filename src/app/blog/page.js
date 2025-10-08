@@ -9,24 +9,49 @@ export const metadata = {
 
 const blogs = [
   {
-    slug: "use-currency-strength-meter",
-    title: "How to Use a Currency Strength Meter in Forex Trading",
-    excerpt:
-      "Learn how traders leverage strength meters to identify strong and weak currencies for better trading opportunities.",
+    "slug": "use-currency-strength-meter",
+    "title": "How to Use a Currency Strength Meter in Forex Trading",
+    "excerpt": "Learn how traders leverage strength meters to identify strong and weak currencies for better trading opportunities."
   },
   {
-    slug: "top-5-strategies",
-    title: "Top 5 Strategies with a Currency Strength Indicator",
-    excerpt:
-      "Combine technical analysis with strength meters to improve your trade accuracy and success rate.",
+    "slug": "top-5-strategies",
+    "title": "Top 5 Strategies with a Currency Strength Indicator",
+    "excerpt": "Combine technical analysis with strength meters to improve your trade accuracy and success rate."
   },
   {
-    slug: "short-vs-long-term",
-    title: "Short-Term vs Long-Term Strength Indicators",
-    excerpt:
-      "Understand the difference between short-term scalping signals and long-term trend confirmation using strength meters.",
+    "slug": "short-vs-long-term",
+    "title": "Short-Term vs Long-Term Strength Indicators",
+    "excerpt": "Understand the difference between short-term scalping signals and long-term trend confirmation using strength meters."
   },
+  {
+    "slug": "currency-pair-selection",
+    "title": "How to Select the Best Currency Pairs Using Strength Meters",
+    "excerpt": "Use a currency strength meter to pick the most profitable currency pairs based on their strength and correlation."
+  },
+  {
+    "slug": "combining-strength-meters-with-price-action",
+    "title": "Combining Currency Strength Meters with Price Action for Better Entries",
+    "excerpt": "Learn how to pair a currency strength meter with price action analysis for precise and high-probability trade entries."
+  },
+  {
+    "slug": "multi-timeframe-analysis",
+    "title": "How to Use Multi-Timeframe Analysis with Currency Strength Meters",
+    "excerpt": "Understand how to analyze currency strength across different timeframes to refine your trading decisions and spot high-quality setups."
+  },
+  {
+    "slug": "advanced-strategy-with-strength-meters",
+    "title": "Advanced Trading Strategies Using Currency Strength Meters",
+    "excerpt": "Explore advanced strategies such as swing trading, reversal setups, and breakouts with the help of currency strength meters."
+  },
+  {
+    "slug": "currency-strength-meter-for-swing-trading",
+    "title": "Using Currency Strength Meters for Swing Trading",
+    "excerpt": "Learn how to leverage the power of currency strength meters to capture profitable price swings in the forex market."
+  },
+ 
+  
 ];
+
 
 export default function BlogPage() {
   return (
