@@ -9,6 +9,8 @@ export default function CurrencyList() {
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [elapsedTime, setElapsedTime] = useState(0);
+  const [retryCount, setRetryCount] = useState(0);
+
   const timerRef = useRef(null);
   const progressRef = useRef(null);
 
@@ -16,6 +18,7 @@ export default function CurrencyList() {
     setLoading(true);
     setProgress(0);
     setElapsedTime(0);
+    setRetryCount(0);
 
     // Start timer
     timerRef.current = setInterval(() => {
@@ -27,25 +30,39 @@ export default function CurrencyList() {
       setProgress((p) => (p < 95 ? p + 5 : p)); // stops at 95 until fetch finishes
     }, 1000);
 
-    try {
-      const data = await fetchCurrencyData();
-      setCurrencies(data);
-    } catch (err) {
-      console.error("Error fetching currencies:", err);
-    } finally {
-      clearInterval(timerRef.current);
-      clearInterval(progressRef.current);
+    const fetchAndValidate = async (attempt = 1) => {
+      try {
+        const data = await fetchCurrencyData();
 
-      // Finish progress to 100%
-      setProgress(100);
+        // Detect placeholder data (all 5 or neutral)
+        const allNeutral = data.every(
+          (c) => Number(c.strength) === 5 || c.trend === "neutral"
+        );
 
-      // Small delay so user sees 100%
-      setTimeout(() => {
-        setLoading(false);
-        setProgress(0);
-        setElapsedTime(0);
-      }, 1000);
-    }
+        if (allNeutral && attempt <= 2) {
+          console.warn(`⚠️ Placeholder data detected (attempt ${attempt}), retrying...`);
+          setRetryCount(attempt);
+          await new Promise((res) => setTimeout(res, 2000));
+          return fetchAndValidate(attempt + 1);
+        }
+
+        setCurrencies(data);
+      } catch (err) {
+        console.error("Error fetching currencies:", err);
+      } finally {
+        clearInterval(timerRef.current);
+        clearInterval(progressRef.current);
+        setProgress(100);
+
+        setTimeout(() => {
+          setLoading(false);
+          setProgress(0);
+          setElapsedTime(0);
+        }, 1000);
+      }
+    };
+
+    await fetchAndValidate();
   };
 
   useEffect(() => {
@@ -90,38 +107,49 @@ export default function CurrencyList() {
               loading ? "cursor-not-allowed opacity-70" : ""
             }`}
           >
-            {loading ? `Refreshing... (${elapsedTime}s)` : "Refresh"}
+            {loading
+              ? `Refreshing... (${elapsedTime}s)${retryCount > 0 ? ` • Retrying ${retryCount}` : ""
+              }`
+              : "Refresh"}
           </Button>
         </div>
 
         {/* Currencies Row */}
         <div className="p-8">
-          <div className="grid grid-cols-2 gap-6 sm:flex sm:flex-row sm:overflow-x-auto">
-            {currencies.map((currency) => (
-              <CurrencyCard
-                key={currency.code}
-                code={currency.code}
-                strength={currency.strength}
-                trend={currency.trend}
-              />
-            ))}
-          </div>
+          {loading && currencies.length === 0 ? (
+            <div className="text-center text-gray-500 py-10">
+              Loading currency strengths…
+            </div>
+          ) : (
+            <>
+                <div className="grid grid-cols-2 gap-6 sm:flex sm:flex-row sm:overflow-x-auto">
+                  {currencies.map((currency) => (
+                    <CurrencyCard
+                      key={currency.code}
+                      code={currency.code}
+                      strength={currency.strength}
+                      trend={currency.trend}
+                    />
+                  ))}
+                </div>
 
-          {/* Histogram Legend */}
-          <div className="flex flex-start w-full text-xs font-medium gap-4 mt-6">
-            <div className="flex items-center gap-1">
-              <div className="h-3 w-3 bg-red-500 rounded-sm"></div>
-              Weak
-            </div>
-            <div className="flex items-center gap-1">
-              <div className="h-3 w-3 bg-yellow-400 rounded-sm"></div>
-              Neutral
-            </div>
-            <div className="flex items-center gap-1">
-              <div className="h-3 w-3 bg-green-500 rounded-sm"></div>
-              Strong
-            </div>
-          </div>
+                {/* Histogram Legend */}
+                <div className="flex flex-start w-full text-xs font-medium gap-4 mt-6">
+                  <div className="flex items-center gap-1">
+                    <div className="h-3 w-3 bg-red-500 rounded-sm"></div>
+                    Weak
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <div className="h-3 w-3 bg-yellow-400 rounded-sm"></div>
+                    Neutral
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <div className="h-3 w-3 bg-green-500 rounded-sm"></div>
+                    Strong
+                  </div>
+                </div>
+            </>
+          )}
         </div>
       </div>
     </div>
