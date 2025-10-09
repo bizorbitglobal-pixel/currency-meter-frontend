@@ -29,8 +29,19 @@ export default function CurrencyList() {
     }
   };
 
+  // Load initial data
   useEffect(() => {
     loadData();
+  }, []);
+
+  // Auto-refresh every 2 minutes
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log("🔄 Auto refreshing currency data...");
+      loadData();
+    }, 2 * 60 * 1000); // 2 minutes = 120,000 ms
+
+    return () => clearInterval(interval); // Cleanup on unmount
   }, []);
 
   // Shimmer card (skeleton placeholder)
@@ -38,7 +49,7 @@ export default function CurrencyList() {
     <div className="flex flex-col items-center bg-white-100 rounded-xl w-28 p-3 shadow-md overflow-hidden relative">
       {/* Gradient shimmer background */}
       <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-shimmer" />
-      
+
       <div className="relative z-10 flex flex-col items-center w-full">
         {/* Header line */}
         <div className="h-4 w-16 bg-gray-300 rounded mb-3"></div>
@@ -104,9 +115,7 @@ export default function CurrencyList() {
                 loading ? "cursor-not-allowed opacity-70" : ""
               }`}
             >
-              {loading
-                ? `Refreshing... (${elapsedTime}s)`
-                : "Refresh"}
+              {loading ? `Refreshing... (${elapsedTime}s)` : "Refresh"}
             </Button>
           </div>
 
