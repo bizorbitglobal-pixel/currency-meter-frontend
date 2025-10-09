@@ -35,7 +35,7 @@ export default function CurrencyList() {
 
   // Shimmer card (skeleton placeholder)
   const ShimmerCard = () => (
-    <div className="flex flex-col items-center bg-gray-100 rounded-xl w-28 p-3 shadow-md overflow-hidden relative">
+    <div className="flex flex-col items-center bg-white-100 rounded-xl w-28 p-3 shadow-md overflow-hidden relative">
       {/* Gradient shimmer background */}
       <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-shimmer" />
       
@@ -46,7 +46,7 @@ export default function CurrencyList() {
         {/* Strength bars */}
         <div className="flex flex-col-reverse gap-2 mb-3">
           {Array.from({ length: 8 }).map((_, i) => (
-            <div key={i} className="h-5 w-16 bg-gray-300 rounded-md" />
+            <div key={i} className="h-5 w-16 bg-white-300 rounded-md" />
           ))}
         </div>
 
