@@ -39,7 +39,7 @@ export default function CurrencyList() {
     const interval = setInterval(() => {
       console.log("🔄 Auto refreshing currency data...");
       loadData();
-    }, 2 * 60 * 1000); // 2 minutes = 120,000 ms
+    }, 60 * 1000); // 1 minute = 60,000 ms
 
     return () => clearInterval(interval); // Cleanup on unmount
   }, []);
