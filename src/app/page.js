@@ -18,16 +18,26 @@ export default function Home() {
 
       {/* Ad below meter */}
       <AddSlot slot="1234567890" />
+      <script
+        async="async"
+        data-cfasync="false"
+        src="//pl27824467.effectivegatecpm.com/7076df2eeb869e5e6f25661a6c818963/invoke.js"
+      ></script>
       <div id="container-7076df2eeb869e5e6f25661a6c818963"></div>
 
       {/* Informational SEO Sections */}
       <Section
         title="What is a Currency Strength Meter?"
         content="A currency strength meter is a forex trading tool that measures the relative strength of different currencies against each other. Traders use it to quickly identify which currencies are gaining strength and which are weakening, helping them spot trading opportunities more efficiently."
-        img='/images/what.png'
+        img="/images/what.png"
       />
 
       <AddSlot slot="1234567891" />
+      <script
+        async="async"
+        data-cfasync="false"
+        src="//pl27824467.effectivegatecpm.com/7076df2eeb869e5e6f25661a6c818963/invoke.js"
+      ></script>
       <div id="container-7076df2eeb869e5e6f25661a6c818963"></div>
 
       <Section
@@ -37,6 +47,11 @@ export default function Home() {
       />
 
       <AddSlot slot="1234567892" />
+      <script
+        async="async"
+        data-cfasync="false"
+        src="//pl27824467.effectivegatecpm.com/7076df2eeb869e5e6f25661a6c818963/invoke.js"
+      ></script>
       <div id="container-7076df2eeb869e5e6f25661a6c818963"></div>
 
       <Section
@@ -46,6 +61,11 @@ export default function Home() {
       />
 
       <AddSlot slot="1234567893" />
+      <script
+        async="async"
+        data-cfasync="false"
+        src="//pl27824467.effectivegatecpm.com/7076df2eeb869e5e6f25661a6c818963/invoke.js"
+      ></script>
       <div id="container-7076df2eeb869e5e6f25661a6c818963"></div>
 
       <Section
@@ -55,6 +75,11 @@ export default function Home() {
       />
 
       <AddSlot slot="1234567894" />
+      <script
+        async="async"
+        data-cfasync="false"
+        src="//pl27824467.effectivegatecpm.com/7076df2eeb869e5e6f25661a6c818963/invoke.js"
+      ></script>
       <div id="container-7076df2eeb869e5e6f25661a6c818963"></div>
 
       <Section
@@ -64,7 +89,7 @@ export default function Home() {
       />
 
       {/* Footer */}
-      <Faqs />  
+      <Faqs />
       <Footer />
     </main>
   );

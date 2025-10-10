@@ -599,13 +599,7 @@ export default function RootLayout({ children }) {
         </Script>
          {/* ✅ Your EffectiveGate ad script */}
 
-        <Script
-          id="effectivegate-ad"
-          src="//pl27824467.effectivegatecpm.com/7076df2eeb869e5e6f25661a6c818963/invoke.js"
-          async
-          data-cfasync="false"
-          strategy="lazyOnload"
-        />
+        
         <Script id="website-structured-data" type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
