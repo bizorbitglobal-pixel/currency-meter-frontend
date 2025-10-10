@@ -598,9 +598,6 @@ export default function RootLayout({ children }) {
           })}
         </Script>
          {/* ✅ Your EffectiveGate ad script */}
-        <div className="flex justify-center w-full my-4">
-          <div id="container-7076df2eeb869e5e6f25661a6c818963" />
-        </div>
 
         <Script
           id="effectivegate-ad"

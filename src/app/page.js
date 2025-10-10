@@ -18,6 +18,7 @@ export default function Home() {
 
       {/* Ad below meter */}
       <AddSlot slot="1234567890" />
+      <div id="container-7076df2eeb869e5e6f25661a6c818963"></div>
 
       {/* Informational SEO Sections */}
       <Section
@@ -27,6 +28,7 @@ export default function Home() {
       />
 
       <AddSlot slot="1234567891" />
+      <div id="container-7076df2eeb869e5e6f25661a6c818963"></div>
 
       <Section
         title="How the Currency Strength Meter Works?"
@@ -35,6 +37,7 @@ export default function Home() {
       />
 
       <AddSlot slot="1234567892" />
+      <div id="container-7076df2eeb869e5e6f25661a6c818963"></div>
 
       <Section
         title="How Often is it Updated?"
@@ -43,6 +46,7 @@ export default function Home() {
       />
 
       <AddSlot slot="1234567893" />
+      <div id="container-7076df2eeb869e5e6f25661a6c818963"></div>
 
       <Section
         title="Short-term Strength Indicator"
@@ -51,6 +55,7 @@ export default function Home() {
       />
 
       <AddSlot slot="1234567894" />
+      <div id="container-7076df2eeb869e5e6f25661a6c818963"></div>
 
       <Section
         title="Using the Strength Meter in Trading Strategies"
