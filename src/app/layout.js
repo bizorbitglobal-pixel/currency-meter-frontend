@@ -597,8 +597,6 @@ export default function RootLayout({ children }) {
             logo: "https://www.currencystrengthsmeters.com/favicon-32x32.png",
           })}
         </Script>
-         {/* ✅ Your EffectiveGate ad script */}
-
         
         <Script id="website-structured-data" type="application/ld+json">
           {JSON.stringify({

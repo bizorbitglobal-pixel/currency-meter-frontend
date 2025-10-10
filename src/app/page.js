@@ -18,12 +18,6 @@ export default function Home() {
 
       {/* Ad below meter */}
       <AddSlot slot="1234567890" />
-      <script
-        async="async"
-        data-cfasync="false"
-        src="//pl27824467.effectivegatecpm.com/7076df2eeb869e5e6f25661a6c818963/invoke.js"
-      ></script>
-      <div id="container-7076df2eeb869e5e6f25661a6c818963"></div>
 
       {/* Informational SEO Sections */}
       <Section
