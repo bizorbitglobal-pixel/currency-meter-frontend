@@ -597,6 +597,18 @@ export default function RootLayout({ children }) {
             logo: "https://www.currencystrengthsmeters.com/favicon-32x32.png",
           })}
         </Script>
+         {/* ✅ Your EffectiveGate ad script */}
+        <div className="flex justify-center w-full my-4">
+          <div id="container-7076df2eeb869e5e6f25661a6c818963" />
+        </div>
+
+        <Script
+          id="effectivegate-ad"
+          src="//pl27824467.effectivegatecpm.com/7076df2eeb869e5e6f25661a6c818963/invoke.js"
+          async
+          data-cfasync="false"
+          strategy="lazyOnload"
+        />
         <Script id="website-structured-data" type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
