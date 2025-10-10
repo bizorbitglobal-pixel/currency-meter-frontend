@@ -46,26 +46,31 @@ export default function CurrencyList() {
 
   // Shimmer card (skeleton placeholder)
   const ShimmerCard = () => (
-    <div className="flex flex-col items-center bg-white-100 rounded-xl w-28 p-3 shadow-md overflow-hidden relative">
-      {/* Gradient shimmer background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-shimmer" />
+  <div className="flex flex-col items-center bg-white-100 rounded-xl w-28 p-3 shadow-md overflow-hidden relative">
+    {/* Gradient shimmer background */}
+    <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-shimmer" />
 
-      <div className="relative z-10 flex flex-col items-center w-full">
-        {/* Header line */}
-        <div className="h-4 w-16 bg-gray-300 rounded mb-3"></div>
+    <div className="relative z-10 flex flex-col items-center w-full">
+      {/* Header line */}
+      <div className="h-4 w-16 bg-gray-300 rounded mb-3"></div>
 
-        {/* Strength bars */}
-        <div className="flex flex-col-reverse gap-2 mb-3">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <div key={i} className="h-5 w-16 bg-white-300 rounded-md" />
-          ))}
-        </div>
-
-        {/* Footer line */}
-        <div className="h-3 w-10 bg-gray-300 rounded"></div>
+      {/* Strength bars */}
+      <div className="flex flex-col-reverse gap-2 mb-3">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div key={i} className="h-5 w-16 bg-gray-300 rounded-md" />
+        ))}
       </div>
+      {/* Loading message */}
+      <div className="text-[10px] sm:text-xs text-gray-500 italic text-center mt-1">
+        Please wait for live currency strengths...
+      </div>
+
+      {/* Footer line */}
+      <div className="h-3 w-10 bg-gray-300 rounded mb-2"></div>
     </div>
-  );
+  </div>
+);
+
 
   return (
     <>

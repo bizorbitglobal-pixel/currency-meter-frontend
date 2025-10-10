@@ -616,7 +616,7 @@ export default function RootLayout({ children }) {
           })}
         </Script>
         {/* ✅ Google Tag Manager (Script) */}
-        <Script
+        {/* <Script
           id="google-tag-manager"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
@@ -632,7 +632,7 @@ export default function RootLayout({ children }) {
               })(window,document,'script','dataLayer','GTM-M3ZWWFT8');
             `,
           }}
-        />
+        /> */}
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
