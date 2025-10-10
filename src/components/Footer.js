@@ -8,11 +8,17 @@ export default function Footer() {
           &copy; {new Date().getFullYear()} Currency Meter. All rights reserved.
         </p>
         <div className="space-x-4">
+          <Link href="/about" className="hover:text-white">
+            About
+          </Link>
           <Link href="/privacy-policy" className="hover:text-white">
             Privacy Policy
           </Link>
           <Link href="/terms" className="hover:text-white">
             Terms
+          </Link>
+          <Link href="/contact" className="hover:text-white">
+            Contact Us
           </Link>
         </div>
       </div>
