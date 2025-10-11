@@ -3,7 +3,7 @@
 --------------------------------------------------- */
 
 /* Code syntax theme */
-@import "prismjs/themes/prism-tomorrow.css";
+@import "./styles/prism/prism-tomorrow.css";
 
 /* Tailwind base layers */
 @tailwind base;
