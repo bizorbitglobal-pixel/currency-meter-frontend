@@ -4,6 +4,7 @@ import "./globals.css";
 import keywords from "./keywords.json";
 import { Analytics } from "@vercel/analytics/next";
 import { Inter } from "next/font/google";
+import "prismjs/themes/prism-tomorrow.css"; 
 
 
 const inter = Inter({ subsets: ["latin"] });

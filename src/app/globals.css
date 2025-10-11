@@ -2,8 +2,6 @@
    🌈 GLOBAL STYLES FOR BLOG + APP
 --------------------------------------------------- */
 
-/* Code syntax theme */
-@import "./styles/prism/prism-tomorrow.css";
 
 /* Tailwind base layers */
 @tailwind base;
