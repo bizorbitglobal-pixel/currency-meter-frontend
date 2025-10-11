@@ -300,7 +300,7 @@ Object.entries(blogs).forEach(([slug, data]) => {
   const excerpt = plainText.split(" ").slice(0, 50).join(" ") + "...";
 
   // ✅ Auto-assign OG image per blog
-  const ogImage = `http://localhost:3000/og-cache/${safeSlug}.jpg`;
+  const ogImage = `https://www.currencystrengthsmeters.com/og-cache/${safeSlug}.jpg`;
 
   // 🧩 YAML Frontmatter
   const frontmatter = [
