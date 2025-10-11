@@ -8,6 +8,7 @@ export default function CurrencyList() {
   const [currencies, setCurrencies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(0);
+  const [marketStatus, setMarketStatus] = useState("Open");
 
   const loadData = async () => {
     setLoading(true);
@@ -29,9 +30,36 @@ export default function CurrencyList() {
     }
   };
 
+  // Determine Forex market open/close based on UTC time
+  const getMarketStatus = () => {
+    const now = new Date();
+
+    // Convert to UTC day/hour
+    const day = now.getUTCDay(); // 0 = Sunday, 6 = Saturday
+    const hour = now.getUTCHours();
+
+    // Forex market opens Sunday 22:00 UTC, closes Friday 22:00 UTC
+    const isOpen =
+      (day > 0 && day < 5) || // Monday–Thursday always open
+      (day === 0 && hour >= 22) || // Sunday after 22:00 UTC
+      (day === 5 && hour < 22); // Friday before 22:00 UTC
+
+    return isOpen ? "Open" : "Closed";
+  };
+
   // Load initial data
   useEffect(() => {
     loadData();
+  }, []);
+
+  useEffect(() => {
+    const updateMarketStatus = () => {
+      setMarketStatus(getMarketStatus());
+    };
+    updateMarketStatus(); // run immediately on mount
+
+    const interval = setInterval(updateMarketStatus, 60000); // refresh every minute
+    return () => clearInterval(interval);
   }, []);
 
   // Auto-refresh every 2 minutes
@@ -103,7 +131,13 @@ export default function CurrencyList() {
             {/* Market Status */}
             <div className="text-sm font-medium text-gray-700">
               <span className="text-black">Market:</span>{" "}
-              <span className="text-green-600 font-semibold">Open</span>
+              <span
+                className={`font-semibold ${
+                  marketStatus === "Open" ? "text-green-600" : "text-red-600"
+                }`}
+              >
+                {marketStatus}
+              </span>
             </div>
 
             {/* Title (always visible, centered on mobile) */}
@@ -145,18 +179,18 @@ export default function CurrencyList() {
                 </div>
 
                 {/* Histogram Legend */}
-                <div className="flex flex-start w-full text-xs font-medium gap-4 mt-6">
+                <div className="flex flex-col sm:flex-row sm:justify-center sm:items-center w-full text-xs font-medium gap-2 sm:gap-4 mt-6 px-4">
                   <div className="flex items-center gap-1">
                     <div className="h-3 w-3 bg-red-500 rounded-sm"></div>
-                    Weak
+                    <span className="text-gray-700">Weak</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <div className="h-3 w-3 bg-yellow-400 rounded-sm"></div>
-                    Neutral
+                    <span className="text-gray-700">Neutral</span>
                   </div>
                   <div className="flex items-center gap-1">
                     <div className="h-3 w-3 bg-green-500 rounded-sm"></div>
-                    Strong
+                    <span className="text-gray-700">Strong</span>
                   </div>
                 </div>
               </>
