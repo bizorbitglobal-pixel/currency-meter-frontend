@@ -94,9 +94,9 @@ export default function ContactPage() {
 
       <AddSlot />
 
-      <footer className="mt-20 py-10 bg-gray-100">
+      <footer className="mt-20 py-10 border-t text-gray-500 text-sm">
         <div className="max-w-4xl mx-auto text-center">
-          <p>© 2025 Currency Strength Meter. All rights reserved.</p>
+          <p>© 2025 Currency Meter App. All rights reserved.</p>
           <AddSlot />
         </div>
       </footer>

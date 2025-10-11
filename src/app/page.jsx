@@ -7,7 +7,7 @@ import AddSlot from "@/components/AddSlot";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gray-50 flex flex-col">
+    <main className="pt-20 md:pt-24 min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
       <Header />
 
