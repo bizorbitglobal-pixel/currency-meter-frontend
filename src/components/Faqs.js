@@ -34,57 +34,54 @@ export default function Faqs() {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleFAQ = (index) => {
-    setOpenIndex(index);
+    setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <section className="w-full py-20 bg-gradient-to-b from-white via-gray-50 to-gray-100 dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 transition-colors duration-300">
-      <div className="max-w-4xl mx-auto px-6">
-        {/* Title */}
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-center mb-12 text-gray-900 dark:text-gray-100">
+    <section className="w-full bg-gray-50 py-16 dark:bg-gray-950 transition-colors duration-300">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <h2 className="text-4xl font-extrabold mb-10 text-center text-gray-900 dark:text-gray-100">
           Frequently Asked Questions
         </h2>
 
-        {/* FAQ List */}
         <div className="space-y-5">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
-                openIndex === index
-                  ? "border-blue-500 bg-white shadow-lg dark:bg-gray-900 dark:border-blue-400"
-                  : "border-gray-200 bg-white hover:border-blue-300 hover:shadow-md dark:bg-gray-900 dark:border-gray-700"
-              }`}
-            >
-              {/* Question Button */}
-              <button
-                onClick={() => toggleFAQ(index)}
-                className="flex justify-between items-center w-full px-6 sm:px-8 py-5 text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100 focus:outline-none"
-              >
-                <span>{faq.question}</span>
-                <ChevronDown
-                  className={`w-6 h-6 text-gray-600 dark:text-gray-300 transition-transform duration-300 ${
-                    openIndex === index ? "rotate-180 text-blue-600 dark:text-blue-400" : ""
-                  }`}
-                />
-              </button>
-
-              {/* Answer Panel */}
+          {faqs.map((faq, index) => {
+            const isOpen = openIndex === index;
+            return (
               <div
-                className={`grid transition-all duration-300 ease-in-out ${
-                  openIndex === index ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                key={index}
+                className={`border rounded-xl shadow-sm transition-all duration-300 overflow-hidden ${
+                  isOpen
+                    ? "bg-white dark:bg-gray-800 border-blue-400 shadow-md"
+                    : "bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700"
                 }`}
               >
-                <div className="overflow-hidden px-6 sm:px-8 pb-5 text-gray-700 dark:text-gray-300 leading-relaxed">
-                  {faq.answer}
+                <button
+                  onClick={() => toggleFAQ(index)}
+                  className="w-full flex justify-between items-center px-6 py-4 text-left text-lg font-semibold text-gray-900 dark:text-gray-100 focus:outline-none"
+                >
+                  {faq.question}
+                  <ChevronDown
+                    className={`w-6 h-6 text-gray-500 transition-transform duration-300 ${
+                      isOpen ? "rotate-180 text-blue-500" : ""
+                    }`}
+                  />
+                </button>
+
+                {/* Answer with animation */}
+                <div
+                  className={`overflow-hidden transition-all duration-300 ${
+                    isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+                  }`}
+                >
+                  <p className="px-6 pb-5 text-gray-700 dark:text-gray-300 text-base leading-relaxed">
+                    {faq.answer}
+                  </p>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
-
-        {/* Decorative Glow Line */}
-        <div className="mt-16 h-[1px] w-48 mx-auto bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-50"></div>
       </div>
     </section>
   );

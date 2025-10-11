@@ -99,15 +99,15 @@ export default function CurrencyList() {
           )}
 
           {/* Header */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-6 p-4 rounded-t-2xl shadow-sm bg-gray-200">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-6 p-4 rounded-t-2xl shadow-sm bg-gray-50 border-b border-gray-200">
             {/* Market Status */}
-            <div className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              <span className="text-black dark:text-gray-200">Market:</span>{" "}
+            <div className="text-sm font-medium text-gray-700">
+              <span className="text-black">Market:</span>{" "}
               <span className="text-green-600 font-semibold">Open</span>
             </div>
 
             {/* Title (always visible, centered on mobile) */}
-            <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 text-center order-first sm:order-none">
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 text-center order-first sm:order-none">
               Currency Strength Meter
             </h2>
 
@@ -115,7 +115,7 @@ export default function CurrencyList() {
             <Button
               onClick={loadData}
               disabled={loading}
-              className={`text-sm sm:text-base bg-white dark:bg-gray-800 text-black dark:text-gray-100 rounded-full px-4 py-2 shadow hover:bg-gray-100 dark:hover:bg-gray-700 transition flex items-center gap-2 ${
+              className={`text-sm sm:text-base bg-white text-gray-900 border border-gray-300 rounded-full px-5 py-2 shadow-sm hover:bg-blue-50 hover:border-blue-400 transition-all flex items-center gap-2 ${
                 loading ? "cursor-not-allowed opacity-70" : ""
               }`}
             >
