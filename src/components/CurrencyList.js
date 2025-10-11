@@ -46,31 +46,30 @@ export default function CurrencyList() {
 
   // Shimmer card (skeleton placeholder)
   const ShimmerCard = () => (
-  <div className="flex flex-col items-center bg-white-100 rounded-xl w-28 p-3 shadow-md overflow-hidden relative">
-    {/* Gradient shimmer background */}
-    <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-shimmer" />
+    <div className="flex flex-col items-center bg-white-100 rounded-xl w-28 p-3 shadow-md overflow-hidden relative">
+      {/* Gradient shimmer background */}
+      <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-shimmer" />
 
-    <div className="relative z-10 flex flex-col items-center w-full">
-      {/* Header line */}
-      <div className="h-4 w-16 bg-gray-300 rounded mb-3"></div>
+      <div className="relative z-10 flex flex-col items-center w-full">
+        {/* Header line */}
+        <div className="h-4 w-16 bg-gray-300 rounded mb-3"></div>
 
-      {/* Strength bars */}
-      <div className="flex flex-col-reverse gap-2 mb-3">
-        {Array.from({ length: 8 }).map((_, i) => (
-          <div key={i} className="h-5 w-16 bg-gray-300 rounded-md" />
-        ))}
+        {/* Strength bars */}
+        <div className="flex flex-col-reverse gap-2 mb-3">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <div key={i} className="h-5 w-16 bg-gray-300 rounded-md" />
+          ))}
+        </div>
+        {/* Loading message */}
+        <div className="text-[10px] sm:text-xs text-gray-500 italic text-center mt-1">
+          Please wait for live currency strengths...
+        </div>
+
+        {/* Footer line */}
+        <div className="h-3 w-10 bg-gray-300 rounded mb-2"></div>
       </div>
-      {/* Loading message */}
-      <div className="text-[10px] sm:text-xs text-gray-500 italic text-center mt-1">
-        Please wait for live currency strengths...
-      </div>
-
-      {/* Footer line */}
-      <div className="h-3 w-10 bg-gray-300 rounded mb-2"></div>
     </div>
-  </div>
-);
-
+  );
 
   return (
     <>
@@ -100,23 +99,23 @@ export default function CurrencyList() {
           )}
 
           {/* Header */}
-          <div
-            className="flex items-center justify-between p-4 rounded-t-2xl shadow-sm"
-            style={{ backgroundColor: "#F8F8FF" }}
-          >
-            <span className="font-semibold">
-              <span className="text-black">Market:</span>{" "}
-              <span className="text-green-600">Open</span>
-            </span>
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-6 p-4 rounded-t-2xl shadow-sm bg-gray-50 dark:bg-gray-900">
+            {/* Market Status */}
+            <div className="text-sm font-medium text-gray-700 dark:text-gray-300">
+              <span className="text-black dark:text-gray-200">Market:</span>{" "}
+              <span className="text-green-600 font-semibold">Open</span>
+            </div>
 
-            <h2 className="text-xl font-bold text-center flex-1">
+            {/* Title (always visible, centered on mobile) */}
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100 text-center order-first sm:order-none">
               Currency Strength Meter
             </h2>
 
+            {/* Refresh Button */}
             <Button
               onClick={loadData}
               disabled={loading}
-              className={`bg-white text-black rounded-full px-4 py-2 shadow hover:bg-gray-100 transition flex items-center gap-2 ${
+              className={`text-sm sm:text-base bg-white dark:bg-gray-800 text-black dark:text-gray-100 rounded-full px-4 py-2 shadow hover:bg-gray-100 dark:hover:bg-gray-700 transition flex items-center gap-2 ${
                 loading ? "cursor-not-allowed opacity-70" : ""
               }`}
             >

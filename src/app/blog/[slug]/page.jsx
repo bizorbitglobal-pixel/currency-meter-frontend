@@ -199,7 +199,6 @@ export default async function BlogDetail({ params }) {
           className="
             prose prose-lg md:prose-xl mx-auto
             prose-headings:font-bold prose-h2:text-3xl prose-h3:text-2xl
-            prose-p:text-gray-700 prose-strong:text-gray-900
             prose-a:text-blue-600 hover:prose-a:underline
             prose-li:marker:text-blue-500 prose-blockquote:border-l-blue-400
             prose-img:rounded-xl prose-img:shadow-md
