@@ -1,6 +1,7 @@
 // app/privacy-policy/page.js
 
 import AddSlot from "@/components/AddSlot";
+import RedirectButton from "@/components/RedirectButton";
 
 export const metadata = {
   title: "Privacy Policy | Currency Meter",
@@ -13,6 +14,7 @@ export default function PrivacyPolicy() {
     <div className="font-sans max-w-4xl mx-auto px-4 py-10 space-y-10">
       <h1 className="text-3xl font-bold mb-6">Privacy Policy</h1>
       <AddSlot />
+      <RedirectButton />
 
       <section>
         <h2 className="text-xl font-semibold mb-2">1. Introduction</h2>
@@ -57,6 +59,7 @@ export default function PrivacyPolicy() {
           You also have the right to request deletion of your data from our records.
         </p>
       </section>
+      <RedirectButton />
 
       <AddSlot />
       <footer className="mt-20 py-10 bg-gray-100">

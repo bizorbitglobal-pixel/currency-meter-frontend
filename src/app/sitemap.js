@@ -1,94 +1,68 @@
-export default function sitemap() {
-  return [
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+
+export default async function sitemap() {
+  const baseUrl = "https://www.currencystrengthsmeters.com";
+
+  // --- Read all blog slugs dynamically ---
+  const blogDir = path.join(process.cwd(), "content/blog");
+  const files = fs.readdirSync(blogDir);
+
+  const blogUrls = files
+  .filter((file) => file.endsWith(".md"))
+  .map((file) => {
+    const filePath = path.join(blogDir, file);
+    const content = fs.readFileSync(filePath, "utf8");
+    const { data } = matter(content);
+    const slug = file.replace(/\.md$/, "");
+    return {
+      url: `${baseUrl}/blog/${slug}`,
+      lastModified: data.date ? new Date(data.date) : new Date(),
+      changeFrequency: "weekly",
+      priority: 0.5,
+    };
+  });
+  // --- Static pages ---
+  const staticUrls = [
     {
-      url: 'https://www.currencystrengthsmeters.com/',
+      url: `${baseUrl}/`,
       lastModified: new Date(),
-      changeFrequency: 'yearly',
+      changeFrequency: "yearly",
       priority: 1,
     },
     {
-      url: 'https://www.currencystrengthsmeters.com/about',
+      url: `${baseUrl}/about`,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: 'https://www.currencystrengthsmeters.com/blog',
+      url: `${baseUrl}/blog`,
       lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.5,
+      changeFrequency: "weekly",
+      priority: 0.7,
     },
     {
-        url: 'https://www.currencystrengthsmeters.com/blog/use-currency-strength-meter',
-        lastModified: new Date(),
-        changeFrequency: 'weekly',
-        priority: 0.5,
-    },
-    {
-        url: 'https://www.currencystrengthsmeters.com/blog/top-5-strategies',
-        lastModified: new Date(),
-        changeFrequency: 'weekly',
-        priority: 0.5,
-    },
-    {
-        url: 'https://www.currencystrengthsmeters.com/blog/currency-pair-selection',
-        lastModified: new Date(),
-        changeFrequency: 'weekly',
-        priority: 0.5,
-    },
-    {
-        url: 'https://www.currencystrengthsmeters.com/blog/combining-strength-meters-with-price-action',
-        lastModified: new Date(),
-        changeFrequency: 'weekly',
-        priority: 0.5,
-    },
-    {
-        url: 'https://www.currencystrengthsmeters.com/blog/multi-timeframe-analysis',
-        lastModified: new Date(),
-        changeFrequency: 'weekly',
-        priority: 0.5,
-    },
-    {
-        url: 'https://www.currencystrengthsmeters.com/blog/advanced-strategy-with-strength-meters',
-        lastModified: new Date(),
-        changeFrequency: 'weekly',
-        priority: 0.5,
-    },
-    {
-        url: 'https://www.currencystrengthsmeters.com/blog/currency-strength-meter-for-swing-trading',
-        lastModified: new Date(),
-        changeFrequency: 'weekly',
-        priority: 0.5,
-    },
-    {
-        url: 'https://www.currencystrengthsmeters.com/blog/short-vs-long-term',
-        lastModified: new Date(),
-        changeFrequency: 'weekly',
-        priority: 0.5,
-    },
-    {
-      url: 'https://www.currencystrengthsmeters.com/privacy-policy',
+      url: `${baseUrl}/privacy-policy`,
       lastModified: new Date(),
-      changeFrequency: 'yearly',
+      changeFrequency: "yearly",
       priority: 0.3,
     },
     {
-      url: 'https://www.currencystrengthsmeters.com/terms',
+      url: `${baseUrl}/terms`,
       lastModified: new Date(),
-      changeFrequency: 'yearly',
+      changeFrequency: "yearly",
       priority: 0.3,
     },
     {
-      url: 'https://www.currencystrengthsmeters.com/about',
+      url: `${baseUrl}/contact`,
       lastModified: new Date(),
-      changeFrequency: 'yearly',
+      changeFrequency: "yearly",
       priority: 0.3,
     },
-    {
-      url: 'https://www.currencystrengthsmeters.com/contact',
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-  ]
+  ];
+
+  // --- Combine everything ---
+  return [...staticUrls, ...blogUrls];
 }

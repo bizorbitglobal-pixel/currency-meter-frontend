@@ -1,4 +1,5 @@
 import AddSlot from "@/components/AddSlot";
+import RedirectButton from "@/components/RedirectButton";
 
 // ✅ This works because this file is a Server Component by default
 export const metadata = {
@@ -12,6 +13,10 @@ export default function TermsPage() {
     <div className="font-sans max-w-4xl mx-auto px-4 py-10 space-y-10">
       <h1 className="text-3xl font-bold mb-6">Terms & Conditions</h1>
       <AddSlot />
+      <div className="relative isolate">
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-transparent dark:from-gray-900/50 -z-10" />
+        <RedirectButton />
+      </div>
 
       <section>
         <h2 className="text-xl font-semibold mb-2">1. Acceptance of Terms</h2>
@@ -56,6 +61,8 @@ export default function TermsPage() {
           content.
         </p>
       </section>
+      <RedirectButton />
+
 
       <AddSlot />
       <footer className="mt-20 py-10 bg-gray-100">

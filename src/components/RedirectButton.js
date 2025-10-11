@@ -1,103 +1,35 @@
-"use client"; // Marking this component as a Client Component
+"use client";
 
 import React from "react";
 import Link from "next/link";
-import { FaArrowRight } from "react-icons/fa"; // Importing the right arrow icon
+import { FaArrowRight } from "react-icons/fa";
+import { motion } from "framer-motion";
 
-const RedirectButton = () => (
-  <div className="flex justify-center mb-6 px-4">
-    <div className="w-full max-w-3xl">
+export default function RedirectButton() {
+  return (
+    <div className="flex justify-center mt-8 mb-14">
       <Link href="/" passHref>
-        <button className="redirect-button">
-          Check Currency Strength Meter&nbsp;
-          <FaArrowRight className="arrow-icon" />
-        </button>
+        <motion.button
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.98 }}
+          transition={{ type: "spring", stiffness: 250, damping: 15 }}
+          className="
+            relative flex items-center justify-center gap-3 px-8 py-4
+            text-lg font-semibold
+            rounded-xl overflow-hidden
+            bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500
+            text-white shadow-lg shadow-blue-200/40 dark:shadow-blue-900/40
+            hover:shadow-blue-400/40
+            transition-all duration-500 ease-out
+          "
+        >
+          <span className="relative z-10">Check Currency Strength Meter</span>
+          <FaArrowRight className="relative z-10 text-xl transition-transform duration-300 group-hover:translate-x-2" />
+
+          {/* Glow layer */}
+          <span className="absolute inset-0 bg-gradient-to-r from-blue-400/30 to-indigo-500/30 opacity-0 hover:opacity-100 blur-xl transition-opacity duration-500"></span>
+        </motion.button>
       </Link>
     </div>
-
-    {/* Responsive Styles */}
-    <style jsx>{`
-      .redirect-button {
-        width: 100%;
-        max-width: 800px;
-        background-color: transparent;
-        color: #2563eb; /* Blue text */
-        font-size: 1.25rem;
-        font-weight: bold;
-        padding: 1.5rem 2rem;
-        border: 2px solid #2563eb; /* Blue border */
-        border-radius: 12px;
-        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: transform 0.3s ease, background-color 0.3s ease,
-          border 0.3s ease;
-        position: relative;
-        text-align: center;
-      }
-
-      /* Hover effects */
-      .redirect-button:hover {
-        background-color: #2563eb; /* Blue background */
-        color: white; /* White text when hovered */
-        border-color: #1e40af; /* Darker blue border */
-        transform: scale(1.05);
-      }
-
-      /* Arrow animation */
-      .arrow-icon {
-        margin-left: 1rem;
-        transition: transform 0.3s ease, margin-left 0.3s ease;
-      }
-
-      .redirect-button:hover .arrow-icon {
-        transform: translateX(10px);
-        margin-left: 1.5rem;
-      }
-
-      /* ----------------- Responsive Styling ----------------- */
-
-      /* Medium screens (tablets) */
-      @media (max-width: 768px) {
-        .redirect-button {
-          font-size: 1.1rem;
-          padding: 1.25rem 1.75rem;
-          border-radius: 10px;
-        }
-
-        .arrow-icon {
-          margin-left: 0.75rem;
-        }
-
-        .redirect-button:hover .arrow-icon {
-          transform: translateX(8px);
-          margin-left: 1.25rem;
-        }
-      }
-
-      /* Small screens (mobile phones) */
-      @media (max-width: 480px) {
-        .redirect-button {
-          font-size: 1rem;
-          padding: 1rem 1.25rem;
-          border-radius: 8px;
-          height: auto;
-          line-height: 1.4;
-        }
-
-        .arrow-icon {
-          margin-left: 0.5rem;
-        }
-
-        .redirect-button:hover .arrow-icon {
-          transform: translateX(6px);
-          margin-left: 1rem;
-        }
-      }
-    `}</style>
-  </div>
-);
-
-export default RedirectButton;
+  );
+}
