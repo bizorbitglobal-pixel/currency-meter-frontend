@@ -23,7 +23,7 @@ export default function Home() {
       <Section
         title="What is a Currency Strength Meter?"
         content="A currency strength meter is a forex trading tool that measures the relative strength of different currencies against each other. Traders use it to quickly identify which currencies are gaining strength and which are weakening, helping them spot trading opportunities more efficiently."
-        img="/images/what.png"
+        img="/images/what.webp"
       />
 
       <AddSlot slot="1234567891" />
@@ -32,7 +32,7 @@ export default function Home() {
       <Section
         title="How the Currency Strength Meter Works?"
         content="The meter calculates strength by analyzing exchange rate data from multiple forex pairs. It assigns a strength value to each currency and visualizes them, so you instantly see the strongest and weakest currencies in the market."
-        img="/images/image1.png"
+        img="/images/image1.webp"
       />
 
       <AddSlot slot="1234567892" />
@@ -41,7 +41,7 @@ export default function Home() {
       <Section
         title="How Often is it Updated?"
         content="Our strength meter updates in real-time using live forex market data. This means you always see the most accurate and up-to-date market conditions before making a trade."
-        img="/images/how.png"
+        img="/images/how.webp"
       />
 
       <AddSlot slot="1234567893" />
@@ -50,7 +50,7 @@ export default function Home() {
       <Section
         title="Short-term Strength Indicator"
         content="The short-term strength indicator is designed for scalpers and intraday traders. It highlights quick shifts in momentum, helping traders capture opportunities during volatile sessions."
-        img="/images/strength.png"
+        img="/images/strength.webp"
       />
 
       <AddSlot slot="1234567894" />
@@ -59,7 +59,7 @@ export default function Home() {
       <Section
         title="Using the Strength Meter in Trading Strategies"
         content="Traders often combine the strength meter with technical indicators like moving averages, candlestick patterns, or support and resistance zones. By aligning strength analysis with price action, you can trade with higher accuracy and confidence."
-        img="/images/work.png"
+        img="/images/work.webp"
       />
 
       {/* Footer */}
