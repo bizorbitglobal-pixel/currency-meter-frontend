@@ -96,6 +96,11 @@ export default function BlogPage() {
           </article>
         ))}
       </div>
+      <footer className="mt-20 py-10 border-t text-gray-500 text-sm">
+        <div className="max-w-4xl mx-auto text-center">
+          <p>© 2025 Currency Strength Meter. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 }

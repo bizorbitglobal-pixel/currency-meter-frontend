@@ -99,7 +99,7 @@ export default function CurrencyList() {
           )}
 
           {/* Header */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-6 p-4 rounded-t-2xl shadow-sm bg-gray-50 dark:bg-gray-900">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-6 p-4 rounded-t-2xl shadow-sm bg-gray-200">
             {/* Market Status */}
             <div className="text-sm font-medium text-gray-700 dark:text-gray-300">
               <span className="text-black dark:text-gray-200">Market:</span>{" "}
