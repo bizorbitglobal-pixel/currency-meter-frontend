@@ -162,15 +162,20 @@ export default function CurrencyList() {
                 </div>
 
                 {/* Legend */}
-                <div className="flex flex-wrap justify-center text-[10px] sm:text-xs font-medium gap-2 sm:gap-4 mt-4">
-                  <div className="flex items-center gap-1">
-                    <div className="h-2 w-2 bg-red-500 rounded-sm"></div> Weak
+                <div className="flex flex-wrap justify-center text-[11px] sm:text-xs font-semibold text-gray-700 sm:text-gray-600 gap-3 sm:gap-5 mt-4">
+                  <div className="flex items-center gap-1.5">
+                    <div className="h-2 w-2 bg-red-500 rounded-sm shadow-sm"></div>
+                    <span className="opacity-90">Weak</span>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <div className="h-2 w-2 bg-yellow-400 rounded-sm"></div> Neutral
+
+                  <div className="flex items-center gap-1.5">
+                    <div className="h-2 w-2 bg-yellow-400 rounded-sm shadow-sm"></div>
+                    <span className="opacity-90">Neutral</span>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <div className="h-2 w-2 bg-green-500 rounded-sm"></div> Strong
+
+                  <div className="flex items-center gap-1.5">
+                    <div className="h-2 w-2 bg-green-500 rounded-sm shadow-sm"></div>
+                    <span className="opacity-90">Strong</span>
                   </div>
                 </div>
               </>
