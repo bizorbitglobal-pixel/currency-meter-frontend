@@ -12,7 +12,7 @@ export default function CurrencyBar({ code, strength, trend }) {
       </div>
 
       {/* Bar blocks */}
-      <div className="flex flex-col-reverse gap-1">
+      <div className="flex flex-col-reverse gap-1 sm:gap-2 mb-2 sm:mb-3">
         {Array.from({ length: 8 }).map((_, idx) => (
           <div
             key={idx}

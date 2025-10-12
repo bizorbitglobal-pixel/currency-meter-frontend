@@ -33,12 +33,9 @@ export default function CurrencyList() {
   // Determine Forex market open/close based on UTC time
   const getMarketStatus = () => {
     const now = new Date();
-
-    // Convert to UTC day/hour
     const day = now.getUTCDay(); // 0 = Sunday, 6 = Saturday
     const hour = now.getUTCHours();
 
-    // Forex market opens Sunday 22:00 UTC, closes Friday 22:00 UTC
     const isOpen =
       (day > 0 && day < 5) || // Monday–Thursday always open
       (day === 0 && hour >= 22) || // Sunday after 22:00 UTC
@@ -56,52 +53,40 @@ export default function CurrencyList() {
     const updateMarketStatus = () => {
       setMarketStatus(getMarketStatus());
     };
-    updateMarketStatus(); // run immediately on mount
-
-    const interval = setInterval(updateMarketStatus, 60000); // refresh every minute
+    updateMarketStatus();
+    const interval = setInterval(updateMarketStatus, 60000);
     return () => clearInterval(interval);
   }, []);
 
-  // Auto-refresh every 2 minutes
+  // Auto-refresh every minute
   useEffect(() => {
     const interval = setInterval(() => {
       console.log("🔄 Auto refreshing currency data...");
       loadData();
-    }, 60 * 1000); // 1 minute = 60,000 ms
-
-    return () => clearInterval(interval); // Cleanup on unmount
+    }, 60 * 1000);
+    return () => clearInterval(interval);
   }, []);
 
-  // Shimmer card (skeleton placeholder)
   const ShimmerCard = () => (
-    <div className="flex flex-col items-center bg-white-100 rounded-xl w-28 p-3 shadow-md overflow-hidden relative">
-      {/* Gradient shimmer background */}
+    <div className="flex flex-col items-center bg-gray-50 rounded-xl w-16 sm:w-28 p-2 sm:p-3 shadow-md relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-shimmer" />
-
       <div className="relative z-10 flex flex-col items-center w-full">
-        {/* Header line */}
-        <div className="h-4 w-16 bg-gray-300 rounded mb-3"></div>
-
-        {/* Strength bars */}
-        <div className="flex flex-col-reverse gap-2 mb-3">
+        <div className="h-3 w-10 bg-gray-300 rounded mb-2"></div>
+        <div className="flex flex-col-reverse gap-[3px] mb-2">
           {Array.from({ length: 8 }).map((_, i) => (
-            <div key={i} className="h-5 w-16 bg-gray-300 rounded-md" />
+            <div key={i} className="h-[10px] w-[22px] bg-gray-300 rounded-md" />
           ))}
         </div>
-        {/* Loading message */}
-        <div className="text-[10px] sm:text-xs text-gray-500 italic text-center mt-1">
-          Please wait for live currency strengths...
+        <div className="text-[10px] text-gray-400 italic text-center mt-1">
+          Loading...
         </div>
-
-        {/* Footer line */}
-        <div className="h-3 w-10 bg-gray-300 rounded mb-2"></div>
       </div>
     </div>
   );
 
   return (
     <>
-      {/* Custom shimmer animation style */}
+      {/* Custom shimmer animation */}
       <style jsx>{`
         @keyframes shimmer {
           0% {
@@ -119,7 +104,7 @@ export default function CurrencyList() {
 
       <div className="flex justify-center py-10">
         <div className="bg-white shadow-lg rounded-2xl w-full max-w-6xl relative overflow-hidden">
-          {/* Top Progress Bar */}
+          {/* Top loading bar */}
           {loading && (
             <div className="absolute top-0 left-0 w-full h-1 bg-gray-200">
               <div className="h-1 bg-green-500 animate-pulse w-full" />
@@ -127,8 +112,7 @@ export default function CurrencyList() {
           )}
 
           {/* Header */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-6 p-4 rounded-t-2xl shadow-sm bg-gray-50 border-b border-gray-200">
-            {/* Market Status */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-6 p-4 rounded-t-2xl bg-gray-50 border-b border-gray-200">
             <div className="text-sm font-medium text-gray-700">
               <span className="text-black">Market:</span>{" "}
               <span
@@ -140,12 +124,10 @@ export default function CurrencyList() {
               </span>
             </div>
 
-            {/* Title (always visible, centered on mobile) */}
             <h2 className="text-lg sm:text-xl font-bold text-gray-900 text-center order-first sm:order-none">
               Currency Strength Meter
             </h2>
 
-            {/* Refresh Button */}
             <Button
               onClick={loadData}
               disabled={loading}
@@ -157,40 +139,38 @@ export default function CurrencyList() {
             </Button>
           </div>
 
-          {/* Currencies Row */}
-          <div className="p-8">
+          {/* Currency Grid */}
+          <div className="p-4 sm:p-8">
             {loading && currencies.length === 0 ? (
-              <div className="grid grid-cols-2 gap-6 sm:flex sm:flex-row sm:overflow-x-auto">
+              <div className="grid grid-cols-4 sm:flex sm:flex-row sm:overflow-x-auto gap-2 sm:gap-6 justify-items-center">
                 {Array.from({ length: 8 }).map((_, i) => (
                   <ShimmerCard key={i} />
                 ))}
               </div>
             ) : (
               <>
-                <div className="grid grid-cols-2 gap-6 sm:flex sm:flex-row sm:overflow-x-auto">
+                <div className="grid grid-cols-4 sm:grid-cols-4 md:grid-cols-8 gap-2 sm:gap-6 justify-items-center">
                   {currencies.map((currency) => (
                     <CurrencyCard
                       key={currency.code}
                       code={currency.code}
                       strength={currency.strength}
                       trend={currency.trend}
+                      marketStatus={marketStatus}
                     />
                   ))}
                 </div>
 
-                {/* Histogram Legend */}
-                <div className="flex flex-col sm:flex-row sm:justify-center sm:items-center w-full text-xs font-medium gap-2 sm:gap-4 mt-6 px-4">
+                {/* Legend */}
+                <div className="flex flex-wrap justify-center text-[10px] sm:text-xs font-medium gap-2 sm:gap-4 mt-4">
                   <div className="flex items-center gap-1">
-                    <div className="h-3 w-3 bg-red-500 rounded-sm"></div>
-                    <span className="text-gray-700">Weak</span>
+                    <div className="h-2 w-2 bg-red-500 rounded-sm"></div> Weak
                   </div>
                   <div className="flex items-center gap-1">
-                    <div className="h-3 w-3 bg-yellow-400 rounded-sm"></div>
-                    <span className="text-gray-700">Neutral</span>
+                    <div className="h-2 w-2 bg-yellow-400 rounded-sm"></div> Neutral
                   </div>
                   <div className="flex items-center gap-1">
-                    <div className="h-3 w-3 bg-green-500 rounded-sm"></div>
-                    <span className="text-gray-700">Strong</span>
+                    <div className="h-2 w-2 bg-green-500 rounded-sm"></div> Strong
                   </div>
                 </div>
               </>
