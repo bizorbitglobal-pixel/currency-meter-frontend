@@ -73,7 +73,7 @@ export default function CurrencyList() {
       <div className="relative z-10 flex flex-col items-center w-full">
         <div className="h-3 w-10 bg-gray-300 rounded mb-2"></div>
         <div className="flex flex-col-reverse gap-[3px] mb-2">
-          {Array.from({ length: 8 }).map((_, i) => (
+          {Array.from({ length: 10 }).map((_, i) => (
             <div key={i} className="h-[10px] w-[22px] bg-gray-300 rounded-md" />
           ))}
         </div>

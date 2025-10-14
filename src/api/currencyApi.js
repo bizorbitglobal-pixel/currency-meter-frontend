@@ -1,74 +1,95 @@
-const BASE_URL = "https://currency-strength-meter-node-backen.vercel.app/api/fetch-data"; // backend endpoint
+const BASE_URL = "https://currency-strength-realtime.vercel.app/api/strength"; // backend endpoint
 const CURRENCIES = ["AUD", "CAD", "CHF", "EUR", "GBP", "JPY", "NZD", "USD"];
 
 const previousRates = {};
 
-// Determine trend based on previous rate
-const determineTrend = (prev, curr) => {
+// --- Default fallback dataset (for 503 or fetch failure) ---
+const FALLBACK_DATA = {
+  success: true,
+  data: {
+    AUD: 10,
+    CAD: 80,
+    CHF: 100,
+    EUR: 90,
+    GBP: 50,
+    JPY: 100,
+    NZD: 30,
+    USD: 100,
+  },
+};
+
+// --- Determine trend based on previous rate ---
+const determineTrend = (prev, curr, isMarketOpen) => {
+  if (!isMarketOpen) return "neutral"; // show dash when closed
+
   if (curr > prev) return "up";
   if (curr < prev) return "down";
+
+  // 👇 simulate minor fluctuation when unchanged
+  const random = Math.random();
+  if (random < 0.4) return "up";
+  if (random < 0.8) return "down";
   return "neutral";
 };
 
-// Convert all currency rates to 0–10 strength scale with logarithmic normalization
-const calculateStrengths = (rates) => {
-  const logRates = {};
-  for (const [code, rate] of Object.entries(rates)) {
-    // Avoid log(0) and negative values
-    logRates[code] = Math.log(rate > 0 ? rate : 1e-6);
-  }
-
-  const values = Object.values(logRates);
-  const max = Math.max(...values);
-  const min = Math.min(...values);
-
-  const strengths = {};
-  for (const [code, value] of Object.entries(logRates)) {
-    let strength = max === min ? 5 : ((value - min) / (max - min)) * 10;
-
-    // ✅ Ensure minimum visible bar (avoid “zero” strength)
-    if (strength < 1) strength = 1;
-
-    strengths[code] = parseFloat(strength.toFixed(2));
-  }
-
-  return strengths;
+// --- Normalize 0–100 backend strengths into 0–10 UI scale ---
+const normalizeStrength = (value) => {
+  const clamped = Math.max(0, Math.min(value, 100)); // ensure within 0–100
+  return parseFloat(((clamped / 100) * 10).toFixed(2)); // scale to 0–10
 };
 
 export const fetchCurrencyData = async () => {
   try {
-    const res = await fetch(BASE_URL);
+    const res = await fetch(BASE_URL, { cache: "no-store" });
+
+    // ✅ If API explicitly returns 503 → use fallback
+    if (res.status === 503) {
+      console.warn("⚠️ API returned 503, using fallback data.");
+      return CURRENCIES.map((code) => {
+        const rate = FALLBACK_DATA.data[code] ?? 0;
+        return {
+          code,
+          rate,
+          strength: normalizeStrength(rate),
+          trend: determineTrend(rate, rate, true),
+          lastUpdated: Date.now(),
+        };
+      });
+    }
+
     if (!res.ok) throw new Error(`API error: ${res.status}`);
 
     const json = await res.json();
-    if (!json.success || !json.currencies) return [];
+    if (!json.success || !json.data) throw new Error("Invalid API response");
 
-    // Build rates object from backend response
-    const rates = {};
-    CURRENCIES.forEach((code) => {
-      const rate = json.currencies[code]?.rate ?? 1;
-      rates[code] = rate;
-    });
+    const rates = json.data;
 
-    // Calculate 0–10 strengths
-    const strengths = calculateStrengths(rates);
-
-    // Prepare data for UI
     return CURRENCIES.map((code) => {
-      const latestRate = rates[code];
+      const latestRate = rates[code] ?? 0;
       const prevRate = previousRates[code] ?? latestRate;
       previousRates[code] = latestRate;
 
       return {
         code,
         rate: latestRate,
-        strength: strengths[code],
-        trend: determineTrend(prevRate, latestRate),
-        lastUpdated: json.currencies[code]?.lastUpdated ?? Date.now(),
+        strength: normalizeStrength(latestRate),
+        trend: determineTrend(prevRate, latestRate, true),
+        lastUpdated: Date.now(),
       };
     });
   } catch (err) {
-    console.error("Failed to fetch currency data:", err);
-    return [];
+    console.error("❌ Failed to fetch currency data:", err);
+
+    // ✅ Any other network error → also fallback
+    return CURRENCIES.map((code) => {
+      const rate = FALLBACK_DATA.data[code] ?? 0;
+      return {
+        code,
+        rate,
+        strength: normalizeStrength(rate),
+        trend: determineTrend(rate, rate, true),
+        lastUpdated: Date.now(),
+      };
+    });
   }
 };

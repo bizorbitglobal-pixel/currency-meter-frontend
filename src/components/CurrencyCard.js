@@ -2,7 +2,7 @@
 import { ArrowUp, ArrowDown, Minus } from "lucide-react";
 
 export default function CurrencyCard({ code, strength = 0, trend, marketStatus }) {
-  const normalizedStrength = Math.min(Math.max(strength, 0), 8);
+  const normalizedStrength = Math.min(Math.max(strength, 0), 10);
 
   // --- Color Logic for Each Bar ---
   const getBarColor = (index) => {
@@ -17,14 +17,13 @@ export default function CurrencyCard({ code, strength = 0, trend, marketStatus }
     if (marketStatus !== "Open") {
       // Market Closed → show dash
       return <Minus className="w-3 h-3 sm:w-5 sm:h-5 text-gray-400" />;
+    } else {
+      if (trend === "up")
+        return <ArrowUp className="w-3 h-3 sm:w-5 sm:h-5 text-green-500 animate-bounce" />;
+      if (trend === "down")
+        return <ArrowDown className="w-3 h-3 sm:w-5 sm:h-5 text-red-500 animate-bounce" />;
+      return <Minus className="w-3 h-3 sm:w-5 sm:h-5 text-gray-400" />;
     }
-
-    // Market Open → normal arrow logic
-    if (trend === "up")
-      return <ArrowUp className="w-3 h-3 sm:w-5 sm:h-5 text-green-500 animate-bounce" />;
-    if (trend === "down")
-      return <ArrowDown className="w-3 h-3 sm:w-5 sm:h-5 text-red-500 animate-bounce" />;
-    return <Minus className="w-3 h-3 sm:w-5 sm:h-5 text-gray-400" />;
   };
 
   return (
@@ -49,7 +48,7 @@ export default function CurrencyCard({ code, strength = 0, trend, marketStatus }
 
       {/* Bars */}
       <div className="flex flex-col-reverse gap-[3px] sm:gap-2 mb-2 sm:mb-3">
-        {Array.from({ length: 8 }).map((_, i) => (
+        {Array.from({ length: 10 }).map((_, i) => (
           <div
             key={i}
             className={`h-[10px] w-[22px] sm:h-5 sm:w-16 rounded-md shadow-sm transition-all duration-500 ${getBarColor(
