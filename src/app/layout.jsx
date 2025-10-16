@@ -14,7 +14,7 @@ export const metadata = {
   title:
     "Currency Strength Meter | Live Forex Strength Tool (2025)",
   description:
-    "Live Currency Strength Meter — free real-time forex strength tool showing strongest and weakest currencies. Track USD, EUR, GBP, JPY, and more with live updates.",
+    "Live Currency Strength Meter — real-time forex strength tool showing the strongest and weakest currencies. Track USD, EUR, GBP, JPY, and more live.",
   keywords: keywords,
   openGraph: {
     title: "Currency Strength Meter | Live Forex Strength Tool (2025)",

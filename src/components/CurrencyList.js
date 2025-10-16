@@ -102,7 +102,7 @@ export default function CurrencyList() {
         }
       `}</style>
 
-      <div className="flex justify-center py-10">
+      <div className="flex justify-center py-4">
         <div className="bg-white shadow-lg rounded-2xl w-full max-w-6xl relative overflow-hidden">
           {/* Top loading bar */}
           {loading && (

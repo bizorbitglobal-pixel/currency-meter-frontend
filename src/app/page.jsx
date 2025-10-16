@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import H1Header from "@/components/H1Header";
 import CurrencyList from "@/components/CurrencyList";
 import Section from "@/components/Section";
 import Footer from "@/components/Footer";
@@ -11,8 +12,11 @@ export default function Home() {
       {/* Header */}
       <Header />
 
+      {/* H1 Heading */}
+      <H1Header />
+
       {/* Main Currency Strength Meter */}
-      <div className="max-w-6xl mx-auto w-full px-4 py-12">
+      <div className="max-w-6xl mx-auto w-full px-4 py-6">
         <CurrencyList />
       </div>
 

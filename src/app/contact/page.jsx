@@ -5,7 +5,7 @@ import RedirectButton from "@/components/RedirectButton";
 export const metadata = {
   title: "Contact Us | Currency Strength Meter",
   description:
-    "Get in touch with the Currency Strength Meter team. We’re here to help with questions, feedback, or partnership inquiries related to our live forex strength analysis tools.",
+    "Contact the Currency Strength Meter team for questions, feedback, or partnerships. We’re here to help with forex tools and live market insights.",
 };
 
 export default function ContactPage() {

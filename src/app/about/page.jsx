@@ -5,7 +5,7 @@ import RedirectButton from "@/components/RedirectButton";
 export const metadata = {
   title: "About | Currency Strength Meter",
   description:
-    "Learn more about Currency Strength Meter — the real-time forex analysis tool that helps traders identify the strongest and weakest currencies for smarter trading decisions.",
+    "Learn about Currency Strength Meter — a real-time forex analysis tool helping traders identify the strongest and weakest currencies for better decisions.",
 };
 
 export default function AboutPage() {
