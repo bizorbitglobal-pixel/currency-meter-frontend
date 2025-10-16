@@ -11,7 +11,7 @@ export default function H1Header() {
   }, []);
 
   return (
-    <div className="relative flex flex-col items-center justify-center text-center py-4 sm:py-8 select-none">
+    <div className="relative flex flex-col items-center justify-center text-center py-4 sm:py-8 select-none px-2">
       {/* Main Heading */}
       <h1
         className={`
