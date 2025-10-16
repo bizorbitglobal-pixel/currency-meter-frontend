@@ -6,8 +6,9 @@ import RedirectButton from "@/components/RedirectButton";
 export const metadata = {
   title: "Privacy Policy | Currency Meter",
   description:
-    "Learn about our privacy practices and how we protect your data.",
+    "Read our Privacy Policy to learn how Currency Meter securely collects, stores, and protects your personal data while providing real-time forex analysis tools.",
 };
+
 
 export default function PrivacyPolicy() {
   return (

@@ -3,10 +3,11 @@ import RedirectButton from "@/components/RedirectButton";
 
 // ✅ This works because this file is a Server Component by default
 export const metadata = {
-  title: "Terms | Currency Meter",
+  title: "Terms & Conditions | Currency Meter",
   description:
-    "Understand the terms and conditions governing the use of our website.",
+    "Review our Terms and Conditions to understand user rights, responsibilities, and legal guidelines for using the Currency Meter forex strength platform.",
 };
+
 
 export default function TermsPage() {
   return (

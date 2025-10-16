@@ -5,10 +5,11 @@ import Link from "next/link";
 import RedirectButton from "@/components/RedirectButton";
 
 export const metadata = {
-  title: "Blog | Currency Strengths Meters",
+  title: "Blog | Currency Strength Meters",
   description:
-    "Forex trading education, strategies, and tips using currency strength meters and indicators.",
+    "Explore expert forex trading articles, education, and tips about using currency strength meters, indicators, and strategies to boost your trading performance.",
 };
+
 
 export default function BlogPage() {
   const blogDir = path.join(process.cwd(), "content/blog");
