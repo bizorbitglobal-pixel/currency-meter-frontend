@@ -12,12 +12,12 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 export const metadata = {
   title:
-    "Currency Strength Meter | Live Forex Currency Strength & Weakness Analysis | Currency Strength Indicator",
+    "Currency Strength Meter | Live Forex Strength Tool (2025)",
   description:
-    "Currency Strength Meter is a live forex tool that tracks real-time strength and weakness of global currencies. Use it to identify the strongest and weakest currencies instantly.",
+    "Live Currency Strength Meter — free real-time forex strength tool showing strongest and weakest currencies. Track USD, EUR, GBP, JPY, and more with live updates.",
   keywords: keywords,
   openGraph: {
-    title: "Currency Strength Meter | Live Forex Strength Tool",
+    title: "Currency Strength Meter | Live Forex Strength Tool (2025)",
     description:
       "Analyze live forex trends and currency strengths to find the strongest and weakest currencies instantly.",
     url: "https://www.currencystrengthsmeters.com/",
@@ -32,7 +32,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Currency Strength Meter | Live Forex Strength Analysis",
+    title: "Currency Strength Meter | Live Forex Strength Tool (2025)",
     description:
       "Track the strongest and weakest forex currencies in real time with our live currency strength tool.",
     images: ["https://www.currencystrengthsmeters.com/og-image.png"],
