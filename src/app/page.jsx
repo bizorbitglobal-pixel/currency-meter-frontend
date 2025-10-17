@@ -28,28 +28,34 @@ export default function Home() {
         title="What is a Currency Strength Meter?"
         content="A currency strength meter is a forex trading tool that measures the relative strength of different currencies against each other. Traders use it to quickly identify which currencies are gaining strength and which are weakening, helping them spot trading opportunities more efficiently."
         img="/images/what.webp"
+        class="rounded-xl shadow-lg"
+        srcset="/images/what-300w.webp 300w, /images/what-600w.webp 600w, /images/what-1200w.webp 1200w"
+        sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1200px"
       />
 
       <AddSlot slot="1234567891" />
-      
 
       <Section
         title="How the Currency Strength Meter Works?"
         content="The meter calculates strength by analyzing exchange rate data from multiple forex pairs. It assigns a strength value to each currency and visualizes them, so you instantly see the strongest and weakest currencies in the market."
         img="/images/image1.webp"
+        class="rounded-xl shadow-lg"
+        srcset="/images/what-300w.webp 300w, /images/what-600w.webp 600w, /images/what-1200w.webp 1200w"
+        sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1200px"
       />
 
       <AddSlot slot="1234567892" />
-      
 
       <Section
         title="How Often is it Updated?"
         content="Our strength meter updates in real-time using live forex market data. This means you always see the most accurate and up-to-date market conditions before making a trade."
         img="/images/how.webp"
+        class="rounded-xl shadow-lg"
+        srcset="/images/what-300w.webp 300w, /images/what-600w.webp 600w, /images/what-1200w.webp 1200w"
+        sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1200px"
       />
 
       <AddSlot slot="1234567893" />
-      
 
       <Section
         title="Short-term Strength Indicator"
@@ -58,7 +64,6 @@ export default function Home() {
       />
 
       <AddSlot slot="1234567894" />
-      
 
       <Section
         title="Using the Strength Meter in Trading Strategies"
