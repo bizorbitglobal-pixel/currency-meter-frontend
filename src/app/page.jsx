@@ -5,6 +5,9 @@ import Section from "@/components/Section";
 import Footer from "@/components/Footer";
 import Faqs from "@/components/Faqs";
 import AddSlot from "@/components/AddSlot";
+import Tags from "@/components/Tags";
+import tags from "./tags.json";
+
 
 export default function Home() {
   return (
@@ -65,6 +68,10 @@ export default function Home() {
         content="Traders often combine the strength meter with technical indicators like moving averages, candlestick patterns, or support and resistance zones. By aligning strength analysis with price action, you can trade with higher accuracy and confidence."
         img="/images/work.webp"
       />
+
+      {/* <Tags tags={tags}/> */}
+
+      <AddSlot slot="1234567895" />
 
       {/* Footer */}
       <Faqs />
