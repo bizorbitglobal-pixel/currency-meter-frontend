@@ -11,14 +11,14 @@ export default function H1Header() {
   }, []);
 
   return (
-    <div className="relative flex flex-col items-center justify-center text-center py-4 sm:py-8 select-none px-2">
+    <div className="relative flex flex-col items-center justify-center text-center py-4 sm:py-8 select-none px-4">
       {/* Main Heading */}
       <h1
         className={`
           text-2xl sm:text-4xl font-extrabold tracking-wide transition-all duration-300
           ${
             hovered
-              ? "text-sky-600 drop-shadow-[0_0_6px_#38bdf8]"
+              ? "text-emerald-600 drop-shadow-[0_0_6px_#38bdf8]"
               : "text-emerald-600"
           }
         `}
