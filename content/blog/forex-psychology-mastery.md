@@ -1,7 +1,7 @@
 ---
 title: "Forex Psychology Mastery"
 description: "Introduction The hardest chart to read is the one inside your head..."
-date: "2025-10-19T20:40:54.188Z"
+date: "2025-10-19T21:31:38.088Z"
 excerpt: "Introduction The hardest chart to read is the one inside your head. Trading psychology isn’t theory — it’s the difference between *potential* and *profitability*. You’ll find mindset training resources at [www.currencystrengthsmeters.com](https://www.currencystrengthsmeters.com). Why Mindset Matters Markets don’t punish bad ideas; they punish lack of control. Fear closes good trades early. Greed..."
 tags: ["trading psychology", "mindset", "discipline"]
 keywords: ["forex trading psychology", "emotional discipline trading", "trader mindset habits", "fear greed management", "forex confidence building"]

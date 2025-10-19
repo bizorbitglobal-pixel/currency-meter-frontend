@@ -1,7 +1,7 @@
 ---
 title: "Support and Resistance Basics in Forex"
 description: "\" Introduction Support and resistance are the building blocks of technical analysis..."
-date: "2025-10-19T20:40:54.123Z"
+date: "2025-10-19T21:31:38.032Z"
 excerpt: "\" Introduction Support and resistance are the building blocks of technical analysis. They define the areas where prices tend to reverse or pause. Learn about these levels interactively at [www.currencystrengthsmeters.com](https://www.currencystrengthsmeters.com). How to Identify Them - Horizontal levels from prior highs and lows. - Moving averages acting as dynamic zones. -..."
 tags: ["forex", "support", "resistance", "technical analysis"]
 keywords: ["support and resistance", "forex technical levels", "trading zones", "price barriers", "forex education"]

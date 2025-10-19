@@ -1,7 +1,7 @@
 ---
 title: "Forex Pivot Points Strategy"
 description: "Introduction Pivot points act like invisible magnets for price..."
-date: "2025-10-19T20:40:54.192Z"
+date: "2025-10-19T21:31:38.092Z"
 excerpt: "Introduction Pivot points act like invisible magnets for price. They’re day traders’ favorite reference for quick reaction zones. Charts and calculators at [www.currencystrengthsmeters.com](https://www.currencystrengthsmeters.com). How to Use Them - Above pivot: bias long. - Below pivot: bias short. - Watch R1/S1 for reversals; R2/S2 for extensions. - Combine with strength readings..."
 tags: ["pivot points", "day trading", "levels"]
 keywords: ["pivot points forex", "daily pivot strategy", "floor trader levels", "R1 S1 breakout", "pivot confluence forex"]

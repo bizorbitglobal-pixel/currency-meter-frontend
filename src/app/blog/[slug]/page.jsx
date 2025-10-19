@@ -76,6 +76,7 @@ export async function generateMetadata({ params }) {
   if (!fs.existsSync(filePath)) return notFound();
 
   const fileContent = fs.readFileSync(filePath, "utf8");
+  
   const { data } = matter(fileContent, {
     engines: {
       yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }),
@@ -136,6 +137,14 @@ export default async function BlogDetail({ params }) {
     toc,
   } = post;
 
+   const safeOgImage =
+    ogImage && ogImage.trim() !== ""
+      ? ogImage.startsWith("http")
+        ? ogImage
+        : `https://www.currencystrengthsmeters.com${ogImage}`
+      : "https://www.currencystrengthsmeters.com/og-cache/currency-correlation-chart-explained.jpg";
+
+
   return (
     <article className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-12">
       {/* --- Main Content --- */}
@@ -164,7 +173,7 @@ export default async function BlogDetail({ params }) {
           {ogImage && (
             <div className="relative w-full h-64 md:h-96 mb-10 overflow-hidden rounded-2xl shadow-md">
               <Image
-                src={ogImage.startsWith("/") ? ogImage : ogImage}
+                src={safeOgImage}
                 alt={title}
                 fill
                 className="object-cover"

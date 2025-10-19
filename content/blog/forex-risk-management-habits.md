@@ -1,7 +1,7 @@
 ---
 title: "Forex Risk Management Habits"
 description: "Introduction There’s a saying in trading circles: *“Amateurs look for entry signals, professionals look for risk..."
-date: "2025-10-19T20:40:54.171Z"
+date: "2025-10-19T21:31:38.073Z"
 excerpt: "Introduction There’s a saying in trading circles: *“Amateurs look for entry signals, professionals look for risk.”* If you take that seriously, everything about your performance changes. The currency strength meter helps you find opportunities, but risk management habits keep you in the game long enough to profit from them. For..."
 tags: ["risk management", "trading discipline", "forex basics"]
 keywords: ["forex risk management", "position sizing habits", "stop loss strategy", "forex trading discipline", "risk reward mindset"]

@@ -1,7 +1,7 @@
 ---
 title: "Forex Journal Template"
 description: "Introduction You can’t improve what you don’t measure..."
-date: "2025-10-19T20:40:54.173Z"
+date: "2025-10-19T21:31:38.075Z"
 excerpt: "Introduction You can’t improve what you don’t measure. A forex trading journal is the most underrated tool in a trader’s arsenal — even more useful than any indicator. Find free journal sheets at [www.currencystrengthsmeters.com](https://www.currencystrengthsmeters.com). Why Journaling Works It externalizes your thinking. You start to *see* your patterns — revenge trades,..."
 tags: ["trading journal", "performance tracking", "forex habits"]
 keywords: ["forex journal template", "trade tracking", "forex performance analysis", "trading review process", "trader self improvement"]

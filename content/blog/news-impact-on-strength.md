@@ -1,7 +1,7 @@
 ---
 title: "News Impact on Strength"
 description: "Introduction News moves currency baskets, not just single pairs..."
-date: "2025-10-19T20:40:54.159Z"
+date: "2025-10-19T21:31:38.066Z"
 excerpt: "Introduction News moves currency baskets, not just single pairs. That’s why a strength meter reacts instantly to releases like CPI, NFP, or rate decisions: the story changes across the board, and the meter summarizes it in one glance. Track reaction and follow-through at [www.currencystrengthsmeters.com](https://www.currencystrengthsmeters.com). Pre-news checklist - Know the time..."
 tags: ["fundamentals", "economic calendar", "volatility"]
 keywords: ["news trading forex", "economic releases impact", "CPI NFP forex", "strength meter fundamentals", "post news strategy"]

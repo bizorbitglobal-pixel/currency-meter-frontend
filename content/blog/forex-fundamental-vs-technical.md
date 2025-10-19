@@ -1,7 +1,7 @@
 ---
 title: "Forex: Fundamental vs Technical"
 description: "Introduction Ask ten traders if they’re “technical” or “fundamental,” and you’ll get ten passionate answers..."
-date: "2025-10-19T20:40:54.182Z"
+date: "2025-10-19T21:31:38.083Z"
 excerpt: "Introduction Ask ten traders if they’re “technical” or “fundamental,” and you’ll get ten passionate answers. Truth is, you don’t need to choose — you just need to know *when* each matters most. You’ll find blended analysis frameworks on [www.currencystrengthsmeters.com](https://www.currencystrengthsmeters.com). Fundamentals These move markets. Interest rates, employment data, inflation — the..."
 tags: ["fundamentals", "technical analysis", "education"]
 keywords: ["fundamental analysis forex", "technical vs fundamental trading", "forex analysis methods", "currency strength fundamentals", "macro trading forex"]
