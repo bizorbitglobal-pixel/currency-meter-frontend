@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import yaml from "js-yaml"; // ✅ Added: fix for js-yaml v4
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { remark } from "remark";
@@ -24,7 +25,13 @@ async function getPost(slug) {
   if (!fs.existsSync(filePath)) return null;
 
   const fileContent = fs.readFileSync(filePath, "utf8");
-  const { data, content } = matter(fileContent);
+
+  // ✅ FIX: Tell gray-matter to use yaml.load (safe by default)
+  const { data, content } = matter(fileContent, {
+    engines: {
+      yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }),
+    },
+  });
 
   // Extract headings for Table of Contents
   const toc = [];
@@ -69,14 +76,20 @@ export async function generateMetadata({ params }) {
   if (!fs.existsSync(filePath)) return notFound();
 
   const fileContent = fs.readFileSync(filePath, "utf8");
-  const { data } = matter(fileContent);
+  const { data } = matter(fileContent, {
+    engines: {
+      yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }),
+    },
+  });
 
   return {
     title: data.title,
     description: data.description,
+    keywords: data.keywords,
     openGraph: {
       title: data.title,
       description: data.description,
+      keywords: data.keywords,
       url: `https://www.currencystrengthsmeters.com/blog/${slug}`,
       siteName: "Currency Strengths Meters",
       images: [
@@ -95,6 +108,7 @@ export async function generateMetadata({ params }) {
       card: "summary_large_image",
       title: data.title,
       description: data.description,
+      keywords: data.keywords,
       images: [
         data.ogImage || "https://www.currencystrengthsmeters.com/og-image.png",
       ],
@@ -114,7 +128,7 @@ export default async function BlogDetail({ params }) {
     title,
     date,
     tags = [],
-    author = "CurrencyStrengthsMeters Team",
+    author = "Currency Strength Meter Team",
     authorImage = "/author-avatar.png",
     ogImage,
     contentHtml,
