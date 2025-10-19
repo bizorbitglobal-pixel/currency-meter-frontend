@@ -1,7 +1,7 @@
 ---
 title: "How to Use a Forex Lot Size Calculator"
 description: "\" Introduction Lot size determines how much you trade and how much you risk..."
-date: "2025-10-19T20:28:27.777Z"
+date: "2025-10-19T20:40:54.133Z"
 excerpt: "\" Introduction Lot size determines how much you trade and how much you risk. A forex lot size calculator ensures every trade aligns with your strategy. Use one free at [www.currencystrengthsmeters.com](https://www.currencystrengthsmeters.com). What Is Lot Size? - Standard Lot: 100,000 units - Mini Lot: 10,000 units - Micro Lot: 1,000 units..."
 tags: ["forex", "lot size", "money management", "position sizing"]
 keywords: ["forex lot size calculator", "position sizing", "forex risk control", "trade volume management", "forex tools"]

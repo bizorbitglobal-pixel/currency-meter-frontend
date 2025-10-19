@@ -1,7 +1,7 @@
 ---
 title: "Backtesting Strength Strategy"
 description: "Introduction Before you scale risk, prove the edge..."
-date: "2025-10-19T20:28:27.805Z"
+date: "2025-10-19T20:40:54.161Z"
 excerpt: "Introduction Before you scale risk, prove the edge. Backtesting a currency strength approach shows whether your logic actually worked historically — and how volatile the equity curve might be. Download simple templates at [www.currencystrengthsmeters.com](https://www.currencystrengthsmeters.com). Data and rules - Choose at least 6–12 months of historical data. - Define precise rules..."
 tags: ["backtesting", "performance", "systems"]
 keywords: ["forex backtesting", "edge validation", "win rate and drawdown", "journal templates", "optimize entries exits"]

@@ -1,7 +1,7 @@
 ---
 title: "Forex Trend Identification"
 description: "Introduction Trend is your trading compass..."
-date: "2025-10-19T20:28:27.774Z"
+date: "2025-10-19T20:40:54.127Z"
 excerpt: "Introduction Trend is your trading compass. The currency strength meter reveals momentum; combining it with trend structure confirms direction. Access trend dashboards at [www.currencystrengthsmeters.com](https://www.currencystrengthsmeters.com). Trend Confirmation - Higher highs & higher lows → Uptrend - Lower highs & lower lows → Downtrend - Sideways → Avoid until clear breakout Combining..."
 tags: ["trend trading", "technical analysis", "forex basics"]
 keywords: ["identify forex trend", "trend continuation strategy", "trend filters forex", "EMA trend analysis", "currency strength trend"]

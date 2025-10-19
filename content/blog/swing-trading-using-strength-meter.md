@@ -1,7 +1,7 @@
 ---
 title: "Swing Trading Using Strength Meter"
 description: "Introduction Swing trading aims to capture multi-day moves with fewer decisions and more patience..."
-date: "2025-10-19T20:28:27.804Z"
+date: "2025-10-19T20:40:54.159Z"
 excerpt: "Introduction Swing trading aims to capture multi-day moves with fewer decisions and more patience. A currency strength meter helps you select pairs that have a tailwind, so you’re not fighting chop. Daily strength overviews are available on [www.currencystrengthsmeters.com](https://www.currencystrengthsmeters.com). Framework 1. Bias (D1) — build your watchlist from top vs. bottom..."
 tags: ["swing trading", "trend following", "position trading"]
 keywords: ["swing trading forex", "trend following strength", "daily bias H4 entries", "multi timeframe alignment", "hold winners forex"]

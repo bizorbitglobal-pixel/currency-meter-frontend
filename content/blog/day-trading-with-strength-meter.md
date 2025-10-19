@@ -1,7 +1,7 @@
 ---
 title: "Day Trading with Strength Meter"
 description: "Introduction Day trading rewards those who align with intraday momentum and manage risk ruthlessly..."
-date: "2025-10-19T20:28:27.803Z"
+date: "2025-10-19T20:40:54.158Z"
 excerpt: "Introduction Day trading rewards those who align with intraday momentum and manage risk ruthlessly. A currency strength meter gives the first part; your execution gives the second. See intraday dashboards at [www.currencystrengthsmeters.com](https://www.currencystrengthsmeters.com). Intraday plan 1. Pre-London scan: shortlist top-vs-bottom currencies. 2. Mark levels: yesterday’s high/low, session open, VWAP (optional). 3...."
 tags: ["day trading", "scalping", "intraday"]
 keywords: ["day trading forex", "scalping with strength", "intraday momentum", "session overlap trading", "risk control intraday"]

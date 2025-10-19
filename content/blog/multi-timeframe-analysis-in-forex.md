@@ -1,7 +1,7 @@
 ---
 title: "Multi-Timeframe Analysis in Forex"
 description: "Introduction Multi-timeframe analysis bridges the gap between big-picture bias and precise execution..."
-date: "2025-10-19T20:28:27.807Z"
+date: "2025-10-19T20:40:54.164Z"
 excerpt: "Introduction Multi-timeframe analysis bridges the gap between big-picture bias and precise execution. A strength meter gives the macro context; the chart gives your micro entry. See multi-timeframe templates on [www.currencystrengthsmeters.com](https://www.currencystrengthsmeters.com). Three-Step Approach 1. Top timeframe (Daily or 4H) — identify direction using the strength meter and structure. 2. Middle timeframe..."
 tags: ["multi timeframe", "technical analysis", "forex strategy"]
 keywords: ["multi timeframe forex", "top down analysis", "timeframe alignment strategy", "forex entry confirmation", "currency strength multi timeframe"]

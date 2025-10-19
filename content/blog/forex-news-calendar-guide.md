@@ -1,7 +1,7 @@
 ---
 title: "Forex News Calendar Guide"
 description: "Introduction A forex news calendar isn’t just about headlines — it’s about preparation..."
-date: "2025-10-19T20:28:27.834Z"
+date: "2025-10-19T20:40:54.188Z"
 excerpt: "Introduction A forex news calendar isn’t just about headlines — it’s about preparation. Knowing what’s coming helps you trade confidently *around* volatility instead of being surprised by it. See updated calendars at [www.currencystrengthsmeters.com](https://www.currencystrengthsmeters.com). Key Releases - Interest Rate Decisions — move currencies instantly. - CPI (Inflation) — defines central-bank tone...."
 tags: ["economic calendar", "fundamentals", "news trading"]
 keywords: ["forex economic calendar", "news release trading", "fundamental events forex", "CPI NFP announcements", "economic data timing"]

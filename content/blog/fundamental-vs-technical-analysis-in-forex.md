@@ -1,7 +1,7 @@
 ---
 title: "Fundamental vs Technical Analysis in Forex"
 description: "\" Introduction Every trader must decide whether to base trades on fundamentals or technicals — or a blend of both..."
-date: "2025-10-19T20:28:27.750Z"
+date: "2025-10-19T20:40:54.108Z"
 excerpt: "\" Introduction Every trader must decide whether to base trades on fundamentals or technicals — or a blend of both. Each style has strengths and weaknesses. Learn the balanced approach at [www.currencystrengthsmeters.com](https://www.currencystrengthsmeters.com). Fundamental Analysis Focuses on economic data such as: - GDP, inflation, and employment reports - Interest rate decisions..."
 tags: ["forex", "fundamental analysis", "technical analysis", "strategy"]
 keywords: ["fundamental vs technical", "forex analysis types", "economic indicators", "technical charts", "forex trading education"]

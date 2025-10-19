@@ -1,7 +1,7 @@
 ---
 title: "Currency Correlation and Strength"
 description: "Introduction Correlation measures how pairs move relative to each other..."
-date: "2025-10-19T20:28:27.805Z"
+date: "2025-10-19T20:40:54.162Z"
 excerpt: "Introduction Correlation measures how pairs move relative to each other. If you’re long EUR/USD and long GBP/USD, you may be double long the euro–dollar theme without realizing it. Combine correlation awareness with strength to avoid crowded risk. Check correlation tables alongside live strength at [www.currencystrengthsmeters.com](https://www.currencystrengthsmeters.com). Practical use - High positive..."
 tags: ["correlation", "risk management", "portfolio"]
 keywords: ["currency correlation", "avoid double exposure", "pair selection risk", "diversify forex trades", "strength plus correlation"]
