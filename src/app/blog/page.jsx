@@ -42,7 +42,7 @@ export default async function BlogPage({ searchParams }) {
 
   const sortedPosts = posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  const postsPerPage = 6;
+  const postsPerPage = 9;
   const totalPages = Math.ceil(sortedPosts.length / postsPerPage);
   const start = (currentPage - 1) * postsPerPage;
   const end = start + postsPerPage;
