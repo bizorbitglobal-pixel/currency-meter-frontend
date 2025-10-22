@@ -1,9 +1,10 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import yaml from "js-yaml"; // ✅ Added: fix for js-yaml v4
+import yaml from "js-yaml";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link"; // ✅ Added Link
 import { remark } from "remark";
 import remarkGfm from "remark-gfm";
 import remarkRehype from "remark-rehype";
@@ -16,6 +17,8 @@ import rehypeHighlight from "rehype-highlight";
 import BlogTabs from "@/components/BlogTabs";
 import TableOfContents from "@/components/TableOfContents";
 import RedirectButton from "@/components/RedirectButton";
+import RelatedPosts from "@/components/RelatedPosts";
+import CommentsSection from "@/components/CommentSection";
 
 const blogDir = path.join(process.cwd(), "content/blog");
 
@@ -26,14 +29,12 @@ async function getPost(slug) {
 
   const fileContent = fs.readFileSync(filePath, "utf8");
 
-  // ✅ FIX: Tell gray-matter to use yaml.load (safe by default)
   const { data, content } = matter(fileContent, {
     engines: {
       yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }),
     },
   });
 
-  // Extract headings for Table of Contents
   const toc = [];
   const headingRegex = /^##\s+(.*)|^###\s+(.*)/gm;
   let match;
@@ -76,7 +77,7 @@ export async function generateMetadata({ params }) {
   if (!fs.existsSync(filePath)) return notFound();
 
   const fileContent = fs.readFileSync(filePath, "utf8");
-  
+
   const { data } = matter(fileContent, {
     engines: {
       yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }),
@@ -137,13 +138,38 @@ export default async function BlogDetail({ params }) {
     toc,
   } = post;
 
-   const safeOgImage =
+  const safeOgImage =
     ogImage && ogImage.trim() !== ""
       ? ogImage.startsWith("http")
         ? ogImage
         : `https://www.currencystrengthsmeters.com${ogImage}`
       : "https://www.currencystrengthsmeters.com/og-cache/currency-correlation-chart-explained.jpg";
 
+  // ✅ Related Posts
+  const allFiles = fs.readdirSync(blogDir);
+  const relatedPosts = allFiles
+    .filter((file) => file !== `${slug}.md`)
+    .map((file) => {
+      const filePath = path.join(blogDir, file);
+      const fileContent = fs.readFileSync(filePath, "utf8");
+      const { data } = matter(fileContent, {
+        engines: {
+          yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }),
+        },
+      });
+      return {
+        slug: file.replace(/\.md$/, ""),
+        title: data.title,
+        ogImage:
+          data.ogImage ||
+          "https://www.currencystrengthsmeters.com/og-cache/currency-correlation-chart-explained.jpg",
+        tags: data.tags || [],
+      };
+    })
+    .filter((p) => p.tags.some((tag) => tags.includes(tag)));
+
+  // ✅ Show 10 by default
+  const defaultPosts = relatedPosts.slice(0, 10);
 
   return (
     <article className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-12">
@@ -207,7 +233,7 @@ export default async function BlogDetail({ params }) {
           )}
         </header>
 
-        {/* --- Interactive Tabs --- */}
+        {/* --- Tabs --- */}
         <div className="overflow-x-auto no-scrollbar">
           <BlogTabs />
         </div>
@@ -215,7 +241,9 @@ export default async function BlogDetail({ params }) {
           <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-transparent dark:from-gray-900/50 -z-10" />
           <RedirectButton />
         </div>
-
+        <div className="block lg:hidden mt-16">
+          <TableOfContents toc={toc} />
+        </div>
         {/* --- Markdown Content --- */}
         <section
           id="overview"
@@ -243,7 +271,7 @@ export default async function BlogDetail({ params }) {
         </section>
 
         {/* --- Comments Section --- */}
-        <section id="comments" className="mt-16">
+        {/* <section id="comments" className="mt-16">
           <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-100">
             💬 Comments
           </h2>
@@ -251,7 +279,12 @@ export default async function BlogDetail({ params }) {
             Comments feature coming soon! Traders will be able to share insights
             and questions here.
           </p>
-        </section>
+        </section> */}
+
+        {/* --- Mobile TOC + Related Posts --- */}
+        <div className="block lg:hidden mt-16">
+          <RelatedPosts relatedPosts={relatedPosts} />
+        </div>
 
         {/* --- Footer --- */}
         <hr className="my-12 border-gray-200 dark:border-gray-700" />
@@ -259,17 +292,20 @@ export default async function BlogDetail({ params }) {
           <p className="text-gray-600 dark:text-gray-300 text-sm">
             © {new Date().getFullYear()}{" "}
             <strong>
-              <a href="https://www.currencystrengthsmeters.com/">
+              <Link href="https://www.currencystrengthsmeters.com/">
                 CurrencyStrengthsMeters
-              </a>
+              </Link>
             </strong>{" "}
             – Empowering Forex Traders Worldwide 🌍
           </p>
         </footer>
       </div>
 
-      {/* --- TOC Sidebar (Responsive) --- */}
-      <TableOfContents toc={toc} />
+      {/* --- Sidebar (Desktop Only) --- */}
+      <div className="hidden lg:block space-y-12">
+       <TableOfContents toc={toc} />
+       <RelatedPosts relatedPosts={relatedPosts} />
+      </div>
     </article>
   );
 }

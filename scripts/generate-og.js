@@ -4,21 +4,39 @@
  * Automatically generates OG images for all blogs
  * using your /api/og?title=<title> endpoint.
  * If generation fails, uses a random valid OG from cache as fallback.
+ * Skips valid images unless --force flag is used.
+ *
+ * Usage:
+ *    node generate-og.js          → only generate missing/broken OGs
+ *    node generate-og.js --force  → regenerate all OGs from scratch
  */
 
 const fs = require("fs");
 const path = require("path");
 
+// ✅ Add fetch for Node.js <18
 const fetch = (...args) =>
   import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
-const { blogs } = require("./generate-md");
+// ✅ Import blog list
+const blogs = require("./blogsData.js");
 
+// 🗂 OG cache directory
 const cacheDir = path.join(process.cwd(), "public/og-cache");
 if (!fs.existsSync(cacheDir)) fs.mkdirSync(cacheDir, { recursive: true });
 
+// 🌍 App base URL
 const BASE_URL = process.env.VERCEL_URL || "http://localhost:3000";
 
+// ⚙️ Detect --force flag
+const forceMode = process.argv.includes("--force");
+if (forceMode) {
+  console.log("⚠️  Force mode ON — all OG images will be regenerated.\n");
+} else {
+  console.log("ℹ️  Normal mode — existing valid OGs will be skipped.\n");
+}
+
+// 🧠 Utility: safe slug
 function sanitizeFileName(name) {
   return name
     .toLowerCase()
@@ -29,6 +47,7 @@ function sanitizeFileName(name) {
 
 const delay = (ms) => new Promise((r) => setTimeout(r, ms));
 
+// 🧩 Check JPEG file validity
 function isImageValid(filePath) {
   try {
     const stats = fs.statSync(filePath);
@@ -45,6 +64,7 @@ function isImageValid(filePath) {
   }
 }
 
+// 🎯 Pick a random valid image for fallback
 function getRandomValidImage() {
   try {
     const files = fs.readdirSync(cacheDir).filter((f) => f.endsWith(".jpg"));
@@ -57,6 +77,7 @@ function getRandomValidImage() {
   }
 }
 
+// 🔁 Fetch OG with retry + backoff
 async function fetchWithRetry(url, title, retries = 3) {
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
@@ -73,25 +94,31 @@ async function fetchWithRetry(url, title, retries = 3) {
   throw new Error(`❌ All retries failed for "${title}"`);
 }
 
+// 🧠 Generate OG for a single blog
 async function generateForBlog(slug, data) {
   const safeSlug = sanitizeFileName(data.title);
   const title = data.title;
   const imagePath = path.join(cacheDir, `${safeSlug}.jpg`);
 
-  if (fs.existsSync(imagePath) && isImageValid(imagePath)) {
+  // ✅ Skip valid image (unless --force)
+  if (!forceMode && fs.existsSync(imagePath) && isImageValid(imagePath)) {
     console.log(`⏩ Skipped (valid): ${safeSlug}.jpg`);
     return;
   }
 
-  if (fs.existsSync(imagePath) && !isImageValid(imagePath)) {
-    console.warn(`⚠️ Broken image detected, regenerating: ${safeSlug}.jpg`);
+  // 🧹 Remove invalid image or forced regeneration
+  if (fs.existsSync(imagePath)) {
+    console.warn(
+      forceMode
+        ? `♻️ Overwriting existing: ${safeSlug}.jpg`
+        : `⚠️ Broken or invalid image detected, regenerating: ${safeSlug}.jpg`
+    );
     fs.unlinkSync(imagePath);
   }
 
   try {
     const url = `${BASE_URL}/api/og?title=${encodeURIComponent(title)}`;
     const res = await fetchWithRetry(url, title, 3);
-
     const buffer = Buffer.from(await res.arrayBuffer());
     fs.writeFileSync(imagePath, buffer);
 
@@ -103,7 +130,7 @@ async function generateForBlog(slug, data) {
   } catch (err) {
     console.error(`🚨 Failed to generate ${slug}: ${err.message}`);
 
-    // 🧩 Use random existing image as fallback
+    // 🧩 Use fallback OG image if available
     const fallback = getRandomValidImage();
     if (fallback) {
       fs.copyFileSync(fallback, imagePath);
@@ -116,6 +143,7 @@ async function generateForBlog(slug, data) {
   await delay(500);
 }
 
+// 🚀 Batch processor
 async function generateOGImages() {
   console.log("🚀 Generating OG images for all blogs in batches of 5...");
 
@@ -133,7 +161,9 @@ async function generateOGImages() {
     await delay(2000);
   }
 
-  console.log("\n🎉 All OG images processed and validated!");
+  console.log(
+    `\n🎉 All OG images processed and validated! ${forceMode ? "(Forced regeneration mode)" : ""}`
+  );
 }
 
 generateOGImages();
