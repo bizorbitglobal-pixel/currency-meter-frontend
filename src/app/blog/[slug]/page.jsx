@@ -307,7 +307,6 @@ export default async function BlogDetail({ params }) {
       <div className="hidden lg:block space-y-12">
        <TableOfContents toc={toc} />
        <RelatedPosts relatedPosts={relatedPosts} />
-       <AddSlot160_300 />
       </div>
     </article>
   );

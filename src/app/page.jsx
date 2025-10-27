@@ -23,7 +23,6 @@ export default function Home() {
 
       {/* Ad below meter */}
       <AddSlot />
-      <AddSlot160_300 />
       {/* Informational SEO Sections */}
       <Section
         title="What is a Currency Strength Meter?"
