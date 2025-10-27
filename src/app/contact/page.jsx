@@ -22,7 +22,7 @@ export default function ContactPage() {
           and inquiries. Whether you have a question about our tools, need
           support, or wish to collaborate, feel free to reach out to us.
         </p>
-        <AddSlot />
+       
       </section>
 
       <section>
@@ -35,7 +35,7 @@ export default function ContactPage() {
           problems, or have feature requests, our technical support team is
           ready to assist. We aim to respond to all queries within 24–48 hours.
         </p>
-        <AddSlot />
+       
       </section>
 
       <section>
@@ -47,7 +47,7 @@ export default function ContactPage() {
           promoting your trading platform? Contact our business development team
           for collaboration opportunities.
         </p>
-        <AddSlot />
+       
       </section>
 
       <section>
@@ -76,7 +76,7 @@ export default function ContactPage() {
           📍 <strong>Location:</strong> Online Forex Analytics Platform – Global
           Access
         </p>
-        <AddSlot />
+       
       </section>
 
       <section>
@@ -85,19 +85,19 @@ export default function ContactPage() {
           Follow us for live forex insights, strength updates, and trading tips:
         </p>
 
-        <AddSlot />
+       
       </section>
       <div className="relative isolate">
         <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-transparent dark:from-gray-900/50 -z-10" />
         <RedirectButton />
       </div>
 
-      <AddSlot />
+     
 
       <footer className="mt-20 py-10 border-t text-gray-500 text-sm">
         <div className="max-w-4xl mx-auto text-center">
           <p>© 2025 Currency Strength Meter. All rights reserved.</p>
-          <AddSlot />
+         
         </div>
       </footer>
     </div>

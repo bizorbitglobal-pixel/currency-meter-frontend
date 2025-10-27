@@ -25,7 +25,7 @@ export default function TermsPage() {
           By accessing or using this website, you agree to comply with these
           Terms & Conditions. If you do not agree, please do not use our site.
         </p>
-        <AddSlot />
+        
       </section>
 
       <section>
@@ -35,7 +35,7 @@ export default function TermsPage() {
           attempt to interfere with the site’s functionality or misuse its
           content.
         </p>
-        <AddSlot />
+        
       </section>
 
       <section>
@@ -45,7 +45,7 @@ export default function TermsPage() {
           protected under copyright law. Unauthorized use is strictly
           prohibited.
         </p>
-        <AddSlot />
+        
       </section>
 
       <section>
@@ -54,7 +54,7 @@ export default function TermsPage() {
           We make no warranties regarding accuracy, reliability, or completeness
           of the information provided. Your use of the site is at your own risk.
         </p>
-        <AddSlot />
+        
       </section>
 
       <section>
@@ -68,11 +68,11 @@ export default function TermsPage() {
       </section>
       <RedirectButton />
 
-      <AddSlot />
+      
       <footer className="mt-20 py-10 border-t text-gray-500 text-sm">
         <div className="max-w-4xl mx-auto text-center">
           <p>© 2025 Currency Strength Meter. All rights reserved.</p>
-          <AddSlot />
+          
         </div>
       </footer>
     </div>

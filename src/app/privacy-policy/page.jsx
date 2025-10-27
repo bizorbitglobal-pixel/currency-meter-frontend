@@ -23,7 +23,7 @@ export default function PrivacyPolicy() {
           We respect your privacy and are committed to protecting it through this Privacy Policy.
           This document outlines how we collect, use, and safeguard your information when you use our website.
         </p>
-        <AddSlot />
+       
       </section>
 
       <section>
@@ -32,7 +32,7 @@ export default function PrivacyPolicy() {
           We may collect personal information such as your IP address, device details, and browsing
           activity. We also use Google AdSense, which may use cookies to personalize ads.
         </p>
-        <AddSlot />
+       
       </section>
 
       <section>
@@ -41,7 +41,7 @@ export default function PrivacyPolicy() {
           The data we collect is used to provide better services, improve user experience,
           and serve relevant advertisements. We do not sell or rent your personal data.
         </p>
-        <AddSlot />
+       
       </section>
 
       <section>
@@ -50,7 +50,7 @@ export default function PrivacyPolicy() {
           Our site displays ads provided by Google AdSense. These third parties may use cookies
           to serve relevant ads based on your interests.
         </p>
-        <AddSlot />
+       
       </section>
 
       <section>
@@ -62,11 +62,11 @@ export default function PrivacyPolicy() {
       </section>
       <RedirectButton />
 
-      <AddSlot />
+     
       <footer className="mt-20 py-10 border-t text-gray-500 text-sm">
         <div className="max-w-4xl mx-auto text-center">
           <p>© 2025 Currency Strength Meter. All rights reserved.</p>
-          <AddSlot />
+         
         </div>
       </footer>
     </div>

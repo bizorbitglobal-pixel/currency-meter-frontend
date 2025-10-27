@@ -19,7 +19,6 @@ import TableOfContents from "@/components/TableOfContents";
 import RedirectButton from "@/components/RedirectButton";
 import RelatedPosts from "@/components/RelatedPosts";
 import AddSlot from "@/components/AddSlot";
-import AddSlot160_300 from "@/components/AddSlot160_300";
 
 const blogDir = path.join(process.cwd(), "content/blog");
 
@@ -282,7 +281,6 @@ export default async function BlogDetail({ params }) {
             and questions here.
           </p>
         </section> */}
-        <AddSlot />
         {/* --- Mobile TOC + Related Posts --- */}
         <div className="block lg:hidden mt-16">
           <RelatedPosts relatedPosts={relatedPosts} />
@@ -307,7 +305,6 @@ export default async function BlogDetail({ params }) {
       <div className="hidden lg:block space-y-12">
        <TableOfContents toc={toc} />
        <RelatedPosts relatedPosts={relatedPosts} />
-       <div id="ad-slot-160x300" className="flex justify-center mt-8 mb-6" />
       </div>
     </article>
   );

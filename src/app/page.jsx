@@ -33,7 +33,7 @@ export default function Home() {
         sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1200px"
       />
 
-      <AddSlot />
+      
 
       <Section
         title="How the Currency Strength Meter Works?"
@@ -44,7 +44,7 @@ export default function Home() {
         sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1200px"
       />
 
-      <AddSlot />
+      
 
       <Section
         title="How Often is it Updated?"
@@ -55,7 +55,7 @@ export default function Home() {
         sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1200px"
       />
 
-      <AddSlot />
+      
 
       <Section
         title="Short-term Strength Indicator"
@@ -63,7 +63,7 @@ export default function Home() {
         img="/images/strength.webp"
       />
 
-      <AddSlot />
+      
 
       <Section
         title="Using the Strength Meter in Trading Strategies"
