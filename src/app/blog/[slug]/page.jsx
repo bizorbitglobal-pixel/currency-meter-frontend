@@ -19,6 +19,7 @@ import TableOfContents from "@/components/TableOfContents";
 import RedirectButton from "@/components/RedirectButton";
 import RelatedPosts from "@/components/RelatedPosts";
 import CommentsSection from "@/components/CommentSection";
+import AddSlot from "@/components/AddSlot";
 
 const blogDir = path.join(process.cwd(), "content/blog");
 
@@ -244,6 +245,7 @@ export default async function BlogDetail({ params }) {
         <div className="block lg:hidden mt-16">
           <TableOfContents toc={toc} />
         </div>
+        <AddSlot />
         {/* --- Markdown Content --- */}
         <section
           id="overview"
@@ -280,7 +282,7 @@ export default async function BlogDetail({ params }) {
             and questions here.
           </p>
         </section> */}
-
+        <AddSlot />
         {/* --- Mobile TOC + Related Posts --- */}
         <div className="block lg:hidden mt-16">
           <RelatedPosts relatedPosts={relatedPosts} />

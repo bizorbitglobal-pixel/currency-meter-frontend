@@ -3,6 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
 import RedirectButton from "@/components/RedirectButton";
+import AddSlot from "@/components/AddSlot";
 
 export const metadata = {
   title: "Blog | Currency Strength Meters",
@@ -60,7 +61,7 @@ export default async function BlogPage({ searchParams }) {
         <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-transparent dark:from-gray-900/50 -z-10" />
         <RedirectButton />
       </div>
-
+      <AddSlot />
       {/* 📰 Blog Cards */}
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {currentPosts.map((post) => {

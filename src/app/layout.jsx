@@ -70,6 +70,13 @@ export default function RootLayout({ children }) {
           crossOrigin="anonymous"
         />
 
+          {/* Ad Script (global) */}
+        <Script
+          id="effective-gate-ads"
+          strategy="afterInteractive"
+          src="//pl27824753.effectivegatecpm.com/78/1f/78/781f7849e961e69d819547006cc6409b.js"
+        />
+
         {/* ✅ GTM noscript fallback */}
         <noscript>
           <iframe
