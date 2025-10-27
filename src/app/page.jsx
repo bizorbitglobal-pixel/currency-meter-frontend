@@ -5,7 +5,7 @@ import Section from "@/components/Section";
 import Footer from "@/components/Footer";
 import Faqs from "@/components/Faqs";
 import AddSlot from "@/components/AddSlot";
-import AdBanner from "@/components/AdBanner";
+import AdBanner from "@/components/AddBanner";
 
 export default function Home() {
   return (

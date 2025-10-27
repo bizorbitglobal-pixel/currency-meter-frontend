@@ -19,6 +19,7 @@ import TableOfContents from "@/components/TableOfContents";
 import RedirectButton from "@/components/RedirectButton";
 import RelatedPosts from "@/components/RelatedPosts";
 import AddSlot from "@/components/AddSlot";
+import AdBanner from "@/components/AdBanner";
 
 const blogDir = path.join(process.cwd(), "content/blog");
 
