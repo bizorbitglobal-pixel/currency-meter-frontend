@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Section({ title, content, img }) {
   return (
     <section className="max-w-6xl mx-auto px-4 py-12 grid md:grid-cols-2 gap-8 items-center">
@@ -11,7 +13,7 @@ export default function Section({ title, content, img }) {
       </div>
       {img && (
         <div>
-          <img src={img} alt={title} className="rounded-xl shadow-lg" />
+          <Image src={img} alt={title} className="rounded-xl shadow-lg" />
         </div>
       )}
     </section>

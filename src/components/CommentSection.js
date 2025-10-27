@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import { useState } from "react";
 
 export default function CommentsSection({ comments = [] }) {
@@ -23,7 +23,7 @@ export default function CommentsSection({ comments = [] }) {
               className="p-4 border border-gray-200 dark:border-gray-700 rounded-xl bg-white dark:bg-gray-900 shadow-sm"
             >
               <div className="flex items-center gap-3 mb-2">
-                <img
+                <Image
                   src={comment.avatar || "/author-avatar.png"}
                   alt={comment.name}
                   className="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-600"

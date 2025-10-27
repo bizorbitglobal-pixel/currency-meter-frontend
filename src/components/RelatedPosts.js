@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -29,7 +29,7 @@ export default function RelatedPosts({ relatedPosts }) {
             "
           >
             {/* --- Mobile: Large Image | Desktop: Small Thumbnail --- */}
-            <img
+            <Image
               src={p.ogImage}
               alt={p.title}
               className="
