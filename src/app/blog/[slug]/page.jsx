@@ -195,6 +195,13 @@ export default async function BlogDetail({ params }) {
             <span>•</span>
             <span>{readingTime} min read</span>
           </div>
+          <AdBanner
+            keyId="ef9445ea813717165ee0d59dc8f378c6"
+            srcDomain="www.highperformanceformat.com"
+            width={468}
+            height={60}
+            format="iframe"
+          />
 
           {/* Cover Image */}
           {ogImage && (
@@ -301,13 +308,6 @@ export default async function BlogDetail({ params }) {
           </p>
         </footer>
       </div>
-      <AdBanner
-        keyId="7076df2eeb869e5e6f25661a6c818963"
-        srcDomain="pl27824467.effectivegatecpm.com"
-        width={728}
-        height={90}
-      />
-
       {/* --- Sidebar (Desktop Only) --- */}
       <div className="hidden lg:block space-y-12">
         <TableOfContents toc={toc} />
