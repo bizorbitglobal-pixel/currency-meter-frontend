@@ -12,13 +12,6 @@ export default function AdSlot160x300() {
       width: 160,
       params: {},
     };
-    const script = document.createElement("script");
-    script.src =
-      "//www.highperformanceformat.com/ac464d4a9edb061acba728866b8c9627/invoke.js";
-    script.async = true;
-
-    const container = document.getElementById("ad-slot-160x300");
-    if (container) container.appendChild(script);
   }, []);
 
   return (

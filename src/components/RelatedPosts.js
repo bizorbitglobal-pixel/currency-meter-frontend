@@ -64,7 +64,6 @@ export default function RelatedPosts({ relatedPosts }) {
           </button>
         </div>
       )}
-      <AddSlot160_300 />
     </section>
   );
 }

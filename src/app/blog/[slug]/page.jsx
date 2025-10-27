@@ -307,6 +307,7 @@ export default async function BlogDetail({ params }) {
       <div className="hidden lg:block space-y-12">
        <TableOfContents toc={toc} />
        <RelatedPosts relatedPosts={relatedPosts} />
+       <div id="ad-slot-160x300" className="flex justify-center mt-8 mb-6" />
       </div>
     </article>
   );
