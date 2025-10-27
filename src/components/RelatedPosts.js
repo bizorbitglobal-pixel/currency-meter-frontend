@@ -2,7 +2,6 @@
 import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
-import AddSlot160_300 from "./AddSlot160_300";
 
 export default function RelatedPosts({ relatedPosts }) {
   const [showAll, setShowAll] = useState(false);

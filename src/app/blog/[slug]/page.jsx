@@ -300,11 +300,17 @@ export default async function BlogDetail({ params }) {
           </p>
         </footer>
       </div>
+      <AdBanner
+        keyId="7076df2eeb869e5e6f25661a6c818963"
+        srcDomain="pl27824467.effectivegatecpm.com"
+        width={728}
+        height={90}
+      />
 
       {/* --- Sidebar (Desktop Only) --- */}
       <div className="hidden lg:block space-y-12">
-       <TableOfContents toc={toc} />
-       <RelatedPosts relatedPosts={relatedPosts} />
+        <TableOfContents toc={toc} />
+        <RelatedPosts relatedPosts={relatedPosts} />
       </div>
     </article>
   );

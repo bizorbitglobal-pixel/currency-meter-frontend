@@ -5,20 +5,28 @@ import Section from "@/components/Section";
 import Footer from "@/components/Footer";
 import Faqs from "@/components/Faqs";
 import AddSlot from "@/components/AddSlot";
-import AddSlot160_300 from "@/components/AddSlot160_300";
+import AdBanner from "@/components/AdBanner";
 
 export default function Home() {
   return (
     <main className="pt-20 md:pt-24 min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Header */}
       <Header />
+      {/* Example ad slot (468x60 banner) */}
+      <AdBanner
+        keyId="ef9445ea813717165ee0d59dc8f378c6"
+        srcDomain="www.highperformanceformat.com"
+        width={468}
+        height={60}
+        format="iframe"
+      />
 
       {/* H1 Heading */}
       <H1Header />
 
       {/* Main Currency Strength Meter */}
       <div className="max-w-6xl mx-auto w-full px-4 py-6">
-      <CurrencyList />
+        <CurrencyList />
       </div>
 
       {/* Ad below meter */}
@@ -33,8 +41,6 @@ export default function Home() {
         sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1200px"
       />
 
-      
-
       <Section
         title="How the Currency Strength Meter Works?"
         content="The meter calculates strength by analyzing exchange rate data from multiple forex pairs. It assigns a strength value to each currency and visualizes them, so you instantly see the strongest and weakest currencies in the market."
@@ -43,8 +49,6 @@ export default function Home() {
         srcset="/images/what-300w.webp 300w, /images/what-600w.webp 600w, /images/what-1200w.webp 1200w"
         sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1200px"
       />
-
-      
 
       <Section
         title="How Often is it Updated?"
@@ -55,15 +59,11 @@ export default function Home() {
         sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1200px"
       />
 
-      
-
       <Section
         title="Short-term Strength Indicator"
         content="The short-term strength indicator is designed for scalpers and intraday traders. It highlights quick shifts in momentum, helping traders capture opportunities during volatile sessions."
         img="/images/strength.webp"
       />
-
-      
 
       <Section
         title="Using the Strength Meter in Trading Strategies"
