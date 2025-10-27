@@ -18,8 +18,8 @@ import BlogTabs from "@/components/BlogTabs";
 import TableOfContents from "@/components/TableOfContents";
 import RedirectButton from "@/components/RedirectButton";
 import RelatedPosts from "@/components/RelatedPosts";
-import CommentsSection from "@/components/CommentSection";
 import AddSlot from "@/components/AddSlot";
+import AddSlot160_300 from "@/components/AddSlot160_300";
 
 const blogDir = path.join(process.cwd(), "content/blog");
 
@@ -307,6 +307,7 @@ export default async function BlogDetail({ params }) {
       <div className="hidden lg:block space-y-12">
        <TableOfContents toc={toc} />
        <RelatedPosts relatedPosts={relatedPosts} />
+       <AddSlot160_300 />
       </div>
     </article>
   );

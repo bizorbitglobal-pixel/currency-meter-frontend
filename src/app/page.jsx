@@ -5,6 +5,7 @@ import Section from "@/components/Section";
 import Footer from "@/components/Footer";
 import Faqs from "@/components/Faqs";
 import AddSlot from "@/components/AddSlot";
+import AddSlot160_300 from "@/components/AddSlot160_300";
 
 export default function Home() {
   return (
@@ -22,7 +23,7 @@ export default function Home() {
 
       {/* Ad below meter */}
       <AddSlot />
-
+      <AddSlot160_300 />
       {/* Informational SEO Sections */}
       <Section
         title="What is a Currency Strength Meter?"
