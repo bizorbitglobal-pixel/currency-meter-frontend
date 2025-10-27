@@ -18,7 +18,7 @@ export default function Home() {
 
       {/* Main Currency Strength Meter */}
       <div className="max-w-6xl mx-auto w-full px-4 py-6">
-        <CurrencyList />
+      <CurrencyList />
       </div>
 
       {/* Ad below meter */}
