@@ -1,17 +1,15 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
- * Universal ad component for any iframe-based ad network (Adsterra, HighPerformanceFormat, etc.)
+ * Lazy-loaded universal ad component for any iframe-based ad network.
  *
- * @param {string} keyId - The unique ad key or ID (e.g., 'ef9445ea813717165ee0d59dc8f378c6')
- * @param {string} srcDomain - The ad network domain (e.g., 'www.highperformanceformat.com')
- * @param {string|number} width - Ad width in px or %
- * @param {string|number} height - Ad height in px
- * @param {string} format - Format type (e.g., 'iframe', 'banner', 'popup')
- * @param {object} params - Optional additional parameters
+ * Automatically loads only when visible on screen (using IntersectionObserver).
+ *
+ * Example use:
+ * <LazyAdBanner keyId="ef9445ea813717165ee0d59dc8f378c6" srcDomain="www.highperformanceformat.com" width={468} height={60} />
  */
-export default function AdBanner({
+export default function LazyAdBanner({
   keyId,
   srcDomain = "www.highperformanceformat.com",
   width = 300,
@@ -19,15 +17,36 @@ export default function AdBanner({
   format = "iframe",
   params = {},
 }) {
+  const containerRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => {
-    // Cleanup any existing ad instance before reloading
-    const containerId = `ad-container-${keyId}`;
-    const container = document.getElementById(containerId);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.disconnect(); // stop observing once loaded
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const container = document.getElementById(`ad-container-${keyId}`);
     if (!container) return;
 
-    container.innerHTML = ""; // clear previous iframe
-
-    // Define the global ad configuration object (required by ad scripts)
+    // Define ad config globally (for networks like HighPerformanceFormat)
     window.atOptions = {
       key: keyId,
       format,
@@ -36,31 +55,35 @@ export default function AdBanner({
       params,
     };
 
-    // Create the <script> dynamically
+    // Inject ad script dynamically
     const script = document.createElement("script");
-    script.type = "text/javascript";
     script.src = `https://${srcDomain}/${keyId}/invoke.js`;
     script.async = true;
 
+    container.innerHTML = ""; // Clear old iframe before injecting
     container.appendChild(script);
 
-    // Cleanup on unmount
     return () => {
       if (container) container.innerHTML = "";
     };
-  }, [keyId, srcDomain, width, height, format, params]);
+  }, [isVisible, keyId, srcDomain, width, height, format, params]);
 
   return (
     <div
+      ref={containerRef}
       id={`ad-container-${keyId}`}
       className="flex justify-center items-center my-6"
       style={{
         width: `${width}px`,
         height: `${height}px`,
         overflow: "hidden",
+        backgroundColor: "#f9f9f9",
+        borderRadius: "8px",
       }}
     >
-      <p className="text-xs text-gray-500 italic">Loading ad...</p>
+      {!isVisible && (
+        <p className="text-xs text-gray-500 italic">Ad loading when visible...</p>
+      )}
     </div>
   );
 }
