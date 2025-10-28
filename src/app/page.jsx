@@ -13,13 +13,13 @@ export default function Home() {
       {/* Header */}
       <Header />
       {/* Example ad slot (468x60 banner) */}
-      <AdBanner
+      {/* <AdBanner
         keyId="ef9445ea813717165ee0d59dc8f378c6"
         srcDomain="www.highperformanceformat.com"
         width={468}
         height={60}
         format="iframe"
-      />
+      /> */}
 
       {/* H1 Heading */}
       <H1Header />

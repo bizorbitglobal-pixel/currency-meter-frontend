@@ -195,13 +195,13 @@ export default async function BlogDetail({ params }) {
             <span>•</span>
             <span>{readingTime} min read</span>
           </div>
-          <AdBanner
+          {/* <AdBanner
             keyId="ef9445ea813717165ee0d59dc8f378c6"
             srcDomain="www.highperformanceformat.com"
             width={468}
             height={60}
             format="iframe"
-          />
+          /> */}
 
           {/* Cover Image */}
           {ogImage && (
