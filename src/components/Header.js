@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -23,7 +24,13 @@ export default function Header() {
       <div className="flex items-center justify-between max-w-6xl mx-auto px-6 py-4">
         {/* Left logo/title */}
         <Link href="/" className="text-xl font-bold text-gray-900 dark:text-gray-100">
-          CSM
+          <Image
+            src="/images/logo.png"
+            alt="Logo"
+            width={100}
+            height={50}
+            className="inline-block mr-2"
+          />
         </Link>
 
         {/* Right navigation */}

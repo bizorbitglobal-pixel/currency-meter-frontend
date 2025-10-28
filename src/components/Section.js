@@ -13,7 +13,7 @@ export default function Section({ title, content, img }) {
       </div>
       {img && (
         <div>
-          <Image src={img} alt={title} className="rounded-xl shadow-lg" />
+          <Image src={img} alt={title} width={500} height={300} className="rounded-xl shadow-lg" />
         </div>
       )}
     </section>
