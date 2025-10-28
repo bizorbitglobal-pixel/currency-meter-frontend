@@ -23,7 +23,7 @@ export default function Header() {
       <div className="flex items-center justify-between max-w-6xl mx-auto px-6 py-4">
         {/* Left logo/title */}
         <Link href="/" className="text-xl font-bold text-gray-900 dark:text-gray-100">
-          Currency Strength Meter
+          CSM
         </Link>
 
         {/* Right navigation */}
