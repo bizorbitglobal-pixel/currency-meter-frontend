@@ -25,7 +25,7 @@ export default function H1Header() {
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
-        Live Currency Strength Meter
+        Currency Strength Meter (Live)
         <span
           className={`
             inline-block ml-2 w-3 h-3 sm:w-4 sm:h-4 rounded-full align-middle
