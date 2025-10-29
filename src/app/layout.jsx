@@ -38,6 +38,18 @@ export const metadata = {
     images: ["https://www.currencystrengthsmeters.com/og-image.png"],
   },
   icons: { icon: "/favicon.ico" },
+  jsonLd: {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Currency Strength Meter",
+    "url": "https://www.currencystrengthsmeters.com/",
+    "description": "Currency Strength Meter is a live forex strength indicator that helps traders to identify the strongest and weakest currencies in real time.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://www.currencystrengthsmeters.com/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  },
 };
 
 export default function RootLayout({ children }) {
