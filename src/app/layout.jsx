@@ -38,6 +38,7 @@ export const metadata = {
     images: ["https://www.currencystrengthsmeters.com/og-image.png"],
   },
   icons: { icon: "/favicon.ico" },
+  appleIcon: "/apple-touch-icon.png",
   jsonLd: {
     "@context": "https://schema.org",
     "@type": "WebSite",
