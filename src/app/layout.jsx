@@ -14,12 +14,12 @@ export const metadata = {
   title:
     "Currency Strength Meter - Live Forex Strength Indicator (2025)",
   description:
-    "Currency Strength Meter is a live forex strength indicator that helps traders to identify the strongest and weakest currencies in real time.It exists for MT4, MT5, TradingView, and as a web-based tool.",
+    "Currency Strength Meter is a live forex strength indicator that helps traders to identify the strongest and weakest currencies in real time.It exists for MT4, MT5, TradingView, and as a web-based tool. We can help you improve your forex trading strategy by providing accurate currency strength analysis.",
   keywords: keywords,
   openGraph: {
     title: "Currency Strength Meter - Live Forex Strength Indicator (2025)",
     description:
-      "Currency Strength Meter is a live forex strength indicator that helps traders to identify the strongest and weakest currencies in real time.It exists for MT4, MT5, TradingView, and as a web-based tool.",
+      "Currency Strength Meter is a live forex strength indicator that helps traders to identify the strongest and weakest currencies in real time.It exists for MT4, MT5, TradingView, and as a web-based tool. We can help you improve your forex trading strategy by providing accurate currency strength analysis.",
     url: "https://www.currencystrengthsmeters.com/",
     images: [
       {
@@ -34,7 +34,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Currency Strength Meter - Live Forex Strength Indicator (2025)",
     description:
-      "Currency Strength Meter is a live forex strength indicator that helps traders to identify the strongest and weakest currencies in real time.It exists for MT4, MT5, TradingView, and as a web-based tool.",
+      "Currency Strength Meter is a live forex strength indicator that helps traders to identify the strongest and weakest currencies in real time.It exists for MT4, MT5, TradingView, and as a web-based tool. We can help you improve your forex trading strategy by providing accurate currency strength analysis.",
     images: ["https://www.currencystrengthsmeters.com/og-image.png"],
   },
   icons: { icon: "/favicon.ico" },
@@ -44,7 +44,7 @@ export const metadata = {
     "@type": "WebSite",
     "name": "Currency Strength Meter",
     "url": "https://www.currencystrengthsmeters.com/",
-    "description": "Currency Strength Meter is a live forex strength indicator that helps traders to identify the strongest and weakest currencies in real time.",
+    "description": "Currency Strength Meter is a live forex strength indicator that helps traders to identify the strongest and weakest currencies in real time. We can help you improve your forex trading strategy by providing accurate currency strength analysis.",
     "potentialAction": {
       "@type": "SearchAction",
       "target": "https://www.currencystrengthsmeters.com/?s={search_term_string}",
