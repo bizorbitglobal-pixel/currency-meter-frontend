@@ -12,12 +12,12 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 export const metadata = {
   title:
-    "[New] Currency Strength Meter Online Live (2025)",
+    "Currency Strength Meter - Live Forex Strength Indicator",
   description:
     "Currency Strength Meter is a live forex strength indicator that helps traders to identify the strongest and weakest currencies in real time.It exists for MT4, MT5, TradingView, and as a web-based tool. We can help you improve your forex trading strategy by providing accurate currency strength analysis.",
   keywords: keywords,
   openGraph: {
-    title: "Live Currency Strength Meter - Forex Strength Indicator",
+    title: "Currency Strength Meter - Live Forex Strength Indicator",
     description:
       "Currency Strength Meter is a live forex strength indicator that helps traders to identify the strongest and weakest currencies in real time.It exists for MT4, MT5, TradingView, and as a web-based tool. We can help you improve your forex trading strategy by providing accurate currency strength analysis.",
     url: "https://www.currencystrengthsmeters.com/",
