@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import Link from "next/link";
 import RedirectButton from "@/components/RedirectButton";
 import AddSlot from "@/components/AddSlot";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata = {
   title: "Blog | Currency Strength Meters",
@@ -56,6 +57,9 @@ export default async function BlogPage({ searchParams }) {
       <h1 className="text-4xl font-bold mb-8 text-center">
         Forex Blog & Trading Guides
       </h1>
+      <div className="flex justify-center mb-8">
+        <Breadcrumbs />
+      </div>
 
       <div className="relative isolate">
         <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-transparent dark:from-gray-900/50 -z-10" />
@@ -132,11 +136,10 @@ export default async function BlogPage({ searchParams }) {
             <Link
               href={pageHref(Math.max(1, currentPage - 1))}
               aria-disabled={currentPage === 1}
-              className={`px-3 py-2 text-sm rounded-lg transition ${
-                currentPage === 1
-                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                  : "bg-gray-100 text-gray-700 hover:bg-blue-50 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
-              }`}
+              className={`px-3 py-2 text-sm rounded-lg transition ${currentPage === 1
+                ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                : "bg-gray-100 text-gray-700 hover:bg-blue-50 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+                }`}
             >
               ← Prev
             </Link>
@@ -159,11 +162,10 @@ export default async function BlogPage({ searchParams }) {
                 <Link
                   key={p}
                   href={pageHref(p)}
-                  className={`px-3 py-2 text-sm rounded-lg transition ${
-                    p === currentPage
-                      ? "bg-blue-600 text-white"
-                      : "bg-gray-100 text-gray-700 hover:bg-blue-50 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
-                  }`}
+                  className={`px-3 py-2 text-sm rounded-lg transition ${p === currentPage
+                    ? "bg-blue-600 text-white"
+                    : "bg-gray-100 text-gray-700 hover:bg-blue-50 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+                    }`}
                 >
                   {p}
                 </Link>
@@ -174,11 +176,10 @@ export default async function BlogPage({ searchParams }) {
             <Link
               href={pageHref(Math.min(totalPages, currentPage + 1))}
               aria-disabled={currentPage === totalPages}
-              className={`px-3 py-2 text-sm rounded-lg transition ${
-                currentPage === totalPages
-                  ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                  : "bg-gray-100 text-gray-700 hover:bg-blue-50 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
-              }`}
+              className={`px-3 py-2 text-sm rounded-lg transition ${currentPage === totalPages
+                ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                : "bg-gray-100 text-gray-700 hover:bg-blue-50 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
+                }`}
             >
               Next →
             </Link>

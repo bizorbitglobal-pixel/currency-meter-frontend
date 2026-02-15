@@ -20,6 +20,7 @@ import RedirectButton from "@/components/RedirectButton";
 import RelatedPosts from "@/components/RelatedPosts";
 import AddSlot from "@/components/AddSlot";
 import AdBanner from "../../../components/AddBanner";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 const blogDir = path.join(process.cwd(), "content/blog");
 
@@ -181,6 +182,9 @@ export default async function BlogDetail({ params }) {
           <h1 className="text-4xl md:text-5xl font-extrabold mb-3 text-gray-900 dark:text-gray-100">
             {title}
           </h1>
+          <div className="flex justify-center mb-6">
+            <Breadcrumbs />
+          </div>
 
           <div className="flex justify-center items-center gap-3 text-gray-500 text-sm mb-6">
             {date && (

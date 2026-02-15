@@ -10,12 +10,22 @@ const inter = Inter({ subsets: ["latin"] });
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
+export const viewport = {
+  themeColor: "#ffffff",
+};
+
 export const metadata = {
-  title:
-    "Currency Strength Meter - Live Forex Strength Indicator",
+  title: "Currency Strength Meter - Live Forex Strength Indicator",
   description:
     "Currency Strength Meter is a live forex strength indicator that helps traders to identify the strongest and weakest currencies in real time.It exists for MT4, MT5, TradingView, and as a web-based tool. We can help you improve your forex trading strategy by providing accurate currency strength analysis.",
   keywords: keywords,
+  applicationName: "Currency Strength Meter",
+  appleWebApp: {
+    title: "Currency Strength Meter",
+  },
+  other: {
+    "google-adsense-account": "ca-pub-7433238339097067",
+  },
   openGraph: {
     title: "Currency Strength Meter - Live Forex Strength Indicator",
     description:
@@ -39,18 +49,6 @@ export const metadata = {
   },
   icons: { icon: "/favicon.ico" },
   appleIcon: "/apple-touch-icon.png",
-  jsonLd: {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Currency Strength Meter",
-    "url": "https://www.currencystrengthsmeters.com/",
-    "description": "Currency Strength Meter is a live forex strength indicator that helps traders to identify the strongest and weakest currencies in real time. We can help you improve your forex trading strategy by providing accurate currency strength analysis.",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://www.currencystrengthsmeters.com/?s={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  },
 };
 
 export default function RootLayout({ children }) {
@@ -58,7 +56,58 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} ${inter.className}`}>
         {children}
+
         <Analytics />
+
+        {/* ✅ JSON-LD: Organization Schema */}
+        <Script
+          id="json-ld-org"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Currency Strength Meter",
+              url: "https://www.currencystrengthsmeters.com",
+              logo: "https://www.currencystrengthsmeters.com/favicon-32x32.png",
+              sameAs: [
+                "https://www.facebook.com/",
+                "https://twitter.com/",
+                "https://www.linkedin.com/",
+              ],
+            }),
+          }}
+        />
+
+        {/* ✅ JSON-LD: Website Schema */}
+        <Script
+          id="json-ld-website"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "Currency Strength Meter",
+              alternateName: "Live Currency Strength Meter",
+              url: "https://www.currencystrengthsmeters.com",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: "https://www.currencystrengthsmeters.com/search?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
+              publisher: {
+                "@type": "Organization",
+                name: "Currency Strength Meter",
+                logo: {
+                  "@type": "ImageObject",
+                  url: "https://www.currencystrengthsmeters.com/favicon-32x32.png",
+                },
+              },
+            }),
+          }}
+        />
 
         {/* ✅ Google Analytics */}
         <Script

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 export default function BlogTabs() {
-  const tabs = ["Overview", "Key Points", "Comments"];
+  const tabs = ["Overview", "Key Points"];
   const [active, setActive] = useState("Overview");
 
   // Highlight active tab when scrolling
@@ -37,10 +37,9 @@ export default function BlogTabs() {
               key={tab}
               onClick={() => scrollTo(tab.toLowerCase().replace(" ", "-"))}
               className={`relative px-4 sm:px-6 py-2 text-sm sm:text-base font-medium transition-all duration-300 
-                ${
-                  isActive
-                    ? "text-blue-700 dark:text-blue-400"
-                    : "text-gray-600 dark:text-gray-300 hover:text-blue-500"
+                ${isActive
+                  ? "text-blue-700 dark:text-blue-400"
+                  : "text-gray-600 dark:text-gray-300 hover:text-blue-500"
                 }
               `}
             >

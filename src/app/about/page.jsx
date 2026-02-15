@@ -1,5 +1,6 @@
 import AddSlot from "@/components/AddSlot";
 import RedirectButton from "@/components/RedirectButton";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 // ✅ SEO Metadata
 export const metadata = {
@@ -12,6 +13,9 @@ export default function AboutPage() {
   return (
     <div className="font-sans max-w-4xl mx-auto px-4 py-10 space-y-10">
       <h1 className="text-3xl font-bold mb-6">About</h1>
+      <div className="mb-6">
+        <Breadcrumbs />
+      </div>
       <AddSlot />
       <div className="relative isolate">
         <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-transparent dark:from-gray-900/50 -z-10" />

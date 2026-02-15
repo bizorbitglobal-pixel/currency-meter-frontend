@@ -32,6 +32,8 @@ export default function RelatedPosts({ relatedPosts }) {
             <Image
               src={p.ogImage}
               alt={p.title}
+              width={100}
+              height={100}
               className="
                 w-full h-40 object-cover lg:w-16 lg:h-16 lg:rounded-lg
                 lg:border lg:border-gray-200 dark:lg:border-gray-700

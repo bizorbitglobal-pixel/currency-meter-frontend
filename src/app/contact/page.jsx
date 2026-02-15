@@ -1,5 +1,6 @@
 import AddSlot from "@/components/AddSlot";
 import RedirectButton from "@/components/RedirectButton";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 // ✅ SEO Metadata
 export const metadata = {
@@ -12,6 +13,9 @@ export default function ContactPage() {
   return (
     <div className="font-sans max-w-4xl mx-auto px-4 py-10 space-y-10">
       <h1 className="text-3xl font-bold mb-6">Contact Us</h1>
+      <div className="mb-6">
+        <Breadcrumbs />
+      </div>
       <AddSlot />
       <section>
         <h2 className="text-xl font-semibold mb-2">
@@ -22,7 +26,7 @@ export default function ContactPage() {
           and inquiries. Whether you have a question about our tools, need
           support, or wish to collaborate, feel free to reach out to us.
         </p>
-       
+
       </section>
 
       <section>
@@ -35,7 +39,7 @@ export default function ContactPage() {
           problems, or have feature requests, our technical support team is
           ready to assist. We aim to respond to all queries within 24–48 hours.
         </p>
-       
+
       </section>
 
       <section>
@@ -47,7 +51,7 @@ export default function ContactPage() {
           promoting your trading platform? Contact our business development team
           for collaboration opportunities.
         </p>
-       
+
       </section>
 
       <section>
@@ -76,7 +80,7 @@ export default function ContactPage() {
           📍 <strong>Location:</strong> Online Forex Analytics Platform – Global
           Access
         </p>
-       
+
       </section>
 
       <section>
@@ -85,19 +89,19 @@ export default function ContactPage() {
           Follow us for live forex insights, strength updates, and trading tips:
         </p>
 
-       
+
       </section>
       <div className="relative isolate">
         <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-transparent dark:from-gray-900/50 -z-10" />
         <RedirectButton />
       </div>
 
-     
+
 
       <footer className="mt-20 py-10 border-t text-gray-500 text-sm">
         <div className="max-w-4xl mx-auto text-center">
           <p>© 2025 Currency Strength Meter. All rights reserved.</p>
-         
+
         </div>
       </footer>
     </div>
