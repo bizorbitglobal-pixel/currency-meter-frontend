@@ -25,9 +25,9 @@ export default function AboutPage() {
         <h2 className="text-xl font-semibold mb-2">Our Mission</h2>
         <p>
           At <strong>Currency Strength Meter</strong>, our mission is to empower
-          forex traders with accurate, real-time insights into global currency
+          forex traders of all levels—from beginners to seasoned professionals—with accurate, real-time insights into global currency
           strength and weakness. We aim to help traders make informed trading
-          decisions through clear data visualization and live forex analytics.
+          decisions through clear data visualization, comprehensive live forex analytics, and educational resources. We believe that access to institutional-grade momentum data should be free and accessible to retail traders worldwide.
         </p>
         <AddSlot />
       </section>
@@ -36,10 +36,10 @@ export default function AboutPage() {
         <h2 className="text-xl font-semibold mb-2">What We Offer</h2>
         <p>
           Our platform provides a <strong>Live Currency Strength Meter</strong>{" "}
-          that updates in real-time, displaying which currencies are performing
-          strongly and which are weakening. Whether you trade major pairs,
-          minors, or exotics, our tool helps you quickly assess market momentum
-          and correlation strength.
+          that updates continuously in real-time, displaying which currencies are performing
+          strongly and which are weakening across the 28 major forex pairs. Whether you trade major pairs,
+          minors, or exotics, our tool helps you quickly assess market momentum,
+          spot trending markets, and avoid choppy, low-volatility conditions. We also provide educational blogs to help you integrate these tools into your daily trading strategies.
         </p>
         <AddSlot />
       </section>
@@ -47,11 +47,11 @@ export default function AboutPage() {
       <section>
         <h2 className="text-xl font-semibold mb-2">Why Traders Trust Us</h2>
         <p>
-          We focus on simplicity, speed, and accuracy. Our data-driven approach
+          We focus on simplicity, speed, and accuracy. Our proprietary algorithm processes tick-by-tick market data from top-tier liquidity providers. This data-driven approach
           ensures the
-          <strong>Currency Strength Meter</strong> remains a trusted resource
-          for day traders, swing traders, and professional forex analysts
-          worldwide.
+          <strong> Currency Strength Meter</strong> remains a highly accurate and trusted resource
+          for day traders, scalpers, swing traders, and professional forex analysts
+          worldwide. We take pride in offering a tool that eliminates the need for complex, manual indicator analysis.
         </p>
         <AddSlot />
       </section>
@@ -59,11 +59,11 @@ export default function AboutPage() {
       <section>
         <h2 className="text-xl font-semibold mb-2">How It Works</h2>
         <p>
-          Our system analyzes multiple forex pairs simultaneously to calculate
-          the relative strength of each currency. The result is presented in an
-          easy-to-read visual dashboard, allowing users to identify{" "}
+          Our system analyzes exchange rates across 28 forex pairs simultaneously to calculate
+          the absolute relative strength of each individual currency (USD, EUR, GBP, JPY, CAD, CHF, AUD, NZD). The result is presented in an
+          easy-to-read visual dashboard, allowing users to identify the{" "}
           <strong>strongest</strong> and <strong>weakest</strong>
-          currencies instantly — all in real time.
+          currencies instantly. By pairing the strongest currency against the weakest, traders can find the pairs with the highest probability of strong directional movement.
         </p>
         <AddSlot />
       </section>

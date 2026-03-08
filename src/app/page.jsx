@@ -106,42 +106,90 @@ export default async function Home() {
       {/* Informational SEO Sections */}
       <Section
         title="What is a Currency Strength Meter?"
-        content="A currency strength meter is a forex trading tool that measures the relative strength of different currencies against each other. Traders use it to quickly identify which currencies are gaining strength and which are weakening, helping them spot trading opportunities more efficiently."
         img="/images/what.webp"
         class="rounded-xl shadow-lg"
         srcset="/images/what-300w.webp 300w, /images/what-600w.webp 600w, /images/what-1200w.webp 1200w"
         sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1200px"
-      />
+      >
+        <p>
+          A currency strength meter is a vital forex trading tool that measures the relative strength of different major currencies against each other. Instead of looking at a single forex pair (like EUR/USD), the strength meter provides a macro view of the entire forex market in one simple, easy-to-read dashboard.
+        </p>
+        <p>
+          Traders use this tool to quickly identify which currencies are gaining momentum (strengthening) and which are losing ground (weakening). By isolating the absolute strength of a single currency, traders can spot high-probability trading setups more efficiently, avoiding sideways or choppy markets where neither currency has a clear advantage.
+        </p>
+        <ul className="list-disc pl-5 mt-2 space-y-1">
+          <li><strong>Identify Trends:</strong> Quickly see which side of the market is dominating.</li>
+          <li><strong>Confirm Trade Entries:</strong> Use strength to validate signals from other technical indicators.</li>
+          <li><strong>Avoid Ranging Markets:</strong> Stay out of low-volatility pairs where strength is neutral.</li>
+        </ul>
+      </Section>
 
       <Section
-        title="How the Currency Strength Meter Works?"
-        content="The meter calculates strength by analyzing exchange rate data from multiple forex pairs. It assigns a strength value to each currency and visualizes them, so you instantly see the strongest and weakest currencies in the market."
+        title="How the Currency Strength Meter Works"
         img="/images/image1.webp"
         class="rounded-xl shadow-lg"
         srcset="/images/what-300w.webp 300w, /images/what-600w.webp 600w, /images/what-1200w.webp 1200w"
         sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1200px"
-      />
+      >
+        <p>
+          The meter calculates strength by analyzing real-time exchange rate data across all 28 major forex currency pairs. It looks at the price action of each pair and aggregates the performance of individual currencies (like USD, EUR, GBP, JPY, AUD, NZD, CAD, and CHF) to assign a definitive strength score.
+        </p>
+        <p>
+          For example, if the US Dollar (USD) is rising against the Euro, Pound, Yen, and Franc simultaneously, the algorithm calculates a high strength rating for the USD. The results are instantly visualized on a scale (usually 0 to 10), allowing you to see the strongest and weakest market players at a glance, without having to manually check dozens of charts.
+        </p>
+      </Section>
 
       <Section
-        title="How Often is it Updated?"
-        content="Our strength meter updates in real-time using live forex market data. This means you always see the most accurate and up-to-date market conditions before making a trade."
+        title="Real-Time Data & Updates"
         img="/images/how.webp"
         class="rounded-xl shadow-lg"
         srcset="/images/what-300w.webp 300w, /images/what-600w.webp 600w, /images/what-1200w.webp 1200w"
         sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1200px"
-      />
+      >
+        <p>
+          In the fast-paced forex market, delayed data can lead to missed opportunities or losing trades. Our live currency strength meter updates continuously in real-time, pulling tick-by-tick data directly from global forex liquidity providers.
+        </p>
+        <p>
+          This ensures that whether you are trading the London open, the New York overlap, or the quieter Asian session, you always have the most accurate and up-to-date reflection of market sentiment and momentum before executing a trade.
+        </p>
+      </Section>
 
       <Section
-        title="Short-term Strength Indicator"
-        content="The short-term strength indicator is designed for scalpers and intraday traders. It highlights quick shifts in momentum, helping traders capture opportunities during volatile sessions."
+        title="Best Strategies for Trading with Strength"
         img="/images/strength.webp"
-      />
+      >
+        <p>
+          The most effective way to use a currency meter is the <strong>&quot;Strong vs. Weak&quot; strategy</strong>. This involves pairing the strongest currency currently on the board with the weakest currency to find the pair with the highest likelihood of a strong directional trend.
+        </p>
+        <ul className="list-disc pl-5 mt-2 space-y-1">
+          <li><strong>Trend Trading:</strong> If GBP is strong (8/10) and JPY is weak (2/10), look for buy opportunities on GBP/JPY.</li>
+          <li><strong>Reversals:</strong> If a currency hits maximum strength (10/10) after a long rally, it may be overbought and due for a pullback.</li>
+          <li><strong>Short-Term Scalping:</strong> Monitor sudden, rapid changes in strength on lower timeframes to catch intraday momentum spikes.</li>
+        </ul>
+        <p className="mt-2 text-sm italic text-gray-500">
+          Note: Always combine strength readings with chart analysis, such as support/resistance levels and price action, before placing a trade.
+        </p>
+      </Section>
 
       <Section
-        title="Using the Strength Meter in Trading Strategies"
-        content="Traders often combine the strength meter with technical indicators like moving averages, candlestick patterns, or support and resistance zones. By aligning strength analysis with price action, you can trade with higher accuracy and confidence."
+        title="Common Trading Mistakes to Avoid"
         img="/images/work.webp"
-      />
+      >
+        <p>
+          While the currency strength meter is a powerful tool, it should not be used as a standalone entry signal. Traders often make the mistake of buying or selling blindly based solely on the meter&#39;s current reading.
+        </p>
+        <p>
+          Avoid trading right before major economic news releases (like NFP or CPI reports), as extreme volatility can cause sudden spikes and temporary false readings on the meter. Furthermore, do not jump into trades when all currencies are showing neutral strength—this indicates a flat, ranging market where breakouts are likely to fail.
+        </p>
+      </Section>
+
+      {/* Financial Disclaimer */}
+      <div className="max-w-6xl mx-auto px-4 py-8 mb-4 border-t border-gray-200 dark:border-gray-800">
+        <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm text-gray-600 dark:text-gray-400">
+          <strong className="block mb-2 text-gray-800 dark:text-gray-200">Financial Disclaimer:</strong>
+          The information and tools provided by Currency Strength Meter are for educational and informational purposes only and do not constitute financial advice. Forex trading involves significant risk of loss and is not suitable for all investors. Past performance is not indicative of future results. Always conduct your own research and consult with a certified financial advisor before making investment decisions.
+        </div>
+      </div>
 
       {/* Recent Posts Section */}
       <section className="max-w-6xl mx-auto px-4 py-12">

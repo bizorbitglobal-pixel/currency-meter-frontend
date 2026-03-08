@@ -1,15 +1,22 @@
 import Image from "next/image";
 
-export default function Section({ title, content, img }) {
+export default function Section({ title, content, children, img }) {
   return (
     <section className="max-w-6xl mx-auto px-4 py-12 grid md:grid-cols-2 gap-8 items-center">
       <div>
         <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-100">
           {title}
         </h2>
-        <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-          {content}
-        </p>
+        {content && (
+          <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+            {content}
+          </p>
+        )}
+        {children && (
+          <div className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed space-y-4">
+            {children}
+          </div>
+        )}
       </div>
       {img && (
         <div>
