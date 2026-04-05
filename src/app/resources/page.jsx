@@ -50,6 +50,7 @@ const resources = [
   }
 ];
 
+export default function ResourcesPage() {
   // Build ItemList schema for resources
   const itemListSchema = {
     "@context": "https://schema.org",
@@ -92,4 +93,4 @@ const resources = [
       />
     </div>
   );
-//
+}
