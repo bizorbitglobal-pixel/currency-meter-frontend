@@ -69,12 +69,14 @@ export default async function BlogPage({ searchParams }) {
       {/* 📰 Blog Cards */}
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {currentPosts.map((post) => {
-          const safeOgImage =
+
+          // Always use relative path for images in /og-cache
+          let safeOgImage = 
             post.ogImage && post.ogImage.trim() !== ""
-              ? post.ogImage.startsWith("http")
-                ? post.ogImage
-                : `https://www.currencystrengthsmeters.com${post.ogImage}`
-              : "https://www.currencystrengthsmeters.com/og-cache/currency-correlation-chart-explained.jpg";
+              ? post.ogImage.includes("/og-cache/")
+                ? post.ogImage.replace(/^https?:\/\/[^/]+/, "")
+                : post.ogImage
+              : "/og-cache/currency-correlation-chart-explained.jpg";
 
           return (
             <article

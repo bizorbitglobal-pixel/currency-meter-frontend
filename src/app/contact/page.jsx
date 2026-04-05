@@ -1,6 +1,7 @@
 import AddSlot from "@/components/AddSlot";
 import RedirectButton from "@/components/RedirectButton";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import ContactForm from "@/components/ContactForm";
 
 // ✅ SEO Metadata
 export const metadata = {
@@ -30,6 +31,11 @@ export default function ContactPage() {
       </section>
 
       <section>
+        <h2 className="text-xl font-semibold mb-4">Send us a Message</h2>
+        <ContactForm />
+      </section>
+
+      <section>
         <h2 className="text-xl font-semibold mb-2">
           Support & Technical Assistance
         </h2>
@@ -55,8 +61,11 @@ export default function ContactPage() {
       </section>
 
       <section>
-        <h2 className="text-xl font-semibold mb-2">Contact Information</h2>
+        <h2 className="text-xl font-semibold mb-2">Direct Contact</h2>
         <p>
+          Prefer to email directly?
+        </p>
+        <p className="mt-4">
           📧 <strong>Email:</strong>{" "}
           <a
             href="mailto:bizorbit.global@gmail.com"
@@ -76,21 +85,20 @@ export default function ContactPage() {
             www.currencystrengthsmeters.com
           </a>
         </p>
-        <p>
+        <p className="mt-2">
           📍 <strong>Location:</strong> Online Forex Analytics Platform – Global
           Access
         </p>
-
       </section>
 
       <section>
-        <h2 className="text-xl font-semibold mb-2">Stay Connected</h2>
+        <h2 className="text-xl font-semibold mb-2">Response Time</h2>
         <p>
-          Follow us for live forex insights, strength updates, and trading tips:
+          We typically respond to all inquiries within <strong>24-48 hours</strong> during business days. For urgent support, please mark your message as urgent in the subject line.
         </p>
-
-
       </section>
+
+      <AddSlot />
       <div className="relative isolate">
         <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-transparent dark:from-gray-900/50 -z-10" />
         <RedirectButton />
