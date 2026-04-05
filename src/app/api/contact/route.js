@@ -1,3 +1,4 @@
+export const runtime = "nodejs";
 import nodemailer from "nodemailer";
 
 // Create a transporter (using Gmail or your email service)
