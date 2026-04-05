@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 
 export const runtime = "nodejs";
+import nodemailer from "nodemailer";
 
 // 🧩 Utility: make sure we can slugify titles safely
 function slugify(text) {
