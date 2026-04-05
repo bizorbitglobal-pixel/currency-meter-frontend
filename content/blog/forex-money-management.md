@@ -4,7 +4,7 @@ description: "Master forex money management techniques. Learn position sizing, r
 date: "2025-04-05T13:00:00Z"
 excerpt: "Money management is more important than strategy for forex success. This guide reveals professional techniques to protect your capital and maximize long-term profits."
 tags: ["money management", "risk management", "position sizing", "forex", "trading psychology"]
-ogImage: "https://www.currencystrengthsmeters.com/og-cache/forex-money-management.jpg"
+ogImage: "https://www.currencystrengthsmeters.com/og-cache/forex-timeframes-explained.jpg"
 ---
 
 ## Introduction
