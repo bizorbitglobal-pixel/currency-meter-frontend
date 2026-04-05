@@ -4,7 +4,7 @@ description: "Learn forex fundamental analysis. Understand economic indicators, 
 date: "2025-04-05T14:00:00Z"
 excerpt: "Fundamental analysis examines economic data and central bank policies. Master this approach and combine it with technical analysis for superior trading results."
 tags: ["fundamental analysis", "economic indicators", "forex", "trading strategies"]
-ogImage: "https://www.currencystrengthsmeters.com/og-cache/fundamental-analysis-forex.jpg"
+ogImage: "https://www.currencystrengthsmeters.com/og-cache/fundamental-vs-technical-analysis-in-forex.jpg"
 ---
 
 ## What is Fundamental Analysis?

@@ -4,7 +4,7 @@ description: "Learn forex trading from scratch. This beginner's guide covers wha
 date: "2025-04-05T10:00:00Z"
 excerpt: "New to forex? This comprehensive guide walks you through everything a beginner needs to know to start trading currencies safely and profitably."
 tags: ["forex", "beginners", "trading basics", "how-to", "getting started"]
-ogImage: "https://www.currencystrengthsmeters.com/og-cache/forex-trading-guide-for-beginners.jpg"
+ogImage: "https://www.currencystrengthsmeters.com/og-cache/forex-trading-plan-template.jpg"
 ---
 
 ## Introduction to Forex Trading

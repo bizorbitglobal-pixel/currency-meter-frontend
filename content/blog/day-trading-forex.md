@@ -4,7 +4,7 @@ description: "Learn professional day trading strategies for forex. Discover scal
 date: "2025-04-05T15:00:00Z"
 excerpt: "Day trading can be profitable with the right strategies and discipline. This guide covers proven setups, timeframes, and money management specific to day traders."
 tags: ["day trading", "forex", "trading strategies", "scalping", "breakouts"]
-ogImage: "https://www.currencystrengthsmeters.com/og-cache/day-trading-forex.jpg"
+ogImage: "https://www.currencystrengthsmeters.com/og-cache/day-trading-with-strength-meter.jpg"
 ---
 
 ## What is Day Trading?

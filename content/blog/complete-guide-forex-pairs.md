@@ -4,7 +4,7 @@ description: "Understand all types of forex pairs—majors, minors, and exotics.
 date: "2025-04-05T11:00:00Z"
 excerpt: "Not all currency pairs are created equal. This guide breaks down the differences between major, minor, and exotic pairs, and helps you choose the best ones for your trading style."
 tags: ["forex", "currency pairs", "majors", "minors", "exotics", "trading"]
-ogImage: "https://www.currencystrengthsmeters.com/og-cache/complete-guide-forex-pairs.jpg"
+ogImage: "https://www.currencystrengthsmeters.com/og-cache/currency-strength-comparison-guide-how-to-identify-strongest-and-weakest-forex-pairs.jpg"
 ---
 
 ## Introduction
