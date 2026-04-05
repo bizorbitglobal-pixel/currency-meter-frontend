@@ -4,7 +4,7 @@ description: "Master technical analysis for forex. Learn candlestick patterns, s
 date: "2025-04-05T12:00:00Z"
 excerpt: "Technical analysis is the study of historical price data to predict future price movements. This guide covers everything a forex trader needs to know about charts, patterns, and indicators."
 tags: ["technical analysis", "forex", "indicators", "candlesticks", "trading strategies"]
-ogImage: "https://www.currencystrengthsmeters.com/og-cache/technical-analysis-forex.jpg"
+ogImage: "https://www.currencystrengthsmeters.com/og-cache/technical-analysis-forex-guide.jpg"
 ---
 
 ## Introduction to Technical Analysis

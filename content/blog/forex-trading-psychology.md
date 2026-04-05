@@ -4,7 +4,7 @@ description: "Learn forex trading psychology. Understand fear, greed, overconfid
 date: "2025-04-05T17:00:00Z"
 excerpt: "Your psychology determines your success in forex trading more than your strategy. This comprehensive guide reveals how to master emotions and make rational trading decisions."
 tags: ["trading psychology", "emotions", "discipline", "mental game", "forex"]
-ogImage: "https://www.currencystrengthsmeters.com/og-cache/trading-psychology.jpg"
+ogImage: "https://www.currencystrengthsmeters.com/og-cache/forex-trading-psychology-mastering-emotions.jpg"
 ---
 
 ## The Reality: Psychology > Strategy
