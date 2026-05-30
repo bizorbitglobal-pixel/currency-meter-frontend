@@ -5,9 +5,19 @@ import RedirectButton from "@/components/RedirectButton";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata = {
-  title: "Privacy Policy | Currency Meter",
+  title: "Privacy Policy | Currency Strength Meter - Data Protection & Security",
   description:
-    "Read our Privacy Policy to learn how Currency Meter securely collects, stores, and protects your personal data while providing real-time forex analysis tools.",
+    "Read our Privacy Policy to understand how Currency Strength Meter protects your personal data. Learn about data collection, storage, security measures, and your privacy rights under GDPR and CCPA.",
+  keywords: [
+    "privacy policy",
+    "data protection",
+    "GDPR compliance",
+    "CCPA",
+    "personal data",
+    "privacy rights",
+    "data security",
+    "privacy statement"
+  ]
 };
 
 

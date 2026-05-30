@@ -4,9 +4,17 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 
 // ✅ This works because this file is a Server Component by default
 export const metadata = {
-  title: "Terms & Conditions | Currency Meter",
+  title: "Terms & Conditions | Currency Strength Meter - Legal Agreement",
   description:
-    "Review our Terms and Conditions to understand user rights, responsibilities, and legal guidelines for using the Currency Meter forex strength platform.",
+    "Review our comprehensive Terms and Conditions for Currency Strength Meter. Understand user rights, responsibilities, disclaimers, and legal guidelines for using our forex trading tools.",
+  keywords: [
+    "terms and conditions",
+    "currency strength meter terms",
+    "forex tool agreement",
+    "user agreement",
+    "legal terms",
+    "disclaimer"
+  ]
 };
 
 

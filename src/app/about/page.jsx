@@ -4,9 +4,19 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 
 // ✅ SEO Metadata
 export const metadata = {
-  title: "About | Currency Strength Meter",
+  title: "About Currency Strength Meter | Live Forex Analysis Tool",
   description:
-    "Learn about Currency Strength Meter — a real-time forex analysis tool helping traders identify the strongest and weakest currencies for better decisions.",
+    "Learn about Currency Strength Meter—a free, real-time forex analysis tool helping traders identify the strongest and weakest currencies. Discover our mission, data sources, and why traders trust us.",
+  keywords: [
+    "about currency strength meter",
+    "forex analysis tool",
+    "currency strength analyzer",
+    "forex trading tool",
+    "real-time currency analysis",
+    "forex market data",
+    "currency correlation analysis",
+    "forex trading platform"
+  ],
 };
 
 export default function AboutPage() {

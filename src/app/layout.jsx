@@ -17,9 +17,9 @@ export const viewport = {
 };
 
 export const metadata = {
-  title: "Currency Strength Meter - Live Forex Strength Indicator",
+  title: "Currency Strength Meter - Live Forex Strength Indicator | Free Trading Tool",
   description:
-    "Currency Strength Meter is a live forex strength indicator that helps traders to identify the strongest and weakest currencies in real time.It exists for MT4, MT5, TradingView, and as a web-based tool. We can help you improve your forex trading strategy by providing accurate currency strength analysis.",
+    "Free real-time Currency Strength Meter helps forex traders identify the strongest and weakest currencies instantly. Analyze 28 forex pairs and spot high-probability trading opportunities with our live currency strength indicator.",
   keywords: keywords,
   applicationName: "Currency Strength Meter",
   appleWebApp: {
@@ -29,24 +29,25 @@ export const metadata = {
     "google-adsense-account": "ca-pub-7433238339097067",
   },
   openGraph: {
-    title: "Currency Strength Meter - Live Forex Strength Indicator",
+    title: "Currency Strength Meter - Free Live Forex Strength Indicator",
     description:
-      "Currency Strength Meter is a live forex strength indicator that helps traders to identify the strongest and weakest currencies in real time.It exists for MT4, MT5, TradingView, and as a web-based tool. We can help you improve your forex trading strategy by providing accurate currency strength analysis.",
+      "Free real-time Currency Strength Meter—your professional forex analysis tool. Identify strongest and weakest currencies, analyze 28 forex pairs, and make better trading decisions. Beginner-friendly, no fees.",
     url: "https://www.currencystrengthsmeters.com/",
+    siteName: "Currency Strength Meter",
     images: [
       {
         url: "https://www.currencystrengthsmeters.com/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Currency Strength Meter",
+        alt: "Currency Strength Meter - Live Forex Analysis Tool",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Live Currency Strength Meter - Forex Strength Indicator",
+    title: "Currency Strength Meter - Live Forex Analysis",
     description:
-      "Currency Strength Meter is a live forex strength indicator that helps traders to identify the strongest and weakest currencies in real time.It exists for MT4, MT5, TradingView, and as a web-based tool. We can help you improve your forex trading strategy by providing accurate currency strength analysis.",
+      "Free real-time forex strength meter. Identify strongest and weakest currencies, analyze forex pairs live, and improve your trading strategy with our professional currency analysis tool.",
     images: ["https://www.currencystrengthsmeters.com/og-image.png"],
   },
   icons: { icon: "/favicon.ico" },
@@ -62,35 +63,6 @@ export default function RootLayout({ children }) {
         {children}
 
         <Analytics />
-
-        {/* ✅ Gatekeeper Consent Scripts */}
-        <Script
-          src="https://cmp.gatekeeperconsent.com/min.js"
-          strategy="beforeInteractive"
-          data-cfasync="false"
-        />
-        <Script
-          src="https://the.gatekeeperconsent.com/cmp.min.js"
-          strategy="beforeInteractive"
-          data-cfasync="false"
-        />
-
-        {/* ✅ Ezoic Scripts */}
-        <Script
-          src="//www.ezojs.com/ezoic/sa.min.js"
-          strategy="afterInteractive"
-          async
-        />
-        <Script id="ezoic-init" strategy="afterInteractive">
-          {`
-            window.ezstandalone = window.ezstandalone || {};
-            ezstandalone.cmd = ezstandalone.cmd || [];
-          `}
-        </Script>
-        <Script
-          src="//ezoicanalytics.com/analytics.js"
-          strategy="afterInteractive"
-        />
 
         {/* ✅ JSON-LD: Organization Schema */}
         <Script

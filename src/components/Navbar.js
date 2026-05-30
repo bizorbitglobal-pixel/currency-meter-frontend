@@ -9,6 +9,9 @@ export default function Navbar() {
         <h1 className="text-xl font-bold text-gray-800">CSM</h1>
         <div className="flex items-center gap-4">
           {/* Internal blog link with Next.js Link */}
+          <Link href="/getting-started" className="text-gray-700 hover:text-blue-600">
+            Getting Started
+          </Link>
           <Link href="/blog" className="text-gray-700 hover:text-blue-600">
             Blog
           </Link>

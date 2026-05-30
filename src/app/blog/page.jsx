@@ -7,9 +7,9 @@ import AddSlot from "@/components/AddSlot";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata = {
-  title: "Blog | Currency Strength Meters",
+  title: "Forex Blog & Trading Guides | Currency Strength Meter Strategies",
   description:
-    "Explore expert forex trading articles, education, and tips about using currency strength meters, indicators, and strategies to boost your trading performance.",
+    "Expert forex trading articles, tutorials, and in-depth guides. Learn currency strength meter strategies, technical analysis, risk management, and forex market analysis to improve your trading performance.",
   keywords: [
     "forex blog",
     "currency strength meter articles",
@@ -21,6 +21,9 @@ export const metadata = {
     "forex trading guides",
     "currency analysis",
     "forex news",
+    "forex tutorials",
+    "trading psychology",
+    "forex risk management"
   ],
 };
 

@@ -5,9 +5,17 @@ import ContactForm from "@/components/ContactForm";
 
 // ✅ SEO Metadata
 export const metadata = {
-  title: "Contact Us | Currency Strength Meter",
+  title: "Contact Currency Strength Meter | Get Support & Feedback",
   description:
-    "Contact the Currency Strength Meter team for questions, feedback, or partnerships. We’re here to help with forex tools and live market insights.",
+    "Contact the Currency Strength Meter team for questions, feedback, technical support, or partnership opportunities. We're here to help improve your forex trading experience.",
+  keywords: [
+    "contact currency strength meter",
+    "forex tool support",
+    "customer support",
+    "technical assistance",
+    "feedback",
+    "currency strength meter help"
+  ]
 };
 
 export default function ContactPage() {
