@@ -21,6 +21,13 @@ export const metadata = {
 export default function GettingStartedPage() {
   return (
     <div className="font-sans max-w-4xl mx-auto px-4 py-10 space-y-8">
+      <div className="bg-red-50 dark:bg-red-900/20 border-2 border-red-300 dark:border-red-700 p-6 rounded-lg">
+        <h2 className="text-lg font-bold text-red-700 dark:text-red-300 mb-2">⚠️ Important Disclaimer</h2>
+        <p className="text-sm text-red-600 dark:text-red-200 mb-2">
+          <strong>RISK WARNING:</strong> Forex trading involves substantial risk of loss and is not suitable for all investors. The Currency Strength Meter is an educational tool only and does not constitute financial, investment, or trading advice. Past performance does not guarantee future results. Always use a demo account first and never risk more than you can afford to lose. Consult a qualified financial advisor before trading.
+        </p>
+      </div>
+
       <h1 className="text-4xl font-bold mb-4">Getting Started with Currency Strength Meter</h1>
       <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
         Welcome! This comprehensive guide will walk you through everything you need to know to start using the Currency Strength Meter effectively for your forex trading journey.

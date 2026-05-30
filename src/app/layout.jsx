@@ -4,6 +4,7 @@ import "./globals.css";
 import keywords from "./keywords.json";
 import { Analytics } from "@vercel/analytics/next";
 import { Inter } from "next/font/google";
+import CookieConsent from "@/components/CookieConsent";
 
 const inter = Inter({ subsets: ["latin"] });
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -61,7 +62,7 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} ${inter.className}`}
       >
         {children}
-
+        <CookieConsent />
         <Analytics />
 
         {/* ✅ JSON-LD: Organization Schema */}

@@ -26,6 +26,14 @@ export default function AboutPage() {
       <div className="mb-6">
         <Breadcrumbs />
       </div>
+      
+      {/* DISCLAIMER BOX */}
+      <div className="bg-yellow-50 dark:bg-yellow-900/20 border-2 border-yellow-300 dark:border-yellow-700 p-4 rounded-lg">
+        <p className="text-sm text-yellow-700 dark:text-yellow-200">
+          <strong>Educational Tool Only:</strong> Currency Strength Meter is provided for educational purposes. Forex trading carries substantial risk. Past results are not indicative of future results. Always conduct your own research and consult with a qualified financial advisor.
+        </p>
+      </div>
+
       <AddSlot />
       <div className="relative isolate">
         <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-transparent dark:from-gray-900/50 -z-10" />
@@ -39,7 +47,6 @@ export default function AboutPage() {
           strength and weakness. We aim to help traders make informed trading
           decisions through clear data visualization, comprehensive live forex analytics, and educational resources. We believe that access to institutional-grade momentum data should be free and accessible to retail traders worldwide.
         </p>
-        <AddSlot />
       </section>
 
       <section>
@@ -51,7 +58,6 @@ export default function AboutPage() {
           minors, or exotics, our tool helps you quickly assess market momentum,
           spot trending markets, and avoid choppy, low-volatility conditions. We also provide educational blogs to help you integrate these tools into your daily trading strategies.
         </p>
-        <AddSlot />
       </section>
 
       <section>
@@ -63,7 +69,6 @@ export default function AboutPage() {
           for day traders, scalpers, swing traders, and professional forex analysts
           worldwide. We take pride in offering a tool that eliminates the need for complex, manual indicator analysis.
         </p>
-        <AddSlot />
       </section>
 
       <section>
@@ -75,7 +80,6 @@ export default function AboutPage() {
           <strong>strongest</strong> and <strong>weakest</strong>
           currencies instantly. By pairing the strongest currency against the weakest, traders can find the pairs with the highest probability of strong directional movement.
         </p>
-        <AddSlot />
       </section>
 
       <section>
@@ -86,7 +90,6 @@ export default function AboutPage() {
           enhance our tools with the latest technology and user-focused
           features.
         </p>
-        <AddSlot />
       </section>
 
       <section>
@@ -98,8 +101,16 @@ export default function AboutPage() {
             Contact Page
           </a>{" "}
           to share suggestions or inquiries.
+        </p>        <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+          <strong>Email:</strong> bizorbit.global@gmail.com
         </p>
       </section>
+
+      <section>
+        <h2 className="text-xl font-semibold mb-2">Disclaimer & Risk Disclosure</h2>
+        <p className="text-sm bg-red-50 dark:bg-red-900/20 p-4 rounded-lg border border-red-200 dark:border-red-800">
+          <strong>IMPORTANT DISCLAIMER:</strong> Currency Strength Meter is an educational tool only and does not constitute financial, investment, or trading advice. Forex and derivatives trading carries a high level of risk and is not suitable for all investors. You may lose some or all of your invested capital. Always use a demo account first, never risk money you cannot afford to lose, and consult with a qualified financial advisor before making any trading decisions. Past performance is not indicative of future results.
+        </p>      </section>
 
       <AddSlot />
 
