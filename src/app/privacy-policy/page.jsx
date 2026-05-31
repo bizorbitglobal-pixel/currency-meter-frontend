@@ -79,12 +79,46 @@ export default function PrivacyPolicy() {
           We would like to make sure you are fully aware of all of your data protection rights (GDPR). Every user within the European Union is entitled to the following: The right to access, The right to rectification, The right to erasure, The right to restrict processing, The right to object to processing, and The right to data portability. If you make a request, we have one month to respond to you.
         </p>
       </section>
+
+      <section>
+        <h2 className="text-xl font-semibold mb-2">6. Cookie Management & Consent</h2>
+        <p className="text-gray-700 dark:text-gray-300">
+          We display a cookie consent banner on your first visit. By clicking "Accept All", you consent to the use of all cookies including those for advertising (Google AdSense) and analytics (Google Analytics). You can change your preferences or withdraw consent at any time by clearing your browser cookies.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-xl font-semibold mb-2">7. Third-Party Services</h2>
+        <p className="text-gray-700 dark:text-gray-300">
+          Our website uses the following third-party services:
+        </p>
+        <ul className="list-disc pl-6 text-gray-700 dark:text-gray-300 mt-2">
+          <li><strong>Google Analytics:</strong> For tracking website usage and improving user experience</li>
+          <li><strong>Google AdSense:</strong> For displaying personalized advertisements</li>
+          <li><strong>Vercel Analytics:</strong> For monitoring site performance</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 className="text-xl font-semibold mb-2">8. Data Security</h2>
+        <p className="text-gray-700 dark:text-gray-300">
+          We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the internet or electronic storage is 100% secure.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="text-xl font-semibold mb-2">9. Contact Us</h2>
+        <p className="text-gray-700 dark:text-gray-300">
+          If you have any questions or concerns about our privacy practices, please contact us at: <strong>bizorbit.global@gmail.com</strong>
+        </p>
+      </section>
       <RedirectButton />
 
 
       <footer className="mt-20 py-10 border-t text-gray-500 text-sm">
         <div className="max-w-4xl mx-auto text-center">
           <p>© 2025 Currency Strength Meter. All rights reserved.</p>
+          <p className="mt-2 text-xs">Last Updated: May 31, 2026</p>
 
         </div>
       </footer>
