@@ -1,5 +1,4 @@
 import AddSlot from "@/components/AddSlot";
-import RedirectButton from "@/components/RedirectButton";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 // ✅ SEO Metadata
@@ -35,10 +34,6 @@ export default function AboutPage() {
       </div>
 
       <AddSlot />
-      <div className="relative isolate">
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-transparent dark:from-gray-900/50 -z-10" />
-        <RedirectButton />
-      </div>
       <section>
         <h2 className="text-xl font-semibold mb-2">Our Mission</h2>
         <p>

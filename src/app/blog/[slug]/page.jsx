@@ -9,6 +9,7 @@ import { remark } from "remark";
 import remarkGfm from "remark-gfm";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
+import ExnessCTA from "@/components/ExnessCTA";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
@@ -249,10 +250,13 @@ export default async function BlogDetail({ params }) {
         <div className="overflow-x-auto no-scrollbar">
           <BlogTabs />
         </div>
-        <div className="relative isolate">
-          <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-transparent dark:from-gray-900/50 -z-10" />
+
+        <ExnessCTA />
+
+        <div className="mt-10">
           <RedirectButton />
         </div>
+
         <div className="block lg:hidden mt-16">
           <TableOfContents toc={toc} />
         </div>

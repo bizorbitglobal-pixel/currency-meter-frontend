@@ -1,6 +1,7 @@
 import Link from "next/link";
 import AddSlot from "@/components/AddSlot";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import ExnessCTA from "@/components/ExnessCTA";
 
 export const metadata = {
   title: "Getting Started with Currency Strength Meter | Forex Trading Guide",
@@ -33,7 +34,6 @@ export default function GettingStartedPage() {
         Welcome! This comprehensive guide will walk you through everything you need to know to start using the Currency Strength Meter effectively for your forex trading journey.
       </p>
       <Breadcrumbs />
-      <AddSlot />
 
       {/* Step 1 */}
       <section className="space-y-4">
@@ -53,8 +53,6 @@ export default function GettingStartedPage() {
         </p>
       </section>
 
-      <AddSlot />
-
       {/* Step 2 */}
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold mb-3">Step 2: Understanding the Strength Scores</h2>
@@ -68,8 +66,6 @@ export default function GettingStartedPage() {
           </p>
         </div>
       </section>
-
-      <AddSlot />
 
       {/* Step 3 */}
       <section className="space-y-4">
@@ -96,8 +92,6 @@ export default function GettingStartedPage() {
         </p>
       </section>
 
-      <AddSlot />
-
       {/* Step 4 */}
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold mb-3">Step 4: Use the Meter for Trend Confirmation</h2>
@@ -111,8 +105,6 @@ export default function GettingStartedPage() {
           </p>
         </div>
       </section>
-
-      <AddSlot />
 
       {/* Step 5 */}
       <section className="space-y-4">
@@ -129,8 +121,6 @@ export default function GettingStartedPage() {
           Remember: The best trades occur when the strength meter shows clear, extreme readings (8-10 or 0-2). These indicate strong directional bias and high-probability setups.
         </p>
       </section>
-
-      <AddSlot />
 
       {/* Step 6 */}
       <section className="space-y-4">
@@ -151,8 +141,6 @@ export default function GettingStartedPage() {
           </div>
         </div>
       </section>
-
-      <AddSlot />
 
       {/* Step 7 */}
       <section className="space-y-4">
@@ -176,8 +164,6 @@ export default function GettingStartedPage() {
         </ol>
       </section>
 
-      <AddSlot />
-
       {/* Step 8 */}
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold mb-3">Step 8: Practice on a Demo Account First</h2>
@@ -193,8 +179,6 @@ export default function GettingStartedPage() {
           <li>Keep a trading journal to review your demo trades and learn from mistakes</li>
         </ul>
       </section>
-
-      <AddSlot />
 
       {/* Step 9 */}
       <section className="space-y-4">
@@ -214,8 +198,6 @@ export default function GettingStartedPage() {
           After 50-100 trades, you'll see patterns emerge. This data helps you understand your trading style, identify your strengths, and eliminate your weaknesses. The trading journal is one of the most underrated tools for trader development.
         </p>
       </section>
-
-      <AddSlot />
 
       {/* Step 10 */}
       <section className="space-y-4">

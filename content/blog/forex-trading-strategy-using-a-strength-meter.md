@@ -52,46 +52,6 @@ Do not incite FOMO (Fear Of Missing Out) and jump in immediately. Even strong tr
 2.  **Entry:** On the 1-hour chart, price dips to the 50 MA.
 3.  **Trigger:** A hammer candle forms on the 50 MA.
 4.  **Action:** BUY AUD/CAD.
-
-## The Strategy: Step-by-Step
-
-### Step 1: Identify the Outliers
-Open your Currency Strength Meter (available live on our homepage). You are looking for the extremes.
-*   **Strongest Currency:** The bar with the highest value (e.g., USD).
-*   **Weakest Currency:** The bar with the lowest value (e.g., JPY).
-
-**Action:** Pair them together. In this case, you would look to **Buy USD/JPY**.
-*Why?* You have one currency pushing the price up and the other pulling it down (or offering no resistance), creating a strong trend.
-
-### Step 2: Check the Timeframes
-A strength meter often shows real-time or short-term strength. Ensure this aligns with the higher timeframe trend.
-*   If the Meter says "Buy GBP/AUD", check the H4 or Daily chart of GBP/AUD.
-*   Is it in an uptrend? **Confluence found.**
-*   Is it hitting major resistance? **Caution warranted.**
-
-### Step 3: Wait for a Pullback (Entry)
-Do not incite FOMO (Fear Of Missing Out) and jump in immediately. Even strong trends have pullbacks.
-*   Switch to a lower timeframe (e.g., M15 or H1).
-*   Wait for price to retrace to a Moving Average (e.g., 20 EMA) or a local support level.
-*   Enter when price action shows signs of resuming the trend (e.g., a bullish engulfing candle).
-
-### Step 4: Set Stop Loss and Take Profit
-*   **Stop Loss:** Place it below the recent swing low of the pullback.
-*   **Take Profit:** Target the next major resistance level or use a trailing stop to ride the trend.
-
-## Example Trade Scenario
-
-**Market Context:**
-*   **AUD** is at 8.5 (Very Strong) due to positive economic data.
-*   **CAD** is at 2.1 (Weak) due to falling oil prices.
-
-**The Pair:** AUD/CAD.
-
-**Execution:**
-1.  **Chart Check:** AUD/CAD Daily chart shows a clean break of resistance.
-2.  **Entry:** On the 1-hour chart, price dips to the 50 MA.
-3.  **Trigger:** A hammer candle forms on the 50 MA.
-4.  **Action:** BUY AUD/CAD.
 5. **Stop Loss:** 50 pips below entry (just below 1-hour swing low)
 6. **Target:** Previous resistance level (1:2 risk-reward)
 7. **Result:** If it hits target, profit is $500. If stopped: loss is $250

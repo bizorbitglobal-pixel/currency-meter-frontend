@@ -1,5 +1,4 @@
 import AddSlot from "@/components/AddSlot";
-import RedirectButton from "@/components/RedirectButton";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 // ✅ This works because this file is a Server Component by default
@@ -26,10 +25,6 @@ export default function TermsPage() {
         <Breadcrumbs />
       </div>
       <AddSlot />
-      <div className="relative isolate">
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-transparent dark:from-gray-900/50 -z-10" />
-        <RedirectButton />
-      </div>
 
       <section>
         <h2 className="text-xl font-semibold mb-2">1. Introduction</h2>
@@ -84,15 +79,9 @@ export default function TermsPage() {
           In no event shall Currency Strength Meter, nor any of its officers, directors and employees, be held liable for anything arising out of or in any way connected with your use of this Website whether such liability is under contract, tort, or otherwise. Currency Strength Meter, including its officers, directors and employees shall not be held liable for any indirect, consequential or special liability arising out of or in any way related to your use of this Website, including but not limited to loss of profits, trading losses, or business interruption.
         </p>
       </section>
-      <RedirectButton />
-
-
-      <footer className="mt-20 py-10 border-t text-gray-500 text-sm">
-        <div className="max-w-4xl mx-auto text-center">
-          <p>© 2025 Currency Strength Meter. All rights reserved.</p>
-
-        </div>
-      </footer>
+      <div className="pt-8 text-sm text-gray-500 dark:text-gray-400">
+        <p>© 2025 Currency Strength Meter. All rights reserved.</p>
+      </div>
     </div>
   );
 }

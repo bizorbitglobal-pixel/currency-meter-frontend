@@ -1,17 +1,17 @@
-import Header from "@/components/Header";
 import H1Header from "@/components/H1Header";
 import CurrencyList from "@/components/CurrencyList";
 import Section from "@/components/Section";
-import Footer from "@/components/Footer";
 import Faqs from "@/components/Faqs";
 import AddSlot from "@/components/AddSlot";
 import AdBanner from "@/components/AddBanner";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import ExnessCTA from "@/components/ExnessCTA";
 import Link from "next/link";
 import Image from "next/image";
 import Script from "next/script";
+import { Exile } from "next/font/google";
 
 export default async function Home() {
   // Fetch recent posts
@@ -81,9 +81,7 @@ export default async function Home() {
     ],
   };
   return (
-    <main className="pt-20 md:pt-24 min-h-screen bg-gray-50 dark:bg-gray-900">
-      {/* Header */}
-      <Header />
+    <main className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Example ad slot (468x60 banner) */}
       {/* <AdBanner
         keyId="ef9445ea813717165ee0d59dc8f378c6"
@@ -300,6 +298,10 @@ export default async function Home() {
         </p>
       </Section>
 
+      <section className="max-w-6xl mx-auto px-4 py-8">
+        <ExnessCTA />
+      </section>
+
       {/* Financial Disclaimer */}
       <div className="max-w-6xl mx-auto px-4 py-8 mb-4 border-t border-gray-200 dark:border-gray-800">
         <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm text-gray-600 dark:text-gray-400">
@@ -395,7 +397,6 @@ export default async function Home() {
 
       {/* Footer */}
       <Faqs />
-      <Footer />
     </main>
   );
 }

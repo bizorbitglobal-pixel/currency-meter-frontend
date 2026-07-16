@@ -3,6 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import Link from "next/link";
 import RedirectButton from "@/components/RedirectButton";
+import ExnessCTA from "@/components/ExnessCTA";
 import AddSlot from "@/components/AddSlot";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
@@ -64,13 +65,15 @@ export default async function BlogPage({ searchParams }) {
         <Breadcrumbs />
       </div>
 
-      <div className="relative isolate">
+      {/* <div className="relative isolate">
         <div className="absolute inset-0 bg-gradient-to-b from-blue-50 to-transparent dark:from-gray-900/50 -z-10" />
         <RedirectButton />
-      </div>
+      </div> */}
+
+      <ExnessCTA />
       {/* <AddSlot /> */}
       {/* 📰 Blog Cards */}
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mt-5">
         {currentPosts.map((post) => {
 
           // Always use relative path for images in /og-cache

@@ -1,7 +1,6 @@
 // app/privacy-policy/page.js
 
 import AddSlot from "@/components/AddSlot";
-import RedirectButton from "@/components/RedirectButton";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata = {
@@ -29,7 +28,6 @@ export default function PrivacyPolicy() {
         <Breadcrumbs />
       </div>
       <AddSlot />
-      <RedirectButton />
 
       <section>
         <h2 className="text-xl font-semibold mb-2">1. Introduction</h2>
@@ -112,16 +110,10 @@ export default function PrivacyPolicy() {
           If you have any questions or concerns about our privacy practices, please contact us at: <strong>bizorbit.global@gmail.com</strong>
         </p>
       </section>
-      <RedirectButton />
-
-
-      <footer className="mt-20 py-10 border-t text-gray-500 text-sm">
-        <div className="max-w-4xl mx-auto text-center">
-          <p>© 2025 Currency Strength Meter. All rights reserved.</p>
-          <p className="mt-2 text-xs">Last Updated: May 31, 2026</p>
-
-        </div>
-      </footer>
+      <div className="pt-8 text-sm text-gray-500 dark:text-gray-400">
+        <p>© 2025 Currency Strength Meter. All rights reserved.</p>
+        <p className="mt-2 text-xs">Last Updated: May 31, 2026</p>
+      </div>
     </div>
   );
 }
