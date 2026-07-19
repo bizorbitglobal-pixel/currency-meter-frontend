@@ -14,6 +14,7 @@ export default function H1Header() {
     <div className="relative flex flex-col items-center justify-center text-center py-4 select-none px-2">
       {/* Main Heading */}
       <h1
+        data-no-linkify
         className={`
           text-2xl sm:text-4xl font-extrabold tracking-wide transition-all duration-300
           ${

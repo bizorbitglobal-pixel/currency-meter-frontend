@@ -110,10 +110,10 @@ export default function PrivacyPolicy() {
           If you have any questions or concerns about our privacy practices, please contact us at: <strong>bizorbit.global@gmail.com</strong>
         </p>
       </section>
-      <div className="pt-8 text-sm text-gray-500 dark:text-gray-400">
+      {/* <div className="pt-8 text-sm text-gray-500 dark:text-gray-400">
         <p>© 2025 Currency Strength Meter. All rights reserved.</p>
         <p className="mt-2 text-xs">Last Updated: May 31, 2026</p>
-      </div>
+      </div> */}
     </div>
   );
 }

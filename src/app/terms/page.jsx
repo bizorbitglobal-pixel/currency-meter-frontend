@@ -79,9 +79,9 @@ export default function TermsPage() {
           In no event shall Currency Strength Meter, nor any of its officers, directors and employees, be held liable for anything arising out of or in any way connected with your use of this Website whether such liability is under contract, tort, or otherwise. Currency Strength Meter, including its officers, directors and employees shall not be held liable for any indirect, consequential or special liability arising out of or in any way related to your use of this Website, including but not limited to loss of profits, trading losses, or business interruption.
         </p>
       </section>
-      <div className="pt-8 text-sm text-gray-500 dark:text-gray-400">
+      {/* <div className="pt-8 text-sm text-gray-500 dark:text-gray-400">
         <p>© 2025 Currency Strength Meter. All rights reserved.</p>
-      </div>
+      </div> */}
     </div>
   );
 }

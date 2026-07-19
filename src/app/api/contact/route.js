@@ -2,14 +2,28 @@ export const runtime = "nodejs";
 import nodemailer from "nodemailer";
 
 // Create a transporter (using Gmail or your email service)
-// For production, use environment variables for credentials
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER || "your-email@gmail.com",
-    pass: process.env.EMAIL_PASSWORD || "your-app-password",
-  },
-});
+// For production, set `EMAIL_USER` and `EMAIL_PASSWORD` in .env.local
+let transporter;
+if (!process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD) {
+  // In development or when credentials are missing, provide a noop transporter
+  // to avoid throwing SMTP auth errors. This prevents accidental email sends
+  // during local development.
+  transporter = {
+    sendMail: async (mailOptions) => {
+      // Log the mail instead of sending
+      console.log("[dev-smtp] Skipping sendMail, mailOptions:", mailOptions);
+      return Promise.resolve({ accepted: [mailOptions.to], messageId: "dev-local" });
+    },
+  };
+} else {
+  transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASSWORD,
+    },
+  });
+}
 
 export async function POST(request) {
   try {

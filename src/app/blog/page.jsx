@@ -70,7 +70,6 @@ export default async function BlogPage({ searchParams }) {
         <RedirectButton />
       </div> */}
 
-      <ExnessCTA />
       {/* <AddSlot /> */}
       {/* 📰 Blog Cards */}
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 mt-5">
@@ -135,6 +134,10 @@ export default async function BlogPage({ searchParams }) {
           );
         })}
       </div>
+      
+      <div className="mt-10">
+     <ExnessCTA />
+     </div>
 
       {/* 🧭 Pagination Controls */}
       {totalPages > 1 && (
@@ -195,11 +198,11 @@ export default async function BlogPage({ searchParams }) {
         </div>
       )}
 
-      <footer className="mt-20 py-10 border-t border-gray-200 dark:border-gray-800 text-gray-500 text-sm">
+      {/* <footer className="mt-20 py-10 border-t border-gray-200 dark:border-gray-800 text-gray-500 text-sm">
         <div className="max-w-4xl mx-auto text-center">
           <p>© 2025 Currency Strength Meter. All rights reserved.</p>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 }

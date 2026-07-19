@@ -251,15 +251,14 @@ export default async function BlogDetail({ params }) {
           <BlogTabs />
         </div>
 
-        <ExnessCTA />
-
-        <div className="mt-10">
+        <div className="mt-0">
           <RedirectButton />
         </div>
 
-        <div className="block lg:hidden mt-16">
+        <div className="block lg:hidden mt-0">
           <TableOfContents toc={toc} />
         </div>
+        
         <AddSlot />
         {/* --- Markdown Content --- */}
         <section
@@ -274,9 +273,9 @@ export default async function BlogDetail({ params }) {
           "
           dangerouslySetInnerHTML={{ __html: contentHtml }}
         />
-
+        
         {/* --- Key Points --- */}
-        <section id="key-points" className="mt-16">
+        {/* <section id="key-points" className="mt-16">
           <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-100">
             🔹 Key Takeaways
           </h2>
@@ -285,7 +284,11 @@ export default async function BlogDetail({ params }) {
             <li>Combine with price action for accurate entries.</li>
             <li>Stay aware of major economic events.</li>
           </ul>
-        </section>
+        </section> */}
+        <div className="mt-10">
+
+        <ExnessCTA />
+        </div>
 
         {/* --- Comments Section --- */}
         {/* <section id="comments" className="mt-16">
@@ -303,7 +306,7 @@ export default async function BlogDetail({ params }) {
         </div>
 
         {/* --- Footer --- */}
-        <hr className="my-12 border-gray-200 dark:border-gray-700" />
+        {/* <hr className="my-12 border-gray-200 dark:border-gray-700" />
         <footer className="text-center">
           <p className="text-gray-600 dark:text-gray-300 text-sm">
             © {new Date().getFullYear()}{" "}
@@ -314,7 +317,7 @@ export default async function BlogDetail({ params }) {
             </strong>{" "}
             – Empowering Forex Traders Worldwide 🌍
           </p>
-        </footer>
+        </footer> */}
       </div>
       {/* --- Sidebar (Desktop Only) --- */}
       <div className="hidden lg:block space-y-12">

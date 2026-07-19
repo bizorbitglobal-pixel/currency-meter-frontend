@@ -7,11 +7,11 @@ import AdBanner from "@/components/AddBanner";
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
-import ExnessCTA from "@/components/ExnessCTA";
 import Link from "next/link";
 import Image from "next/image";
 import Script from "next/script";
 import { Exile } from "next/font/google";
+import ExnessCTA from "@/components/ExnessCTA";
 
 export default async function Home() {
   // Fetch recent posts
@@ -98,6 +98,32 @@ export default async function Home() {
       <div className="max-w-6xl mx-auto w-full px-4 py-6">
         <CurrencyList />
       </div>
+
+      <section className="max-w-4xl mx-auto px-4 pb-8">
+        <div className="rounded-2xl border border-yellow-400 bg-slate-950 p-6 shadow-2xl shadow-yellow-500/10">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-yellow-300">
+                Start Trading Today
+              </p>
+              <h3 className="mt-2 text-2xl font-bold text-yellow-200">
+                Open your Exness account
+              </h3>
+              <p className="mt-2 text-sm text-slate-300">
+                Launch your trading journey through a simple account setup.
+              </p>
+            </div>
+            <a
+              href="https://one.exnessonelink.com/a/txt6jvjtma"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-full bg-yellow-400 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-yellow-300"
+            >
+              Start Trading
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* Introductory Section */}
       <section className="max-w-4xl mx-auto px-4 py-8">
@@ -298,9 +324,12 @@ export default async function Home() {
         </p>
       </Section>
 
-      <section className="max-w-6xl mx-auto px-4 py-8">
-        <ExnessCTA />
-      </section>
+     <div className="max-w-6xl mx-auto px-4 py-8">
+        <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm text-gray-600 dark:text-gray-400">
+          <ExnessCTA />
+        </div>
+      </div>
+      
 
       {/* Financial Disclaimer */}
       <div className="max-w-6xl mx-auto px-4 py-8 mb-4 border-t border-gray-200 dark:border-gray-800">

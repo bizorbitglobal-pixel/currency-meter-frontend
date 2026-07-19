@@ -34,7 +34,7 @@ export default function GettingStartedPage() {
         Welcome! This comprehensive guide will walk you through everything you need to know to start using the Currency Strength Meter effectively for your forex trading journey.
       </p>
       <Breadcrumbs />
-
+      <ExnessCTA />
       {/* Step 1 */}
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold mb-3">Step 1: Access the Currency Strength Meter</h2>

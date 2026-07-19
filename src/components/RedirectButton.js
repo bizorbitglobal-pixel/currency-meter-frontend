@@ -7,14 +7,14 @@ import { motion } from "framer-motion";
 
 export default function RedirectButton() {
   return (
-    <div className="flex justify-center mt-8 mb-14">
+    <div className="mt-2 mb-2 flex w-full justify-center px-4">
       <Link href="/" passHref>
         <motion.button
-          whileHover={{ scale: 1.04 }}
+          whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           transition={{ type: "spring", stiffness: 250, damping: 15 }}
           className="
-            relative flex items-center justify-center gap-3 px-8 py-4
+            relative flex w-full max-w-3xl items-center justify-center gap-3 px-8 py-4
             text-lg font-semibold
             rounded-xl overflow-hidden
             bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500

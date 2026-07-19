@@ -124,7 +124,7 @@ export default function CurrencyList() {
               </span>
             </div>
 
-            <h2 className="text-lg sm:text-xl font-bold text-gray-900 text-center order-first sm:order-none">
+            <h2 data-no-linkify className="text-lg sm:text-xl font-bold text-gray-900 text-center order-first sm:order-none">
               Currency Strength Meter
             </h2>
 

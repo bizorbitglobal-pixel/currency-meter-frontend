@@ -7,6 +7,7 @@ import { Inter } from "next/font/google";
 import CookieConsent from "@/components/CookieConsent";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ClickableBrandText from "@/components/ClickableBrandText";
 
 const inter = Inter({ subsets: ["latin"] });
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -68,6 +69,7 @@ export default function RootLayout({ children }) {
           <div className="pt-20 md:pt-24">{children}</div>
           <Footer />
         </div>
+        <ClickableBrandText />
         <CookieConsent />
         <Analytics />
 
