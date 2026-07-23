@@ -189,7 +189,7 @@ export default function CurrencyList() {
                 </div>
 
                 <p className="mt-3 text-right text-xs text-gray-500 dark:text-gray-400">
-                  - Data refreshed every 60 secs
+                  - Data refreshes every 60 secs
                 </p>
 
                 {/* Current strongest and weakest currencies
