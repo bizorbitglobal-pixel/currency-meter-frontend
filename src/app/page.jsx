@@ -162,7 +162,7 @@ export default async function Home() {
                 ⚡ Real-Time Updates
               </p>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Data refreshes every few seconds to reflect the latest market
+                Data updated every minute to reflect the latest available market
                 conditions.
               </p>
             </div>
