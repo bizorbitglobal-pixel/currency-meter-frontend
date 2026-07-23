@@ -6,6 +6,8 @@ import RedirectButton from "@/components/RedirectButton";
 import ExnessCTA from "@/components/ExnessCTA";
 import AddSlot from "@/components/AddSlot";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import AuthorCard from "@/components/AuthorCard";
+import { getAuthor } from "@/lib/authors";
 
 export const metadata = {
   title: "Forex Blog & Trading Guides | Currency Strength Meter Strategies",
@@ -113,6 +115,7 @@ export default async function BlogPage({ searchParams }) {
                 <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-3">
                   {post.excerpt || post.description}
                 </p>
+                <AuthorCard author={getAuthor(post.author)} compact />
               </div>
 
               <div className="flex items-center justify-between text-xs text-gray-500 mt-4">

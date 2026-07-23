@@ -64,7 +64,7 @@ export default function PrivacyPolicy() {
       <section>
         <h2 className="text-xl font-semibold mb-2">4. Google DoubleClick DART Cookie</h2>
         <p className="text-gray-700 dark:text-gray-300">
-          Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to www.currencystrengthsmeters.com and other sites on the internet. However, visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy Policy at the following URL – <a href="https://policies.google.com/technologies/ads" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">https://policies.google.com/technologies/ads</a>. We use Google AdSense Advertising on our website to provide relevant ads. Google's advertising requirements can be summed up by Google's Advertising Principles.
+          Google is one of a third-party vendor on our site. It also uses cookies, known as DART cookies, to serve ads to our site visitors based upon their visit to www.currencystrengthsmeters.com and other sites on the internet. However, visitors may choose to decline the use of DART cookies by visiting the Google ad and content network Privacy Policy at the following URL – <a href="https://policies.google.com/technologies/ads" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">https://policies.google.com/technologies/ads</a>. We may use third-party advertising services, including Google AdSense, subject to approval and availability.
         </p>
       </section>
 

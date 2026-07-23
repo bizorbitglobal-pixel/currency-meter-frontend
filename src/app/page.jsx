@@ -11,6 +11,8 @@ import Link from "next/link";
 import Image from "next/image";
 import Script from "next/script";
 import { Exile } from "next/font/google";
+import AuthorCard from "@/components/AuthorCard";
+import { getAuthor } from "@/lib/authors";
 import ExnessCTA from "@/components/ExnessCTA";
 
 export default async function Home() {
@@ -324,11 +326,11 @@ export default async function Home() {
         </p>
       </Section>
 
-     <div className="max-w-6xl mx-auto px-4 py-8">
+     {/* <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm text-gray-600 dark:text-gray-400">
           <ExnessCTA />
         </div>
-      </div>
+      </div> */}
       
 
       {/* Financial Disclaimer */}
@@ -402,6 +404,9 @@ export default async function Home() {
                     </p>
                   </div>
                 </Link>
+                <div className="px-5 pb-5">
+                  <AuthorCard author={getAuthor(post.author)} compact />
+                </div>
               </article>
             );
           })}

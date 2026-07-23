@@ -22,6 +22,8 @@ import RelatedPosts from "@/components/RelatedPosts";
 import AddSlot from "@/components/AddSlot";
 import AdBanner from "../../../components/AddBanner";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import AuthorCard from "@/components/AuthorCard";
+import { getAuthor } from "@/lib/authors";
 
 const blogDir = path.join(process.cwd(), "content/blog");
 
@@ -133,13 +135,14 @@ export default async function BlogDetail({ params }) {
     title,
     date,
     tags = [],
-    author = "Currency Strength Meter Team",
+    author,
     authorImage = "/author-avatar.png",
     ogImage,
     contentHtml,
     readingTime,
     toc,
   } = post;
+  const authorProfile = getAuthor(author);
 
   const safeOgImage =
     ogImage && ogImage.trim() !== ""
@@ -222,13 +225,8 @@ export default async function BlogDetail({ params }) {
           )}
 
           {/* Author Info */}
-          <div className="flex justify-center items-center gap-3 mt-4">
-            <div>
-              <p className="font-medium text-gray-900 dark:text-gray-100">
-                {author}
-              </p>
-              <p className="text-sm text-gray-500">Forex Analyst & Writer</p>
-            </div>
+          <div className="mx-auto mt-4 max-w-sm">
+            <AuthorCard author={authorProfile} compact />
           </div>
 
           {/* Tags */}
