@@ -41,7 +41,7 @@ export default function Footer() {
         {/* AdSense Compliance Notice */}
         <div className="mt-6 pt-6 border-t border-gray-700 text-xs text-gray-500">
           <p>
-            This site uses Google AdSense for personalized advertising. We respect your privacy and comply with GDPR and CCPA regulations. See our Privacy Policy for more information.
+            We may use third-party advertising services, including Google AdSense, subject to approval and availability. We respect your privacy and comply with GDPR and CCPA regulations. See our Privacy Policy for more information.
           </p>
         </div>
       </div>

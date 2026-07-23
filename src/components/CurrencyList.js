@@ -84,6 +84,15 @@ export default function CurrencyList() {
     </div>
   );
 
+  const strongest = currencies.reduce(
+    (best, currency) => (!best || currency.strength > best.strength ? currency : best),
+    null
+  );
+  const weakest = currencies.reduce(
+    (weak, currency) => (!weak || currency.strength < weak.strength ? currency : weak),
+    null
+  );
+
   return (
     <>
       {/* Custom shimmer animation */}
@@ -178,6 +187,30 @@ export default function CurrencyList() {
                     <span className="opacity-90">Strong</span>
                   </div>
                 </div>
+
+                <p className="mt-3 text-right text-xs text-gray-500 dark:text-gray-400">
+                  - Data refreshed every 60 secs
+                </p>
+
+                {/* Current strongest and weakest currencies
+                {strongest && weakest && (
+                  <section className="mt-6 rounded-xl border border-blue-200 bg-blue-50/60 p-4 dark:border-blue-900 dark:bg-blue-950/30">
+                    <div className="grid grid-cols-1 gap-3 text-center sm:grid-cols-3">
+                      <div className="rounded-lg bg-white p-3 dark:bg-gray-900">
+                        <p className="text-xs font-medium text-gray-500 dark:text-gray-400">Max currency</p>
+                        <p className="mt-1 text-xl font-bold text-green-600">{strongest.code}</p>
+                      </div>
+                      <div className="rounded-lg bg-white p-3 dark:bg-gray-900">
+                        <p className="text-xs font-medium text-gray-500 dark:text-gray-400">Min currency</p>
+                        <p className="mt-1 text-xl font-bold text-red-600">{weakest.code}</p>
+                      </div>
+                      <div className="rounded-lg bg-white p-3 dark:bg-gray-900">
+                        <p className="text-xs font-medium text-gray-500 dark:text-gray-400">Potential pair</p>
+                        <p className="mt-1 text-xl font-bold text-blue-700 dark:text-blue-300">{strongest.code}/{weakest.code}</p>
+                      </div>
+                    </div>
+                  </section>
+                )} */}
               </>
             )}
           </div>
