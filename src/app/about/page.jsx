@@ -73,7 +73,7 @@ export default function AboutPage() {
           the absolute relative strength of each individual currency (USD, EUR, GBP, JPY, CAD, CHF, AUD, NZD). The result is presented in an
           easy-to-read visual dashboard, allowing users to identify the{" "}
           <strong>strongest</strong> and <strong>weakest</strong>
-          currencies instantly. By pairing the strongest currency against the weakest, traders can find the pairs with the highest probability of strong directional movement.
+          currencies instantly. By pairing the strongest currency against the weakest, traders can identify currency pairs with the largest relative strength divergence, which may indicate stronger market momentum.
         </p>
       </section>
 

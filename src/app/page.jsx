@@ -45,7 +45,7 @@ export default async function Home() {
         name: "What is a Currency Strength Meter?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "A Currency Strength Meter is an advanced forex trading tool that measures and displays the relative strength of major currencies in real-time. It provides a consolidated view of all major currencies (USD, EUR, GBP, JPY, CAD, CHF, AUD, NZD) and their individual strength scores on a single dashboard. This enables traders to quickly identify which currencies are gaining momentum and which are losing ground, making it easier to spot high-probability trading opportunities.",
+          text: "A Currency Strength Meter is an advanced forex trading tool that measures and displays the relative strength of major currencies in real-time. It provides a consolidated view of all major currencies (USD, EUR, GBP, JPY, CAD, CHF, AUD, NZD) and their individual strength scores on a single dashboard. This enables traders to quickly identify which currencies are gaining momentum and which are losing ground, making it easier to identify potential trading opportunities.",
         },
       },
       {
@@ -213,9 +213,9 @@ export default async function Home() {
         <p>
           Traders use this tool to quickly identify which currencies are gaining
           momentum (strengthening) and which are losing ground (weakening). By
-          isolating the absolute strength of a single currency, traders can spot
-          high-probability trading setups more efficiently, avoiding sideways or
-          choppy markets where neither currency has a clear advantage.
+          isolating the absolute strength of a single currency, traders can 
+          identify potential trading opportunities 
+          and better understand market momentum.
         </p>
         <ul className="list-disc pl-5 mt-2 space-y-1">
           <li>
@@ -265,16 +265,10 @@ export default async function Home() {
         sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1200px"
       >
         <p>
-          In the fast-paced forex market, delayed data can lead to missed
-          opportunities or losing trades. Our live currency strength meter
-          updates continuously in real-time, pulling tick-by-tick data directly
-          from global forex liquidity providers.
+          The forex market moves around the clock, and timely information is essential for monitoring currency momentum. Our Currency Strength Meter refreshes every minute, analyzing price movements across 28 major forex currency pairs to calculate the relative strength of the eight major currencies.
         </p>
         <p>
-          This ensures that whether you are trading the London open, the New
-          York overlap, or the quieter Asian session, you always have the most
-          accurate and up-to-date reflection of market sentiment and momentum
-          before executing a trade.
+          Whether you're trading during the London, New York, or Asian session, you'll always have an up-to-date view of currency strength to help identify strong and weak currencies in the market.
         </p>
       </Section>
 
