@@ -178,9 +178,10 @@ export default async function BlogDetail({ params }) {
   const defaultPosts = relatedPosts.slice(0, 10);
 
   return (
-    <article className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-12">
-      {/* --- Main Content --- */}
-      <div>
+    <div className="max-w-7xl mx-auto px-6 py-16">
+      <article className="grid grid-cols-1 gap-12 lg:grid-cols-[1fr_280px]">
+        {/* --- Main Content --- */}
+        <div>
         {/* --- Header --- */}
         <header className="mb-12 text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-3 text-gray-900 dark:text-gray-100">
@@ -298,11 +299,6 @@ export default async function BlogDetail({ params }) {
             and questions here.
           </p>
         </section> */}
-        {/* --- Mobile TOC + Related Posts --- */}
-        <div className="block lg:hidden mt-16">
-          <RelatedPosts relatedPosts={relatedPosts} />
-        </div>
-
         {/* --- Footer --- */}
         {/* <hr className="my-12 border-gray-200 dark:border-gray-700" />
         <footer className="text-center">
@@ -316,12 +312,14 @@ export default async function BlogDetail({ params }) {
             – Empowering Forex Traders Worldwide 🌍
           </p>
         </footer> */}
-      </div>
-      {/* --- Sidebar (Desktop Only) --- */}
-      <div className="hidden lg:block space-y-12">
-        <TableOfContents toc={toc} />
-        <RelatedPosts relatedPosts={relatedPosts} />
-      </div>
-    </article>
+        </div>
+        {/* --- Sidebar (Desktop Only) --- */}
+        <div className="hidden lg:block space-y-12">
+          <TableOfContents toc={toc} />
+        </div>
+      </article>
+
+      <RelatedPosts relatedPosts={relatedPosts} layout="horizontal" className="mt-16" />
+    </div>
   );
 }
