@@ -61,30 +61,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Syncs dark/light state instantly before paint & updates dynamically on system changes */}
+        {/* Enforces Light Mode by default & only applies dark mode if explicitly saved in localStorage */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
                 try {
-                  function updateTheme() {
-                    var storedTheme = localStorage.getItem('theme');
-                    var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                    
-                    if (storedTheme === 'dark' || (!storedTheme && systemDark)) {
-                      document.documentElement.classList.add('dark');
-                    } else {
-                      document.documentElement.classList.remove('dark');
-                    }
-                  }
-
-                  updateTheme();
-
-                  var mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-                  if (mediaQuery.addEventListener) {
-                    mediaQuery.addEventListener('change', updateTheme);
-                  } else if (mediaQuery.addListener) {
-                    mediaQuery.addListener(updateTheme);
+                  var storedTheme = localStorage.getItem('theme');
+                  if (storedTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
                   }
                 } catch (e) {}
               })();
