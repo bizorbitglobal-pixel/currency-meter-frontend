@@ -1,9 +1,8 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import keywords from "./keywords.json";
 import { Analytics } from "@vercel/analytics/next";
-import { Inter } from "next/font/google";
 import CookieConsent from "@/components/CookieConsent";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -60,7 +59,39 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Syncs dark/light state instantly before paint & updates dynamically on system changes */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  function updateTheme() {
+                    var storedTheme = localStorage.getItem('theme');
+                    var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    
+                    if (storedTheme === 'dark' || (!storedTheme && systemDark)) {
+                      document.documentElement.classList.add('dark');
+                    } else {
+                      document.documentElement.classList.remove('dark');
+                    }
+                  }
+
+                  updateTheme();
+
+                  var mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+                  if (mediaQuery.addEventListener) {
+                    mediaQuery.addEventListener('change', updateTheme);
+                  } else if (mediaQuery.addListener) {
+                    mediaQuery.addListener(updateTheme);
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.className}`}
       >
