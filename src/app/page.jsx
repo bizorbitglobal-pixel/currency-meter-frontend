@@ -13,7 +13,6 @@ import Script from "next/script";
 import AuthorCard from "@/components/AuthorCard";
 import { getAuthor } from "@/lib/authors";
 import ExnessCTA from "@/components/ExnessCTA";
-import ThemeToggle from "@/components/ThemeToggle"; // [!code ++]
 
 export default async function Home() {
   // Fetch recent posts
@@ -85,10 +84,7 @@ export default async function Home() {
 
   return (
     <main className="relative min-h-screen bg-gray-50 dark:bg-gray-900">
-      {/* 🔘 Top Right Theme Toggle */}
-      <div className="absolute top-4 right-4 z-50">
-        <ThemeToggle />
-      </div>
+      
          {/* Example ad slot (468x60 banner) */}
       {/* <AdBanner
         keyId="ef9445ea813717165ee0d59dc8f378c6"
@@ -101,8 +97,8 @@ export default async function Home() {
       {/* H1 Heading */}
       <H1Header />
 
-      {/* Main Currency Strength Meter */}
-      <div className="max-w-6xl mx-auto w-full px-4 py-6">
+      {/* Main Currency Strength Meter (Tightened top margin on mobile) */}
+      <div className="max-w-6xl mx-auto w-full px-4 pt-1 pb-4 sm:py-6">
         <CurrencyList />
       </div>
 
