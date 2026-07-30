@@ -83,21 +83,13 @@ export default async function Home() {
   };
 
   return (
-    <main className="relative min-h-screen bg-gray-50 dark:bg-gray-900">
+    // Updated padding-top (pt-32 sm:pt-36) to give clean spacing below the dual header bar
+    <main className="relative min-h-screen bg-gray-50 dark:bg-gray-900 pt-8 sm:pt-12">
       
-         {/* Example ad slot (468x60 banner) */}
-      {/* <AdBanner
-        keyId="ef9445ea813717165ee0d59dc8f378c6"
-        srcDomain="www.highperformanceformat.com"
-        width={468}
-        height={60}
-        format="iframe"
-      /> */}
-
       {/* H1 Heading */}
       <H1Header />
 
-      {/* Main Currency Strength Meter (Tightened top margin on mobile) */}
+      {/* Main Currency Strength Meter */}
       <div className="max-w-6xl mx-auto w-full px-4 pt-1 pb-4 sm:py-6">
         <CurrencyList />
       </div>
@@ -196,6 +188,7 @@ export default async function Home() {
 
       {/* Ad below meter */}
       <AddSlot />
+
       {/* Informational SEO Sections */}
       <Section
         title="What is a Currency Strength Meter?"
@@ -320,13 +313,6 @@ export default async function Home() {
           a flat, ranging market where breakouts are likely to fail.
         </p>
       </Section>
-
-     {/* <div className="max-w-6xl mx-auto px-4 py-8">
-        <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg text-sm text-gray-600 dark:text-gray-400">
-          <ExnessCTA />
-        </div>
-      </div> */}
-      
 
       {/* Financial Disclaimer */}
       <div className="max-w-6xl mx-auto px-4 py-8 mb-4 border-t border-gray-200 dark:border-gray-800">
