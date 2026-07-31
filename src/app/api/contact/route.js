@@ -1,26 +1,26 @@
 export const runtime = "nodejs";
 import nodemailer from "nodemailer";
 
-// Create a transporter (using Gmail or your email service)
-// For production, set `EMAIL_USER` and `EMAIL_PASSWORD` in .env.local
-let transporter;
-if (!process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD) {
-  // In development or when credentials are missing, provide a noop transporter
-  // to avoid throwing SMTP auth errors. This prevents accidental email sends
-  // during local development.
-  transporter = {
-    sendMail: async (mailOptions) => {
-      // Log the mail instead of sending
-      console.log("[dev-smtp] Skipping sendMail, mailOptions:", mailOptions);
-      return Promise.resolve({ accepted: [mailOptions.to], messageId: "dev-local" });
-    },
-  };
-} else {
-  transporter = nodemailer.createTransport({
+// Initialize transporter
+function getTransporter() {
+  const user = process.env.EMAIL_USER;
+  const pass = process.env.EMAIL_PASSWORD;
+
+  if (!user || !pass) {
+    console.warn("⚠️ EMAIL_USER or EMAIL_PASSWORD missing in .env.local! Using dev log mode.");
+    return {
+      sendMail: async (mailOptions) => {
+        console.log("[dev-smtp] Skipping actual sendMail. Mail payload:", mailOptions);
+        return { accepted: [mailOptions.to], messageId: "dev-local" };
+      },
+    };
+  }
+
+  return nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASSWORD,
+      user: user,
+      pass: pass,
     },
   });
 }
@@ -46,38 +46,49 @@ export async function POST(request) {
       );
     }
 
-    // Send email to admin
+    const transporter = getTransporter();
+    const senderEmail = process.env.EMAIL_USER || "bizorbit.global@gmail.com";
+
+    // 1. Notification Email for Admin
     const adminMailOptions = {
-      from: process.env.EMAIL_USER || "noreply@currencystrengthmeters.com",
+      from: `"Currency Strength Meter" <${senderEmail}>`,
       to: "bizorbit.global@gmail.com",
-      subject: `New Contact Form Submission: ${subject || "No Subject"}`,
+      replyTo: email, // Lets you reply directly to the user from your Gmail inbox
+      subject: `New Contact Submission: ${subject || "No Subject"}`,
       html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject || "No Subject"}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, "<br>")}</p>
+        <div style="font-family: Arial, sans-serif; padding: 20px; color: #333;">
+          <h2 style="color: #2563eb;">New Contact Form Submission</h2>
+          <hr style="border: 0; border-top: 1px solid #e5e7eb; margin: 15px 0;">
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Sender Email:</strong> ${email}</p>
+          <p><strong>Subject:</strong> ${subject || "No Subject"}</p>
+          <p><strong>Message:</strong></p>
+          <div style="background-color: #f9fafb; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; white-space: pre-wrap;">
+            ${message.replace(/\n/g, "<br>")}
+          </div>
+        </div>
       `,
     };
 
-    // Send confirmation email to user
+    // 2. Auto-Confirmation Email for User
     const userMailOptions = {
-      from: process.env.EMAIL_USER || "noreply@currencystrengthmeters.com",
+      from: `"Currency Strength Meter" <${senderEmail}>`,
       to: email,
       subject: "We received your message - Currency Strength Meter",
       html: `
-        <h2>Hello ${name},</h2>
-        <p>Thank you for contacting Currency Strength Meter. We've received your message and will get back to you within 24-48 hours.</p>
-        <hr>
-        <p><strong>Your message:</strong></p>
-        <p>${message.replace(/\n/g, "<br>")}</p>
-        <hr>
-        <p>Best regards,<br>The Currency Strength Meter Team</p>
+        <div style="font-family: Arial, sans-serif; padding: 20px; color: #333;">
+          <h2>Hello ${name},</h2>
+          <p>Thank you for contacting Currency Strength Meter. We've received your message and will get back to you within 24-48 hours.</p>
+          <hr style="border: 0; border-top: 1px solid #e5e7eb; margin: 15px 0;">
+          <!-- <p><strong>Your message copy:</strong></p>
+          <p style="background-color: #f9fafb; padding: 12px; border-radius: 6px;">${message.replace(/\n/g, "<br>")}</p> -->
+          <!-- <hr style="border: 0; border-top: 1px solid #e5e7eb; margin: 15px 0;"> -->
+          <p>Best regards,<br><strong>The Currency Strength Meter Team</strong></p>
+        </div>
       `,
     };
 
-    // Send both emails
+    // Send both emails simultaneously
     await Promise.all([
       transporter.sendMail(adminMailOptions),
       transporter.sendMail(userMailOptions),
@@ -88,9 +99,9 @@ export async function POST(request) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Error sending email:", error);
+    console.error("❌ Error sending email:", error);
     return Response.json(
-      { error: "Failed to send email" },
+      { error: error.message || "Failed to send email" },
       { status: 500 }
     );
   }

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import AddSlot from "@/components/AddSlot";
+// import AddSlot from "@/components/AddSlot";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ExnessCTA from "@/components/ExnessCTA";
 
@@ -215,7 +215,7 @@ export default function GettingStartedPage() {
         </ul>
       </section>
 
-      <AddSlot />
+      {/* <AddSlot /> */}
 
       {/* Common Mistakes */}
       <section className="space-y-4 bg-red-50 dark:bg-red-900/20 p-6 rounded-lg">
@@ -229,8 +229,6 @@ export default function GettingStartedPage() {
           <li><strong>Trading Neutral Markets:</strong> Wait for clear strength readings (8-10 or 0-2) before risking money.</li>
         </ul>
       </section>
-
-      <AddSlot />
 
       {/* Conclusion */}
       <section className="space-y-4 bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg">
@@ -246,7 +244,6 @@ export default function GettingStartedPage() {
         </p>
       </section>
       <ExnessCTA />
-      <AddSlot />
     </div>
   );
 }

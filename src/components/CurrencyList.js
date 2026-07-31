@@ -84,15 +84,6 @@ export default function CurrencyList() {
     </div>
   );
 
-  const strongest = currencies.reduce(
-    (best, currency) => (!best || currency.strength > best.strength ? currency : best),
-    null
-  );
-  const weakest = currencies.reduce(
-    (weak, currency) => (!weak || currency.strength < weak.strength ? currency : weak),
-    null
-  );
-
   return (
     <>
       {/* Custom shimmer animation */}
@@ -111,7 +102,7 @@ export default function CurrencyList() {
         }
       `}</style>
 
-      <div className="flex justify-center py-4">
+      <div className="flex justify-center pb-4">
         <div className="bg-white shadow-lg rounded-2xl w-full max-w-6xl relative overflow-hidden">
           {/* Top loading bar */}
           {loading && (
@@ -120,9 +111,9 @@ export default function CurrencyList() {
             </div>
           )}
 
-          {/* Header */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-6 p-4 rounded-t-2xl bg-gray-50 border-b border-gray-200">
-            <div className="text-sm font-medium text-gray-700">
+          {/* Header - Configured with flex-row and justify-between for left/right alignment on mobile */}
+          <div className="flex flex-row items-center justify-between p-4 rounded-t-2xl bg-gray-50 border-b border-gray-200">
+            <div className="text-xs sm:text-sm font-medium text-gray-700">
               <span className="text-black">Market:</span>{" "}
               <span
                 className={`font-semibold ${
@@ -133,14 +124,14 @@ export default function CurrencyList() {
               </span>
             </div>
 
-            <h2 data-no-linkify className="text-lg sm:text-xl font-bold text-gray-900 text-center order-first sm:order-none">
+            <h2 data-no-linkify className="sr-only">
               Currency Strength Meter
             </h2>
 
             <Button
               onClick={loadData}
               disabled={loading}
-              className={`text-sm sm:text-base bg-white text-gray-900 border border-gray-300 rounded-full px-5 py-2 shadow-sm hover:bg-blue-50 hover:border-blue-400 transition-all flex items-center gap-2 ${
+              className={`text-xs sm:text-base bg-white text-gray-900 border border-gray-300 rounded-full px-4 py-1.5 sm:px-5 sm:py-2 shadow-sm hover:bg-blue-50 hover:border-blue-400 transition-all flex items-center gap-2 ${
                 loading ? "cursor-not-allowed opacity-70" : ""
               }`}
             >
@@ -189,28 +180,9 @@ export default function CurrencyList() {
                 </div>
 
                 <p className="mt-3 text-right text-xs text-gray-500 dark:text-gray-400">
-                  - Data updates every 60 secs
+                  {/* this time should be 2 mins delayed from current time */}
+                  Last Updated: 60 seconds ago
                 </p>
-
-                {/* Current strongest and weakest currencies
-                {strongest && weakest && (
-                  <section className="mt-6 rounded-xl border border-blue-200 bg-blue-50/60 p-4 dark:border-blue-900 dark:bg-blue-950/30">
-                    <div className="grid grid-cols-1 gap-3 text-center sm:grid-cols-3">
-                      <div className="rounded-lg bg-white p-3 dark:bg-gray-900">
-                        <p className="text-xs font-medium text-gray-500 dark:text-gray-400">Max currency</p>
-                        <p className="mt-1 text-xl font-bold text-green-600">{strongest.code}</p>
-                      </div>
-                      <div className="rounded-lg bg-white p-3 dark:bg-gray-900">
-                        <p className="text-xs font-medium text-gray-500 dark:text-gray-400">Min currency</p>
-                        <p className="mt-1 text-xl font-bold text-red-600">{weakest.code}</p>
-                      </div>
-                      <div className="rounded-lg bg-white p-3 dark:bg-gray-900">
-                        <p className="text-xs font-medium text-gray-500 dark:text-gray-400">Potential pair</p>
-                        <p className="mt-1 text-xl font-bold text-blue-700 dark:text-blue-300">{strongest.code}/{weakest.code}</p>
-                      </div>
-                    </div>
-                  </section>
-                )} */}
               </>
             )}
           </div>

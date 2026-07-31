@@ -42,9 +42,9 @@ export default function ContactPage() {
         <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">
           Use the form below to send us any questions, feedback, or partnership inquiries. Please include as much detail as possible so we can respond accurately and quickly.
         </p>
-        <ContactForm />
+        
       </section>
-
+        <ContactForm />
       <section>
         <h2 className="text-xl font-semibold mb-2">
           Support & Technical Assistance
