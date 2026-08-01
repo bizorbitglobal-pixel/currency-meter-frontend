@@ -11,17 +11,24 @@ const SESSION_WINDOWS = [
   { name: "New York", open: 13, close: 22, code: "US" },
 ];
 
-const TICKER_PAIRS = [
-  { symbol: "EUR/USD", isUp: true },
-  { symbol: "USD/CAD", isUp: false },
-  { symbol: "USD/CHF", isUp: true },
-];
-
 function sessionOpen(hour, session) {
   if (session.open < session.close) {
     return hour >= session.open && hour < session.close;
   }
   return hour >= session.open || hour < session.close;
+}
+
+// Check if Forex market is closed for the weekend (Friday 22:00 UTC - Sunday 22:00 UTC)
+function isWeekend(date) {
+  if (!date) return false;
+  const day = date.getUTCDay(); // 0 = Sunday, 5 = Friday, 6 = Saturday
+  const utcHour = date.getUTCHours() + date.getUTCMinutes() / 60;
+
+  if (day === 6) return true; // Saturday
+  if (day === 5 && utcHour >= 22) return true; // Friday after NY close
+  if (day === 0 && utcHour < 22) return true; // Sunday before Sydney open
+
+  return false;
 }
 
 function FlagIcon({ code }) {
@@ -86,13 +93,21 @@ export default function MarketTickHeader() {
     return () => clearInterval(timer);
   }, []);
 
-  const utcHour = clock ? clock.getUTCHours() + clock.getUTCMinutes() / 60 : 0;
-  const activeSessions = SESSION_WINDOWS.filter((s) => sessionOpen(utcHour, s));
-  const primarySession = activeSessions[0] || {
-    name: "Market Closed",
-    code: "US",
-  };
+  const marketIsClosedForWeekend = isWeekend(clock);
+  const utcHour = clock ? clock.getUTCHours() + clock.getUTCMinutes() / 60 : null;
+
+  // Filter active sessions only if clock is ready and market is NOT closed for weekend
+  const activeSessions =
+    utcHour !== null && !marketIsClosedForWeekend
+      ? SESSION_WINDOWS.filter((s) => sessionOpen(utcHour, s))
+      : [];
+
   const isMarketOpen = activeSessions.length > 0;
+
+  const primarySession = isMarketOpen
+    ? activeSessions[0]
+    : { name: "Market Closed", code: "US" };
+
   const formattedTime = clock ? clock.toUTCString().slice(17, 25) : "00:00:00";
 
   return (
@@ -100,26 +115,6 @@ export default function MarketTickHeader() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 text-xs">
         {/* Left Section */}
         <div className="flex items-center gap-4 sm:gap-6">
-          {/* Clickable Live Market Indicator */}
-          {/* <button
-            type="button"
-            href={`/forex-tools/forex-session-clock`}
-
-            onClick={() => setDashboardOpen((prev) => !prev)}
-            className="flex items-center gap-2 rounded-lg p-1 transition hover:bg-slate-200/60 dark:hover:bg-slate-800/60"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-75 ${isMarketOpen ? "bg-emerald-400" : "bg-amber-400"}`} />
-              <span className={`relative inline-flex h-2 w-2 rounded-full ${isMarketOpen ? "bg-emerald-500" : "bg-amber-500"}`} />
-            </span>
-            <div className="text-left">
-              <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-emerald-600 dark:text-emerald-400">Live Market</p>
-              <p className="font-mono text-xs font-extrabold text-slate-800 dark:text-slate-100">
-                {formattedTime} <span className="text-[9px] text-slate-400">UTC</span>
-              </p>
-            </div>
-             
-          </button> */}
           <Link
             href="/forex-tools/forex-session-clock"
             onClick={() => setDashboardOpen(false)}
@@ -138,8 +133,14 @@ export default function MarketTickHeader() {
               />
             </span>
             <div className="text-left">
-              <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-emerald-600 dark:text-emerald-400">
-                Live Market
+              <p
+                className={`text-[9px] font-bold uppercase tracking-[0.18em] ${
+                  isMarketOpen
+                    ? "text-emerald-600 dark:text-emerald-400"
+                    : "text-amber-600 dark:text-amber-400"
+                }`}
+              >
+                {isMarketOpen ? "Live Market" : "Market Closed"}
               </p>
               <p className="font-mono text-xs font-extrabold text-slate-800 dark:text-slate-100">
                 {formattedTime}{" "}
@@ -150,7 +151,7 @@ export default function MarketTickHeader() {
 
           <div className="h-5 w-[1px] bg-slate-200 dark:bg-slate-800 hidden sm:block" />
 
-          {/* Clickable Active Country Session */}
+          {/* Active Country Session Dropdown Trigger */}
           <button
             type="button"
             onClick={() => setDashboardOpen((prev) => !prev)}
@@ -166,7 +167,9 @@ export default function MarketTickHeader() {
               </p>
             </div>
             <ChevronDown
-              className={`h-3.5 w-3.5 text-slate-400 transition-transform ${dashboardOpen ? "rotate-180" : ""}`}
+              className={`h-3.5 w-3.5 text-slate-400 transition-transform ${
+                dashboardOpen ? "rotate-180" : ""
+              }`}
             />
           </button>
 
@@ -183,32 +186,6 @@ export default function MarketTickHeader() {
 
         {/* Right Section */}
         <div className="hidden lg:flex items-center gap-5">
-          {/* <div className="flex items-center gap-2.5">
-            <span className="text-[9px] font-bold uppercase tracking-[0.14em] text-slate-400 dark:text-slate-500">
-              Active Pairs Now
-            </span>
-            <div className="flex items-center gap-1.5">
-              {TICKER_PAIRS.map((pair) => (
-                <div
-                  key={pair.symbol}
-                  className="flex items-center gap-1 rounded border border-slate-200/80 bg-white px-2 py-0.5 font-mono text-[10px] font-bold text-slate-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-200"
-                >
-                  <span>{pair.symbol}</span>
-                  <span
-                    className={
-                      pair.isUp
-                        ? "text-emerald-600 dark:text-emerald-400"
-                        : "text-red-500"
-                    }
-                  >
-                    {pair.isUp ? "▲" : "▼"}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div> */}
-
-          {/* Toggle live dropdown instead of external route */}
           <Link
             href="/forex-tools/forex-session-clock"
             className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
@@ -238,7 +215,11 @@ export default function MarketTickHeader() {
 
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {SESSION_WINDOWS.map((session) => {
-                const isOpen = sessionOpen(utcHour, session);
+                const isOpen =
+                  utcHour !== null &&
+                  !marketIsClosedForWeekend &&
+                  sessionOpen(utcHour, session);
+
                 return (
                   <div
                     key={session.name}
@@ -263,13 +244,17 @@ export default function MarketTickHeader() {
                         }`}
                       >
                         <span
-                          className={`h-1.5 w-1.5 rounded-full ${isOpen ? "animate-pulse bg-emerald-500" : "bg-slate-400"}`}
+                          className={`h-1.5 w-1.5 rounded-full ${
+                            isOpen ? "animate-pulse bg-emerald-500" : "bg-slate-400"
+                          }`}
                         />
                         {isOpen ? "Open" : "Closed"}
                       </span>
                     </div>
                     <p className="mt-3 text-sm font-extrabold text-slate-900 dark:text-white">
-                      {`${String(session.open).padStart(2, "0")}:00 - ${String(session.close).padStart(2, "0")}:00 UTC`}
+                      {`${String(session.open).padStart(2, "0")}:00 - ${String(
+                        session.close
+                      ).padStart(2, "0")}:00 UTC`}
                     </p>
                   </div>
                 );

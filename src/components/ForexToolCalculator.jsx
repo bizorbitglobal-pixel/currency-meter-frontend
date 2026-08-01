@@ -173,7 +173,7 @@ export default function ForexToolCalculator({ slug }) {
   useEffect(() => {
     setHydrated(true);
     setClock(new Date());
-    
+
     if (slug === "forex-session-clock" || slug === "live-market-session-status") {
       const timer = setInterval(() => setClock(new Date()), 1000);
       return () => clearInterval(timer);
@@ -403,72 +403,72 @@ export default function ForexToolCalculator({ slug }) {
 
         return (
           <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_320px]">
-              <div className="grid gap-5 sm:grid-cols-2">
-                <div className="sm:col-span-2">
-                  <label className="mb-2 block text-sm font-semibold text-slate-600 dark:text-slate-300">Symbol</label>
-                  <select
-                    value={pipValue.pair}
-                    onChange={(e) => setPipValue({ ...pipValue, pair: e.target.value })}
-                    className="w-full rounded-3xl border border-slate-200 bg-white px-6 py-4 text-3xl font-semibold text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
-                  >
-                    {PAIRS.map((pair) => (
-                      <option key={pair} value={pair}>{pair.replace("/", "")}</option>
-                    ))}
-                  </select>
-                </div>
-
-                <div>
-                  <label className="mb-2 block text-sm font-semibold text-slate-600 dark:text-slate-300">Pip amount</label>
-                  <input
-                    type="text"
-                    inputMode="decimal"
-                    value={pipValue.pipAmount}
-                    onChange={(e) => setPipValue({ ...pipValue, pipAmount: e.target.value })}
-                    className="w-full rounded-3xl border border-slate-200 bg-white px-6 py-4 text-2xl font-semibold tabular-nums text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
-                  />
-                </div>
-
-                <div>
-                  <label className="mb-2 block text-sm font-semibold text-slate-600 dark:text-slate-300">Volume, lots</label>
-                  <input
-                    type="text"
-                    inputMode="decimal"
-                    value={pipValue.lot}
-                    onChange={(e) => setPipValue({ ...pipValue, lot: e.target.value })}
-                    className="w-full rounded-3xl border border-slate-200 bg-white px-6 py-4 text-2xl font-semibold tabular-nums text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
-                  />
-                </div>
-
-                <div>
-                  <label className="mb-2 block text-sm font-semibold text-slate-600 dark:text-slate-300">Account currency</label>
-                  <select
-                    value={pipValue.accountCurrency}
-                    onChange={(e) => setPipValue({ ...pipValue, accountCurrency: e.target.value })}
-                    className="w-full rounded-3xl border border-slate-200 bg-white px-6 py-4 text-2xl font-semibold text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
-                  >
-                    {PIP_ACCOUNT_CURRENCIES.map((currency) => (
-                      <option key={currency} value={currency}>{currency}</option>
-                    ))}
-                  </select>
-                </div>
+            <div className="grid gap-5 sm:grid-cols-2">
+              <div className="sm:col-span-2">
+                <label className="mb-2 block text-sm font-semibold text-slate-600 dark:text-slate-300">Symbol</label>
+                <select
+                  value={pipValue.pair}
+                  onChange={(e) => setPipValue({ ...pipValue, pair: e.target.value })}
+                  className="w-full rounded-3xl border border-slate-200 bg-white px-6 py-4 text-3xl font-semibold text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                >
+                  {PAIRS.map((pair) => (
+                    <option key={pair} value={pair}>{pair.replace("/", "")}</option>
+                  ))}
+                </select>
               </div>
 
-              <div className="rounded-3xl border border-slate-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-900">
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Calculation results</h3>
-                <div className="mt-7 flex items-center justify-between gap-4 border-b border-slate-200 pb-5 dark:border-slate-700">
-                  <span className="text-3xl font-semibold text-slate-900 dark:text-white">Pip value</span>
-                  <span className="text-4xl font-extrabold text-slate-900 dark:text-white">
-                    {formatMoney(pipValueInAccount, pipValue.accountCurrency)}
-                  </span>
-                </div>
-                <div className="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300">
-                  <p>
-                    1 pip per standard lot: <span className="font-semibold text-slate-900 dark:text-white">{formatMoney(pipValuePerStdLot, pipValue.accountCurrency)}</span>
-                  </p>
-                  <p>{conversionHint}</p>
-                </div>
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-slate-600 dark:text-slate-300">Pip amount</label>
+                <input
+                  type="text"
+                  inputMode="decimal"
+                  value={pipValue.pipAmount}
+                  onChange={(e) => setPipValue({ ...pipValue, pipAmount: e.target.value })}
+                  className="w-full rounded-3xl border border-slate-200 bg-white px-6 py-4 text-2xl font-semibold tabular-nums text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                />
+              </div>
+
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-slate-600 dark:text-slate-300">Volume, lots</label>
+                <input
+                  type="text"
+                  inputMode="decimal"
+                  value={pipValue.lot}
+                  onChange={(e) => setPipValue({ ...pipValue, lot: e.target.value })}
+                  className="w-full rounded-3xl border border-slate-200 bg-white px-6 py-4 text-2xl font-semibold tabular-nums text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                />
+              </div>
+
+              <div>
+                <label className="mb-2 block text-sm font-semibold text-slate-600 dark:text-slate-300">Account currency</label>
+                <select
+                  value={pipValue.accountCurrency}
+                  onChange={(e) => setPipValue({ ...pipValue, accountCurrency: e.target.value })}
+                  className="w-full rounded-3xl border border-slate-200 bg-white px-6 py-4 text-2xl font-semibold text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                >
+                  {PIP_ACCOUNT_CURRENCIES.map((currency) => (
+                    <option key={currency} value={currency}>{currency}</option>
+                  ))}
+                </select>
               </div>
             </div>
+
+            <div className="rounded-3xl border border-slate-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-900">
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Calculation results</h3>
+              <div className="mt-7 flex items-center justify-between gap-4 border-b border-slate-200 pb-5 dark:border-slate-700">
+                <span className="text-3xl font-semibold text-slate-900 dark:text-white">Pip value</span>
+                <span className="text-4xl font-extrabold text-slate-900 dark:text-white">
+                  {formatMoney(pipValueInAccount, pipValue.accountCurrency)}
+                </span>
+              </div>
+              <div className="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                <p>
+                  1 pip per standard lot: <span className="font-semibold text-slate-900 dark:text-white">{formatMoney(pipValuePerStdLot, pipValue.accountCurrency)}</span>
+                </p>
+                <p>{conversionHint}</p>
+              </div>
+            </div>
+          </div>
         );
       }
       case "risk-reward-calculator": {
@@ -666,7 +666,6 @@ export default function ForexToolCalculator({ slug }) {
       case "profit-calculator": {
         const handleCalculate = () => {
           try {
-            // Parse all inputs safely
             const openPrice = Number.parseFloat(profitCalc.open) || 0;
             const closePrice = Number.parseFloat(profitCalc.close) || 0;
             const volumeLots = Number.parseFloat(profitCalc.lot) || 0;
@@ -674,37 +673,28 @@ export default function ForexToolCalculator({ slug }) {
             const [baseCurr, quoteCurr] = profitCalc.pair.split("/");
             const isLong = profitCalc.side === "long";
 
-            console.log("🔹 Calculate clicked!", { openPrice, closePrice, volumeLots, days, isLong, quoteCurr });
-
-            // Validation
             if (openPrice === 0 || closePrice === 0 || volumeLots === 0) {
-              console.log("❌ Validation failed - zeros");
               alert("Please enter valid Open, Close, and Volume values");
               return;
             }
 
-            // Calculate price movement
             const priceDiff = closePrice - openPrice;
             const pipDirection = isLong ? priceDiff : -priceDiff;
             
-            // Calculate profit in quote currency
-            const units = volumeLots * 100000; // 1 lot = 100,000 units
+            const units = volumeLots * 100000;
             const profitInQuote = pipDirection * units;
 
-            // Convert to USD if needed
             let profitInUsd = profitInQuote;
             if (quoteCurr !== "USD" && FX_TO_USD[quoteCurr]) {
               profitInUsd = profitInQuote * FX_TO_USD[quoteCurr];
             }
-
-            console.log("✅ Calculation complete:", { profitInUsd });
 
             setProfitResult({
               profit: profitInUsd,
               grossProfit: profitInUsd,
             });
           } catch (error) {
-            console.error("❌ Calculation error:", error);
+            console.error("Calculation error:", error);
             alert("Error calculating profit: " + error.message);
           }
         };
@@ -714,8 +704,6 @@ export default function ForexToolCalculator({ slug }) {
           const absValue = Math.abs(value || 0);
           return `$${absValue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
         };
-
-        console.log("📊 Profit results state:", { profitResult, showResults });
 
         const profitTone = showResults && profitResult.profit < 0 ? "text-red-500" : "text-slate-900 dark:text-white";
         const grossTone = showResults && profitResult.grossProfit < 0 ? "text-red-500" : "text-slate-900 dark:text-white";
@@ -887,10 +875,19 @@ export default function ForexToolCalculator({ slug }) {
         );
       }
       case "forex-session-clock": {
-        const utcHour = clock.getUTCHours() + clock.getUTCMinutes() / 60;
-        const active = SESSION_WINDOWS.filter((session) => sessionOpen(utcHour, session));
+        const day = clock.getUTCDay();
+        const hour = clock.getUTCHours();
+        const preciseHour = hour + clock.getUTCMinutes() / 60;
+
+        // Unified market status & active session logic
+        const open = (day > 0 && day < 5) || (day === 0 && hour >= 22) || (day === 5 && hour < 22);
+        const active = open
+          ? SESSION_WINDOWS.filter((session) => sessionOpen(preciseHour, session))
+          : [];
+
         const activeNames = active.map((session) => session.name).join(", ");
-        const marketStatus = active.length > 0 ? `Open now: ${activeNames}` : "Currently closed";
+        const marketStatus = open && active.length > 0 ? `Open now: ${activeNames}` : "Market Closed";
+
         return (
           <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-8">
             <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
@@ -902,8 +899,8 @@ export default function ForexToolCalculator({ slug }) {
                   Forex Session Clock
                 </h2>
               </div>
-              <div className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold ${active.length > 0 ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300" : "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-200"}`}>
-                <span className={`h-2.5 w-2.5 rounded-full ${active.length > 0 ? "animate-pulse bg-emerald-500" : "bg-slate-400"}`} />
+              <div className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold ${open && active.length > 0 ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300" : "bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300"}`}>
+                <span className={`h-2.5 w-2.5 rounded-full ${open && active.length > 0 ? "animate-pulse bg-emerald-500" : "bg-amber-500"}`} />
                 {marketStatus}
               </div>
             </div>
@@ -916,18 +913,18 @@ export default function ForexToolCalculator({ slug }) {
               </div>
               <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-950">
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Status</p>
-                <p className={`mt-2 text-3xl font-extrabold ${active.length > 0 ? "text-emerald-600 dark:text-emerald-400" : "text-slate-700 dark:text-slate-200"}`}>
-                  {active.length > 0 ? "Market momentum live" : "Currently closed"}
+                <p className={`mt-2 text-3xl font-extrabold ${open && active.length > 0 ? "text-emerald-600 dark:text-emerald-400" : "text-amber-600 dark:text-amber-400"}`}>
+                  {open && active.length > 0 ? "Market momentum live" : "Market Closed"}
                 </p>
                 <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
-                  {active.length > 0 ? `Open sessions: ${activeNames}` : "No major forex session is active right now."}
+                  {open && active.length > 0 ? `Open sessions: ${activeNames}` : "No major forex session is active right now."}
                 </p>
               </div>
             </div>
 
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               {SESSION_WINDOWS.map((session) => {
-                const isOpen = sessionOpen(utcHour, session);
+                const isOpen = open && sessionOpen(preciseHour, session);
                 return (
                   <div
                     key={session.name}
@@ -937,7 +934,7 @@ export default function ForexToolCalculator({ slug }) {
                       <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">{session.name}</p>
                       <span className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-bold ${isOpen ? "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300" : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300"}`}>
                         <span className={`h-2 w-2 rounded-full ${isOpen ? "animate-pulse bg-emerald-500" : "bg-slate-400"}`} />
-                        {isOpen ? "Open" : "Currently closed"}
+                        {isOpen ? "Open" : "Closed"}
                       </span>
                     </div>
                     <p className="mt-3 text-xl font-extrabold text-slate-900 dark:text-white">
@@ -957,7 +954,7 @@ export default function ForexToolCalculator({ slug }) {
         const day = clock.getUTCDay();
         const hour = clock.getUTCHours();
         const open = (day > 0 && day < 5) || (day === 0 && hour >= 22) || (day === 5 && hour < 22);
-        const active = SESSION_WINDOWS.filter((session) => sessionOpen(hour + clock.getUTCMinutes() / 60, session));
+        const active = open ? SESSION_WINDOWS.filter((session) => sessionOpen(hour + clock.getUTCMinutes() / 60, session)) : [];
         return (
           <div className="grid gap-4 md:grid-cols-3">
             <Card label="Market status" value={open ? "Open" : "Closed"} hint="Weekend and UTC timing aware." tone={open ? "green" : "red"} />
@@ -981,7 +978,6 @@ export default function ForexToolCalculator({ slug }) {
         const pipValue = lots * pipValuePerLot;
         const notionalValue = troyOunces * goldPrice;
 
-        // Split lots into standard/mini/micro using hundredth-units to avoid rounding edge glitches.
         const lotUnits = Math.max(0, Math.round(lots * 100));
         const standardLots = Math.floor(lotUnits / 100);
         const miniLots = Math.floor((lotUnits % 100) / 10);
