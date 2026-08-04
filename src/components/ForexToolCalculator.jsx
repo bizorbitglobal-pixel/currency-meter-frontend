@@ -207,11 +207,12 @@ export default function ForexToolCalculator({ slug }) {
                 <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-blue-600 dark:text-blue-400">
                   Risk Management Calculator
                 </p>
-                <h2 className="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white">
+                <h2 className="mt-2 text-2xl font-extrabold text-slate-900 dark:text-white sm:text-3xl">
                   Position Size Calculator
                 </h2>
               </div>
-              <div className="text-sm font-semibold text-slate-500 dark:text-slate-400">
+              <div className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-2 text-sm font-bold text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300">
+                <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
                 {riskProfile}: {riskValue.toFixed(1)}% risk
               </div>
             </div>
@@ -225,7 +226,7 @@ export default function ForexToolCalculator({ slug }) {
                   <select
                     value={positionSize.currency}
                     onChange={(e) => setPositionSize({ ...positionSize, currency: e.target.value })}
-                    className="w-full rounded-full border border-transparent bg-gradient-to-r from-violet-500 to-blue-500 px-6 py-4 text-lg font-bold text-white outline-none transition focus:ring-2 focus:ring-blue-300 dark:from-violet-500 dark:to-blue-500"
+                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-6 py-4 text-lg font-bold text-slate-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
                   >
                     {ACCOUNT_CURRENCIES.map((currency) => (
                       <option key={currency} value={currency} className="bg-white text-slate-900">
@@ -243,7 +244,7 @@ export default function ForexToolCalculator({ slug }) {
                     type="number"
                     value={positionSize.balance}
                     onChange={(e) => setPositionSize({ ...positionSize, balance: e.target.value })}
-                    className="w-full rounded-full border border-slate-200 bg-slate-100 px-6 py-4 text-lg font-bold text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
+                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-6 py-4 text-lg font-bold text-slate-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
                   />
                 </div>
 
@@ -258,7 +259,7 @@ export default function ForexToolCalculator({ slug }) {
                     step="0.1"
                     value={positionSize.risk}
                     onChange={(e) => setPositionSize({ ...positionSize, risk: e.target.value })}
-                    className="w-full rounded-full border border-slate-200 bg-slate-100 px-6 py-4 text-lg font-bold text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
+                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-6 py-4 text-lg font-bold text-slate-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
                   />
                 </div>
 
@@ -272,7 +273,7 @@ export default function ForexToolCalculator({ slug }) {
                     step="1"
                     value={positionSize.stop}
                     onChange={(e) => setPositionSize({ ...positionSize, stop: e.target.value })}
-                    className="w-full rounded-full border border-slate-200 bg-slate-100 px-6 py-4 text-lg font-bold text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
+                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-6 py-4 text-lg font-bold text-slate-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
                   />
                 </div>
 
@@ -283,7 +284,7 @@ export default function ForexToolCalculator({ slug }) {
                   <select
                     value={positionSize.pair}
                     onChange={(e) => setPositionSize({ ...positionSize, pair: e.target.value })}
-                    className="w-full rounded-full border border-transparent bg-gradient-to-r from-violet-500 to-blue-500 px-6 py-4 text-lg font-bold text-white outline-none transition focus:ring-2 focus:ring-blue-300 dark:from-violet-500 dark:to-blue-500"
+                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-6 py-4 text-lg font-bold text-slate-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
                   >
                     {PAIRS.map((pair) => (
                       <option key={pair} value={pair} className="bg-white text-slate-900">
@@ -293,7 +294,7 @@ export default function ForexToolCalculator({ slug }) {
                   </select>
                 </div>
 
-                <div className="rounded-2xl bg-slate-50 p-4 text-sm text-slate-600 dark:bg-slate-950 dark:text-slate-300">
+                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm text-slate-600 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300">
                   <p className="font-semibold text-slate-900 dark:text-white">Pip Reference</p>
                   <p className="mt-2">
                     For {positionSize.pair}, 1 pip is approximately {formatMoney(pipPerStandardLot, positionSize.currency)} per standard lot.
@@ -301,41 +302,41 @@ export default function ForexToolCalculator({ slug }) {
                 </div>
               </div>
 
-              <div>
+              <div className="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
                 <div className="mb-4 flex items-center gap-3 border-b border-slate-200 pb-3 dark:border-slate-800">
-                  <h3 className="text-4xl font-extrabold text-slate-900 dark:text-white">Results</h3>
+                  <h3 className="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">Results</h3>
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-violet-500 to-blue-500 text-white">
                     ↓
                   </div>
                 </div>
 
                 <div className="space-y-5">
-                  <div className="border-b border-slate-200 pb-4 dark:border-slate-800">
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
                     <p className="text-sm font-semibold text-slate-600 dark:text-slate-300">Amount at Risk</p>
-                    <p className="mt-2 text-5xl font-extrabold text-slate-900 dark:text-white">{formatMoney(riskAmount, positionSize.currency)}</p>
+                    <p className="mt-2 break-words text-4xl font-extrabold leading-tight text-blue-600 dark:text-blue-400 sm:text-5xl">{formatMoney(riskAmount, positionSize.currency)}</p>
                   </div>
 
-                  <div className="border-b border-slate-200 pb-4 dark:border-slate-800">
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
                     <p className="text-sm font-semibold text-slate-600 dark:text-slate-300">Position Size (units)</p>
-                    <p className="mt-2 text-5xl font-extrabold text-slate-900 dark:text-white">{Math.round(units).toLocaleString()}</p>
+                    <p className="mt-2 break-words text-4xl font-extrabold leading-tight text-slate-900 dark:text-white sm:text-5xl">{Math.round(units).toLocaleString()}</p>
                   </div>
 
-                  <div className="border-b border-slate-200 pb-4 dark:border-slate-800">
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
                     <p className="text-sm font-semibold text-slate-600 dark:text-slate-300">Standard Lots</p>
-                    <p className="mt-2 text-4xl font-extrabold text-slate-900 dark:text-white">{lots.toFixed(2)}</p>
+                    <p className="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">{lots.toFixed(2)}</p>
                   </div>
 
-                  <div className="border-b border-slate-200 pb-4 dark:border-slate-800">
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
                     <p className="text-sm font-semibold text-slate-600 dark:text-slate-300">Mini Lots</p>
-                    <p className="mt-2 text-4xl font-extrabold text-slate-900 dark:text-white">{miniLots.toFixed(0)}</p>
+                    <p className="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">{miniLots.toFixed(0)}</p>
                   </div>
 
-                  <div className="border-b border-slate-200 pb-4 dark:border-slate-800">
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
                     <p className="text-sm font-semibold text-slate-600 dark:text-slate-300">Micro Lots</p>
-                    <p className="mt-2 text-4xl font-extrabold text-slate-900 dark:text-white">{microLots.toFixed(0)}</p>
+                    <p className="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">{microLots.toFixed(0)}</p>
                   </div>
 
-                  <div className="rounded-2xl bg-slate-50 p-4 dark:bg-slate-950">
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
                     <p className="text-xs font-bold uppercase tracking-[0.24em] text-slate-400 dark:text-slate-500">
                       Trade Summary
                     </p>
@@ -402,14 +403,27 @@ export default function ForexToolCalculator({ slug }) {
           : ((onePipPerLot * (FX_TO_USD[quoteCurrency] || 1)) / (FX_TO_USD[pipValue.accountCurrency] || 1));
 
         return (
-          <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_320px]">
-            <div className="grid gap-5 sm:grid-cols-2">
+          <div className="rounded-[28px] border border-slate-200 bg-gradient-to-b from-white to-slate-50/80 p-6 shadow-sm dark:border-slate-800 dark:from-slate-900 dark:to-slate-900 sm:p-8">
+            <div className="mb-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+              <div>
+                <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-blue-600 dark:text-blue-400">Pip Impact Model</p>
+                <h3 className="mt-2 text-2xl font-extrabold text-slate-900 dark:text-white sm:text-3xl">Pip Value Calculator</h3>
+              </div>
+              <div className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-blue-100 px-4 py-2 text-xs font-bold text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 sm:w-auto sm:justify-start sm:text-sm">
+                <span className="h-2.5 w-2.5 rounded-full bg-blue-500" />
+                Live quote approximation
+              </div>
+            </div>
+
+            <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr)_320px]">
+              <div className="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+                <div className="grid gap-5 sm:grid-cols-2">
               <div className="sm:col-span-2">
                 <label className="mb-2 block text-sm font-semibold text-slate-600 dark:text-slate-300">Symbol</label>
                 <select
                   value={pipValue.pair}
                   onChange={(e) => setPipValue({ ...pipValue, pair: e.target.value })}
-                  className="w-full rounded-3xl border border-slate-200 bg-white px-6 py-4 text-3xl font-semibold text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-2xl font-semibold text-slate-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:border-slate-700 dark:bg-slate-950 dark:text-white sm:px-6 sm:py-4 sm:text-3xl"
                 >
                   {PAIRS.map((pair) => (
                     <option key={pair} value={pair}>{pair.replace("/", "")}</option>
@@ -424,7 +438,7 @@ export default function ForexToolCalculator({ slug }) {
                   inputMode="decimal"
                   value={pipValue.pipAmount}
                   onChange={(e) => setPipValue({ ...pipValue, pipAmount: e.target.value })}
-                  className="w-full rounded-3xl border border-slate-200 bg-white px-6 py-4 text-2xl font-semibold tabular-nums text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-xl font-semibold tabular-nums text-slate-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:border-slate-700 dark:bg-slate-950 dark:text-white sm:px-6 sm:py-4 sm:text-2xl"
                 />
               </div>
 
@@ -435,7 +449,7 @@ export default function ForexToolCalculator({ slug }) {
                   inputMode="decimal"
                   value={pipValue.lot}
                   onChange={(e) => setPipValue({ ...pipValue, lot: e.target.value })}
-                  className="w-full rounded-3xl border border-slate-200 bg-white px-6 py-4 text-2xl font-semibold tabular-nums text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-xl font-semibold tabular-nums text-slate-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:border-slate-700 dark:bg-slate-950 dark:text-white sm:px-6 sm:py-4 sm:text-2xl"
                 />
               </div>
 
@@ -444,28 +458,30 @@ export default function ForexToolCalculator({ slug }) {
                 <select
                   value={pipValue.accountCurrency}
                   onChange={(e) => setPipValue({ ...pipValue, accountCurrency: e.target.value })}
-                  className="w-full rounded-3xl border border-slate-200 bg-white px-6 py-4 text-2xl font-semibold text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-700 dark:bg-slate-900 dark:text-white"
+                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-xl font-semibold text-slate-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:border-slate-700 dark:bg-slate-950 dark:text-white sm:px-6 sm:py-4 sm:text-2xl"
                 >
                   {PIP_ACCOUNT_CURRENCIES.map((currency) => (
                     <option key={currency} value={currency}>{currency}</option>
                   ))}
                 </select>
               </div>
-            </div>
-
-            <div className="rounded-3xl border border-slate-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-900">
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Calculation results</h3>
-              <div className="mt-7 flex items-center justify-between gap-4 border-b border-slate-200 pb-5 dark:border-slate-700">
-                <span className="text-3xl font-semibold text-slate-900 dark:text-white">Pip value</span>
-                <span className="text-4xl font-extrabold text-slate-900 dark:text-white">
-                  {formatMoney(pipValueInAccount, pipValue.accountCurrency)}
-                </span>
+                </div>
               </div>
-              <div className="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300">
-                <p>
-                  1 pip per standard lot: <span className="font-semibold text-slate-900 dark:text-white">{formatMoney(pipValuePerStdLot, pipValue.accountCurrency)}</span>
-                </p>
-                <p>{conversionHint}</p>
+
+              <div className="rounded-2xl border border-slate-200 bg-white p-6 dark:border-slate-700 dark:bg-slate-900">
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">Calculation results</h3>
+                <div className="mt-7 rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-950">
+                  <span className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Pip value</span>
+                  <p className="mt-2 break-words text-3xl font-extrabold text-blue-600 dark:text-blue-400 sm:text-4xl">
+                  {formatMoney(pipValueInAccount, pipValue.accountCurrency)}
+                  </p>
+                </div>
+                <div className="mt-4 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                  <p>
+                    1 pip per standard lot: <span className="font-semibold text-slate-900 dark:text-white">{formatMoney(pipValuePerStdLot, pipValue.accountCurrency)}</span>
+                  </p>
+                  <p>{conversionHint}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -546,7 +562,7 @@ export default function ForexToolCalculator({ slug }) {
         const breakEvenDisplay = canCalculate ? `${minWinRate.toFixed(1)}%` : "-";
 
         return (
-          <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-8">
+          <div className="rounded-[28px] border border-slate-200 bg-gradient-to-b from-white to-slate-50/80 p-6 shadow-sm dark:border-slate-800 dark:from-slate-900 dark:to-slate-900 sm:p-8">
             <p className="text-xs font-bold uppercase tracking-[0.24em] text-violet-600 dark:text-violet-400">Position Type</p>
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               <button
@@ -715,11 +731,12 @@ export default function ForexToolCalculator({ slug }) {
                 <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-blue-600 dark:text-blue-400">
                   Trade P&amp;L Calculator
                 </p>
-                <h2 className="mt-2 text-3xl font-extrabold text-slate-900 dark:text-white">
+                <h2 className="mt-2 text-2xl font-extrabold text-slate-900 dark:text-white sm:text-3xl">
                   Forex Profit Calculator
                 </h2>
               </div>
-              <div className="text-sm font-semibold text-slate-500 dark:text-slate-400">
+              <div className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-blue-100 px-4 py-2 text-xs font-bold text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 sm:w-auto sm:justify-start sm:text-sm">
+                <span className="h-2.5 w-2.5 rounded-full bg-blue-500" />
                 {profitCalc.side === "long" ? "BUY" : "SELL"} · {profitCalc.pair}
               </div>
             </div>
@@ -731,7 +748,7 @@ export default function ForexToolCalculator({ slug }) {
                   <select
                     value={profitCalc.pair}
                     onChange={(e) => { setProfitCalc({ ...profitCalc, pair: e.target.value }); setProfitResult(null); }}
-                    className="w-full rounded-full border border-transparent bg-gradient-to-r from-violet-500 to-blue-500 px-6 py-4 text-lg font-bold text-white outline-none transition focus:ring-2 focus:ring-blue-300 dark:from-violet-500 dark:to-blue-500"
+                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-6 py-4 text-lg font-bold text-slate-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
                   >
                     {PAIRS.map((pair) => (
                       <option key={pair} value={pair} className="bg-white text-slate-900">{pair}</option>
@@ -744,7 +761,7 @@ export default function ForexToolCalculator({ slug }) {
                   <select
                     value={profitCalc.side}
                     onChange={(e) => { setProfitCalc({ ...profitCalc, side: e.target.value }); setProfitResult(null); }}
-                    className="w-full rounded-full border border-transparent bg-gradient-to-r from-violet-500 to-blue-500 px-6 py-4 text-lg font-bold text-white outline-none transition focus:ring-2 focus:ring-blue-300 dark:from-violet-500 dark:to-blue-500"
+                    className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-6 py-4 text-lg font-bold text-slate-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
                   >
                     <option value="long" className="bg-white text-slate-900">BUY (Long)</option>
                     <option value="short" className="bg-white text-slate-900">SELL (Short)</option>
@@ -754,96 +771,96 @@ export default function ForexToolCalculator({ slug }) {
                 <div>
                   <label className="mb-2 block text-sm font-semibold text-slate-800 dark:text-slate-200">Volume (lots)</label>
                   <div className="flex items-center gap-2">
-                    <button type="button" onClick={() => { setProfitCalc({ ...profitCalc, lot: (Math.max(0.01, Number(profitCalc.lot) - 0.01)).toFixed(2) }); setProfitResult(null); }} className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-xl font-bold text-slate-700 transition hover:bg-slate-200 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200 dark:hover:bg-slate-800">−</button>
+                    <button type="button" onClick={() => { setProfitCalc({ ...profitCalc, lot: (Math.max(0.01, Number(profitCalc.lot) - 0.01)).toFixed(2) }); setProfitResult(null); }} className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 text-xl font-bold text-slate-700 transition hover:border-blue-300 hover:text-blue-600 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200 dark:hover:border-slate-700 dark:hover:text-blue-400">−</button>
                     <input
                       type="text"
                       inputMode="decimal"
                       value={profitCalc.lot}
                       onChange={(e) => { setProfitCalc({ ...profitCalc, lot: e.target.value }); setProfitResult(null); }}
-                      className="w-full rounded-full border border-slate-200 bg-slate-100 px-6 py-4 text-center text-lg font-bold text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
+                      className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-6 py-4 text-center text-lg font-bold text-slate-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
                     />
-                    <button type="button" onClick={() => { setProfitCalc({ ...profitCalc, lot: (Number(profitCalc.lot) + 0.01).toFixed(2) }); setProfitResult(null); }} className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-xl font-bold text-slate-700 transition hover:bg-slate-200 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200 dark:hover:bg-slate-800">+</button>
+                    <button type="button" onClick={() => { setProfitCalc({ ...profitCalc, lot: (Number(profitCalc.lot) + 0.01).toFixed(2) }); setProfitResult(null); }} className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 text-xl font-bold text-slate-700 transition hover:border-blue-300 hover:text-blue-600 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200 dark:hover:border-slate-700 dark:hover:text-blue-400">+</button>
                   </div>
                 </div>
 
                 <div>
                   <label className="mb-2 block text-sm font-semibold text-slate-800 dark:text-slate-200">Period (days)</label>
                   <div className="flex items-center gap-2">
-                    <button type="button" onClick={() => { setProfitCalc({ ...profitCalc, periodDays: String(Math.max(1, Number(profitCalc.periodDays) - 1)) }); setProfitResult(null); }} className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-xl font-bold text-slate-700 transition hover:bg-slate-200 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200 dark:hover:bg-slate-800">−</button>
+                    <button type="button" onClick={() => { setProfitCalc({ ...profitCalc, periodDays: String(Math.max(1, Number(profitCalc.periodDays) - 1)) }); setProfitResult(null); }} className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 text-xl font-bold text-slate-700 transition hover:border-blue-300 hover:text-blue-600 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200 dark:hover:border-slate-700 dark:hover:text-blue-400">−</button>
                     <input
                       type="text"
                       inputMode="numeric"
                       value={profitCalc.periodDays}
                       onChange={(e) => { setProfitCalc({ ...profitCalc, periodDays: e.target.value }); setProfitResult(null); }}
-                      className="w-full rounded-full border border-slate-200 bg-slate-100 px-6 py-4 text-center text-lg font-bold text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
+                      className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-6 py-4 text-center text-lg font-bold text-slate-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
                     />
-                    <button type="button" onClick={() => { setProfitCalc({ ...profitCalc, periodDays: String(Number(profitCalc.periodDays) + 1) }); setProfitResult(null); }} className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-xl font-bold text-slate-700 transition hover:bg-slate-200 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200 dark:hover:bg-slate-800">+</button>
+                    <button type="button" onClick={() => { setProfitCalc({ ...profitCalc, periodDays: String(Number(profitCalc.periodDays) + 1) }); setProfitResult(null); }} className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 text-xl font-bold text-slate-700 transition hover:border-blue-300 hover:text-blue-600 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200 dark:hover:border-slate-700 dark:hover:text-blue-400">+</button>
                   </div>
                 </div>
 
                 <div>
                   <label className="mb-2 block text-sm font-semibold text-slate-800 dark:text-slate-200">Open Price</label>
                   <div className="flex items-center gap-2">
-                    <button type="button" onClick={() => { setProfitCalc({ ...profitCalc, open: (Math.max(0, Number(profitCalc.open) - 0.0001)).toFixed(5) }); setProfitResult(null); }} className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-xl font-bold text-slate-700 transition hover:bg-slate-200 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200 dark:hover:bg-slate-800">−</button>
+                    <button type="button" onClick={() => { setProfitCalc({ ...profitCalc, open: (Math.max(0, Number(profitCalc.open) - 0.0001)).toFixed(5) }); setProfitResult(null); }} className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 text-xl font-bold text-slate-700 transition hover:border-blue-300 hover:text-blue-600 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200 dark:hover:border-slate-700 dark:hover:text-blue-400">−</button>
                     <input
                       type="text"
                       inputMode="decimal"
                       value={profitCalc.open}
                       onChange={(e) => { setProfitCalc({ ...profitCalc, open: e.target.value }); setProfitResult(null); }}
-                      className="w-full rounded-full border border-slate-200 bg-slate-100 px-6 py-4 text-center text-lg font-bold text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
+                      className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-6 py-4 text-center text-lg font-bold text-slate-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
                     />
-                    <button type="button" onClick={() => { setProfitCalc({ ...profitCalc, open: (Number(profitCalc.open) + 0.0001).toFixed(5) }); setProfitResult(null); }} className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-xl font-bold text-slate-700 transition hover:bg-slate-200 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200 dark:hover:bg-slate-800">+</button>
+                    <button type="button" onClick={() => { setProfitCalc({ ...profitCalc, open: (Number(profitCalc.open) + 0.0001).toFixed(5) }); setProfitResult(null); }} className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 text-xl font-bold text-slate-700 transition hover:border-blue-300 hover:text-blue-600 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200 dark:hover:border-slate-700 dark:hover:text-blue-400">+</button>
                   </div>
                 </div>
 
                 <div>
                   <label className="mb-2 block text-sm font-semibold text-slate-800 dark:text-slate-200">Close Price</label>
                   <div className="flex items-center gap-2">
-                    <button type="button" onClick={() => { setProfitCalc({ ...profitCalc, close: (Math.max(0, Number(profitCalc.close) - 0.0001)).toFixed(5) }); setProfitResult(null); }} className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-xl font-bold text-slate-700 transition hover:bg-slate-200 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200 dark:hover:bg-slate-800">−</button>
+                    <button type="button" onClick={() => { setProfitCalc({ ...profitCalc, close: (Math.max(0, Number(profitCalc.close) - 0.0001)).toFixed(5) }); setProfitResult(null); }} className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 text-xl font-bold text-slate-700 transition hover:border-blue-300 hover:text-blue-600 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200 dark:hover:border-slate-700 dark:hover:text-blue-400">−</button>
                     <input
                       type="text"
                       inputMode="decimal"
                       value={profitCalc.close}
                       onChange={(e) => { setProfitCalc({ ...profitCalc, close: e.target.value }); setProfitResult(null); }}
-                      className="w-full rounded-full border border-slate-200 bg-slate-100 px-6 py-4 text-center text-lg font-bold text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
+                      className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-6 py-4 text-center text-lg font-bold text-slate-900 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200 dark:border-slate-800 dark:bg-slate-950 dark:text-white"
                     />
-                    <button type="button" onClick={() => { setProfitCalc({ ...profitCalc, close: (Number(profitCalc.close) + 0.0001).toFixed(5) }); setProfitResult(null); }} className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-slate-100 text-xl font-bold text-slate-700 transition hover:bg-slate-200 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200 dark:hover:bg-slate-800">+</button>
+                    <button type="button" onClick={() => { setProfitCalc({ ...profitCalc, close: (Number(profitCalc.close) + 0.0001).toFixed(5) }); setProfitResult(null); }} className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 text-xl font-bold text-slate-700 transition hover:border-blue-300 hover:text-blue-600 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200 dark:hover:border-slate-700 dark:hover:text-blue-400">+</button>
                   </div>
                 </div>
 
                 <button
                   type="button"
                   onClick={handleCalculate}
-                  className="w-full rounded-full bg-gradient-to-r from-violet-500 to-blue-500 py-4 text-lg font-bold text-white shadow-md transition hover:from-violet-600 hover:to-blue-600 active:scale-[0.98]"
+                  className="w-full rounded-2xl bg-blue-600 py-4 text-lg font-bold text-white shadow-md transition hover:bg-blue-700 active:scale-[0.98]"
                 >
                   Calculate Profit
                 </button>
               </div>
 
-              <div>
+              <div className="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
                 <div className="mb-4 flex items-center gap-3 border-b border-slate-200 pb-3 dark:border-slate-800">
-                  <h3 className="text-4xl font-extrabold text-slate-900 dark:text-white">Results</h3>
+                  <h3 className="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">Results</h3>
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-violet-500 to-blue-500 text-white">
                     ↓
                   </div>
                 </div>
 
                 <div className="space-y-5">
-                  <div className="border-b border-slate-200 pb-4 dark:border-slate-800">
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
                     <p className="text-sm font-semibold text-slate-600 dark:text-slate-300">Profit / Loss</p>
-                    <p className={`mt-2 text-5xl font-extrabold ${showResults ? profitTone : "text-slate-900 dark:text-white"}`}>
+                    <p className={`mt-2 break-words text-4xl font-extrabold leading-tight sm:text-5xl ${showResults ? profitTone : "text-slate-900 dark:text-white"}`}>
                       {showResults ? `${profitResult.profit < 0 ? "-" : "+"}${formatResult(profitResult.profit)}` : "—"}
                     </p>
                   </div>
 
-                  <div className="border-b border-slate-200 pb-4 dark:border-slate-800">
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
                     <p className="text-sm font-semibold text-slate-600 dark:text-slate-300">Gross Profit</p>
-                    <p className={`mt-2 text-4xl font-extrabold ${showResults ? grossTone : "text-slate-900 dark:text-white"}`}>
+                    <p className={`mt-2 break-words text-3xl font-extrabold leading-tight sm:text-4xl ${showResults ? grossTone : "text-slate-900 dark:text-white"}`}>
                       {showResults ? `${profitResult.grossProfit < 0 ? "-" : "+"}${formatResult(profitResult.grossProfit)}` : "—"}
                     </p>
                   </div>
 
-                  <div className="rounded-2xl bg-slate-50 p-4 dark:bg-slate-950">
+                  <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
                     <p className="text-xs font-bold uppercase tracking-[0.24em] text-slate-400 dark:text-slate-500">Trade Summary</p>
                     <div className="mt-4 space-y-3 text-sm text-slate-600 dark:text-slate-300">
                       <div className="flex items-center justify-between">
@@ -986,17 +1003,17 @@ export default function ForexToolCalculator({ slug }) {
         const riskPresets = [0.5, 1, 1.5, 2, 3];
         const stopPresets = [20, 50, 100, 200, 500];
         return (
-          <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-8">
-            <div className="grid gap-8 lg:grid-cols-[1fr_0.98fr]">
-              <div className="space-y-5">
-                <div className="rounded-2xl border border-amber-200/80 bg-amber-50/70 p-4 dark:border-amber-500/30 dark:bg-amber-900/20">
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-700 dark:text-amber-300">XAU/USD Specifications</p>
-                  <p className="mt-2 text-sm text-amber-800 dark:text-amber-200">1 pip = $0.10 price movement · 1 standard lot = 100 troy oz · Pip value = $10/lot</p>
+          <div className="space-y-6">
+            <div className="grid gap-6 lg:grid-cols-[1fr_0.98fr]">
+              <div className="space-y-5 rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
+                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950">
+                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">XAU/USD specifications</p>
+                  <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">1 pip = $0.10 price movement · 1 standard lot = 100 troy oz · Pip value = $10/lot</p>
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-xs font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Account Balance</label>
-                  <div className="flex items-center rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 dark:border-slate-700 dark:bg-slate-950">
+                  <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Account Balance</label>
+                  <div className="flex items-center rounded-xl border border-slate-200 bg-white px-4 py-3 dark:border-slate-800 dark:bg-slate-900">
                     <span className="mr-2 text-lg font-bold text-slate-400 dark:text-slate-500">$</span>
                     <input
                       type="text"
@@ -1007,15 +1024,15 @@ export default function ForexToolCalculator({ slug }) {
                         const normalized = onlyDigits.replace(/^0+(?=\d)/, "");
                         setGoldCalc({ ...goldCalc, balance: normalized || "0" });
                       }}
-                      className="w-full bg-transparent text-3xl font-extrabold text-slate-900 outline-none dark:text-white"
+                      className="w-full bg-transparent text-2xl font-semibold text-slate-900 outline-none dark:text-white"
                     />
                   </div>
                 </div>
 
                 <div>
                   <div className="mb-2 flex items-center justify-between">
-                    <label className="block text-xs font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Risk Percentage</label>
-                    <span className="text-2xl font-extrabold text-blue-600 dark:text-blue-400">{risk.toFixed(1)}%</span>
+                    <label className="block text-sm font-semibold text-slate-700 dark:text-slate-200">Risk Percentage</label>
+                    <span className="text-xl font-extrabold text-blue-600 dark:text-blue-400">{risk.toFixed(1)}%</span>
                   </div>
                   <input
                     type="range"
@@ -1026,7 +1043,7 @@ export default function ForexToolCalculator({ slug }) {
                     onChange={(e) => setGoldCalc({ ...goldCalc, risk: Number(e.target.value) })}
                     className="h-2 w-full cursor-pointer appearance-none rounded-full bg-slate-200 accent-blue-600 dark:bg-slate-700"
                   />
-                  <div className="mt-3 grid grid-cols-5 gap-2">
+                  <div className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-5">
                     {riskPresets.map((preset) => (
                       <button
                         key={preset}
@@ -1041,8 +1058,8 @@ export default function ForexToolCalculator({ slug }) {
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-xs font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Stop Loss (Pips)</label>
-                  <div className="flex items-center rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 dark:border-slate-700 dark:bg-slate-950">
+                  <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Stop Loss (Pips)</label>
+                  <div className="flex items-center rounded-xl border border-slate-200 bg-white px-4 py-3 dark:border-slate-800 dark:bg-slate-900">
                     <input
                       type="text"
                       inputMode="numeric"
@@ -1052,11 +1069,11 @@ export default function ForexToolCalculator({ slug }) {
                         const normalized = onlyDigits.replace(/^0+(?=\d)/, "");
                         setGoldCalc({ ...goldCalc, stop: normalized || "0" });
                       }}
-                      className="w-full bg-transparent text-3xl font-extrabold text-slate-900 outline-none dark:text-white"
+                      className="w-full bg-transparent text-2xl font-semibold text-slate-900 outline-none dark:text-white"
                     />
                     <span className="text-lg font-bold text-slate-400 dark:text-slate-500">pips</span>
                   </div>
-                  <div className="mt-3 grid grid-cols-5 gap-2">
+                  <div className="mt-3 grid grid-cols-3 gap-2 sm:grid-cols-5">
                     {stopPresets.map((preset) => (
                       <button
                         key={preset}
@@ -1071,8 +1088,8 @@ export default function ForexToolCalculator({ slug }) {
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-xs font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Current Gold Price (XAU/USD)</label>
-                  <div className="flex items-center rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 dark:border-slate-700 dark:bg-slate-950">
+                  <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Current Gold Price (XAU/USD)</label>
+                  <div className="flex items-center rounded-xl border border-slate-200 bg-white px-4 py-3 dark:border-slate-800 dark:bg-slate-900">
                     <span className="mr-2 text-lg font-bold text-slate-400 dark:text-slate-500">$</span>
                     <input
                       type="text"
@@ -1087,55 +1104,55 @@ export default function ForexToolCalculator({ slug }) {
                         const normalizedLeading = normalizedDots.replace(/^0+(?=\d)/, "");
                         setGoldCalc({ ...goldCalc, price: normalizedLeading || "0" });
                       }}
-                      className="w-full bg-transparent text-3xl font-extrabold text-slate-900 outline-none dark:text-white"
+                      className="w-full bg-transparent text-2xl font-semibold text-slate-900 outline-none dark:text-white"
                     />
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-4">
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Calculation Results</p>
-                <div className="rounded-3xl bg-gradient-to-r from-blue-600 to-sky-500 p-6 text-white shadow-lg shadow-blue-400/20 dark:shadow-blue-900/30">
-                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-100">Recommended Position Size</p>
-                  <p className="mt-3 text-6xl font-extrabold leading-none">{lots.toFixed(2)}<span className="ml-2 text-4xl font-bold">lots</span></p>
-                  <p className="mt-3 text-lg font-medium text-blue-100">{troyOunces.toFixed(2)} troy ounces</p>
+              <div className="space-y-4 rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Calculation Results</p>
+                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-950">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Recommended Position Size</p>
+                  <p className="mt-2 break-words text-4xl font-extrabold leading-tight text-blue-600 dark:text-blue-400 sm:text-5xl">{lots.toFixed(2)}<span className="ml-2 text-xl font-bold sm:text-2xl">lots</span></p>
+                  <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{troyOunces.toFixed(2)} troy ounces</p>
                 </div>
 
                 <div className="space-y-4">
-                  <div className="min-w-0 rounded-3xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-700 dark:bg-slate-950">
-                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Risk Amount</p>
+                  <div className="min-w-0 rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Risk Amount</p>
                     <p className="mt-2 text-3xl font-extrabold leading-tight tabular-nums text-slate-900 dark:text-white sm:text-4xl">${riskAmount.toFixed(2)}</p>
                     <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{risk.toFixed(1)}% of balance</p>
                   </div>
-                  <div className="min-w-0 rounded-3xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-700 dark:bg-slate-950">
-                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Pip Value</p>
+                  <div className="min-w-0 rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Pip Value</p>
                     <p className="mt-2 text-3xl font-extrabold leading-tight tabular-nums text-slate-900 dark:text-white sm:text-4xl">${pipValue.toFixed(2)}</p>
                     <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">per pip movement</p>
                   </div>
                 </div>
 
-                <div className="rounded-3xl border border-blue-100 bg-blue-50/40 p-5 dark:border-blue-900/40 dark:bg-blue-950/20">
-                  <p className="text-xs font-bold uppercase tracking-[0.18em] text-blue-700 dark:text-blue-300">Lot Breakdown</p>
-                  <div className="mt-4 grid grid-cols-3 gap-3">
-                    <div className="rounded-2xl border border-slate-200 bg-white p-3 text-center dark:border-slate-700 dark:bg-slate-900">
-                      <p className="text-4xl font-extrabold text-slate-900 dark:text-white">{standardLots}</p>
-                      <p className="text-xs font-bold uppercase tracking-[0.1em] text-slate-500 dark:text-slate-400">Standard</p>
+                <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-950">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-slate-400">Lot Breakdown</p>
+                  <div className="mt-4 grid grid-cols-3 gap-2 sm:gap-3">
+                    <div className="rounded-2xl border border-slate-200 bg-white p-3 text-center dark:border-slate-800 dark:bg-slate-900">
+                      <p className="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">{standardLots}</p>
+                      <p className="text-xs font-semibold uppercase tracking-[0.1em] text-slate-500 dark:text-slate-400">Standard</p>
                       <p className="mt-1 text-xs text-slate-400 dark:text-slate-500">100 oz</p>
                     </div>
-                    <div className="rounded-2xl border border-slate-200 bg-white p-3 text-center dark:border-slate-700 dark:bg-slate-900">
-                      <p className="text-4xl font-extrabold text-slate-900 dark:text-white">{miniLots}</p>
-                      <p className="text-xs font-bold uppercase tracking-[0.1em] text-slate-500 dark:text-slate-400">Mini</p>
+                    <div className="rounded-2xl border border-slate-200 bg-white p-3 text-center dark:border-slate-800 dark:bg-slate-900">
+                      <p className="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">{miniLots}</p>
+                      <p className="text-xs font-semibold uppercase tracking-[0.1em] text-slate-500 dark:text-slate-400">Mini</p>
                       <p className="mt-1 text-xs text-slate-400 dark:text-slate-500">10 oz</p>
                     </div>
-                    <div className="rounded-2xl border border-slate-200 bg-white p-3 text-center dark:border-slate-700 dark:bg-slate-900">
-                      <p className="text-4xl font-extrabold text-slate-900 dark:text-white">{microLots}</p>
-                      <p className="text-xs font-bold uppercase tracking-[0.1em] text-slate-500 dark:text-slate-400">Micro</p>
+                    <div className="rounded-2xl border border-slate-200 bg-white p-3 text-center dark:border-slate-800 dark:bg-slate-900">
+                      <p className="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">{microLots}</p>
+                      <p className="text-xs font-semibold uppercase tracking-[0.1em] text-slate-500 dark:text-slate-400">Micro</p>
                       <p className="mt-1 text-xs text-slate-400 dark:text-slate-500">1 oz</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="rounded-3xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-700 dark:bg-slate-950">
+                <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-950">
                   <div className="flex items-center justify-between border-b border-slate-200 py-2 text-sm dark:border-slate-700">
                     <span className="text-slate-500 dark:text-slate-400">Notional Value</span>
                     <span className="font-bold text-slate-900 dark:text-white">${notionalValue.toLocaleString(undefined, { maximumFractionDigits: 0 })}</span>
@@ -1152,7 +1169,7 @@ export default function ForexToolCalculator({ slug }) {
               </div>
             </div>
 
-            <div className="mt-6 border-t border-slate-200 pt-4 text-center text-xs text-slate-500 dark:border-slate-700 dark:text-slate-400">
+            <div className="border-t border-slate-200 pt-4 text-center text-xs text-slate-500 dark:border-slate-700 dark:text-slate-400">
               Educational model using fixed pip assumptions for XAU/USD. Live contract specs, spread, and broker margin rules may differ.
             </div>
           </div>
@@ -1168,56 +1185,60 @@ export default function ForexToolCalculator({ slug }) {
         };
 
         return (
-          <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900 sm:p-8">
-            <div className="grid gap-6 md:grid-cols-2">
+          <div className="space-y-6">
+            <div className="grid gap-4 md:grid-cols-3">
               <div>
-                <label className="mb-2 block text-sm font-semibold text-slate-800 dark:text-slate-200">Starting balance</label>
+                <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Starting balance</label>
                 <input
                   type="number"
                   value={compound.balance}
                   onChange={(e) => setCompound({ ...compound, balance: e.target.value })}
-                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-3xl font-semibold text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
+                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-800 dark:bg-slate-900 dark:text-white"
                 />
               </div>
               <div>
-                <label className="mb-2 block text-sm font-semibold text-slate-800 dark:text-slate-200">Number of periods</label>
+                <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Number of periods</label>
                 <input
                   type="number"
                   value={compound.periods}
                   onChange={(e) => setCompound({ ...compound, periods: e.target.value })}
-                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-3xl font-semibold text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
+                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-800 dark:bg-slate-900 dark:text-white"
                 />
               </div>
               <div>
-                <label className="mb-2 block text-sm font-semibold text-slate-800 dark:text-slate-200">Gain % per period</label>
+                <label className="mb-2 block text-sm font-semibold text-slate-700 dark:text-slate-200">Gain % per period</label>
                 <input
                   type="number"
                   value={compound.gain}
                   onChange={(e) => setCompound({ ...compound, gain: e.target.value })}
-                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-3xl font-semibold text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
+                  className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-blue-500 dark:border-slate-800 dark:bg-slate-900 dark:text-white"
                 />
               </div>
             </div>
 
-            <div className="mt-10 flex justify-center">
+            <div className="flex justify-start">
               <button
                 type="button"
                 onClick={handleCompoundCalculate}
-                className="inline-flex h-14 min-w-[220px] items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-sky-500 px-8 text-2xl font-semibold text-white shadow-md shadow-blue-400/20 transition hover:from-blue-500 hover:to-sky-400"
+                className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-base font-semibold text-white transition hover:bg-blue-700"
               >
                 Calculate
               </button>
             </div>
 
-            <div className="mt-8 grid gap-6 md:grid-cols-2">
-              <div className="text-center">
-                <p className="text-3xl font-extrabold text-slate-900 dark:text-white">{compoundResult.endingBalance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                <p className="mt-2 text-lg text-slate-600 dark:text-slate-300">Ending balance</p>
-              </div>
-              <div className="text-center">
-                <p className="text-3xl font-extrabold text-slate-900 dark:text-white">{compoundResult.totalGain.toFixed(1)}%</p>
-                <p className="mt-2 text-lg text-slate-600 dark:text-slate-300">Total Gain</p>
-              </div>
+            <div className="grid gap-4 md:grid-cols-2">
+              <Card
+                label="Ending balance"
+                value={compoundResult.endingBalance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                hint="Projected balance after selected periods."
+                tone="blue"
+              />
+              <Card
+                label="Total gain"
+                value={`${compoundResult.totalGain.toFixed(1)}%`}
+                hint="Percentage growth from the starting balance."
+                tone="green"
+              />
             </div>
           </div>
         );

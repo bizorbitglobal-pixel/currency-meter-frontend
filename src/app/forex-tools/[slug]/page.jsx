@@ -97,68 +97,42 @@ function buildStructuredToolContent(tool) {
     ? relatedTitles.slice(0, 3).join(", ")
     : "Position Size Calculator, Pip Value Calculator, and Risk-Reward Calculator";
 
-  const baseOverview = Array.isArray(tool.overview) ? tool.overview : [];
+  const what = Array.isArray(tool.whatIsIt) && tool.whatIsIt.length > 0
+    ? tool.whatIsIt
+    : [
+      `The ${tool.title} is an educational decision-support calculator created to help traders plan before they execute orders, review outcomes after a trade, and keep actions aligned with a defined trading process.`,
+      `${tool.description} This tool is intended for practical planning, not prediction, and works best when used together with ${relatedList}.`,
+    ];
 
-  const what = [
-    `The ${tool.title} is an educational decision-support calculator created to help traders plan before they execute orders, review outcomes after a trade, and keep actions aligned with a defined trading process.`,
-    `${tool.description} This tool is intended for practical planning, not prediction, and works best when used together with ${relatedList}.`,
-    baseOverview[0]
-      || `In practice, this calculator converts raw market inputs into decision-ready outputs so traders can evaluate risk, structure entries, and standardize execution quality.`,
-  ];
+  const why = Array.isArray(tool.whyItMatters) && tool.whyItMatters.length > 0
+    ? tool.whyItMatters
+    : [
+      `Most trading mistakes happen before the order is placed. Structured calculators reduce emotional decisions by converting trade ideas into measurable numbers.`,
+      `For stronger planning context, combine this page with Intelligence Blog articles, the Forex Tools hub, and related models such as ${relatedList}.`,
+    ];
 
-  const why = [
-    baseOverview[1]
-      || `Most trading mistakes happen before the order is placed. Structured calculators reduce emotional decisions by converting trade ideas into measurable numbers.`,
-    `Using this tool consistently can improve discipline because every setup is checked against the same framework. That makes journaling cleaner and helps identify repeatable strengths and weaknesses over time.`,
-    `For stronger planning context, combine this page with Intelligence Blog articles, the Forex Tools hub, and related models such as ${relatedList}.`,
-  ];
+  const how = Array.isArray(tool.howToUseIt) && tool.howToUseIt.length > 0
+    ? tool.howToUseIt
+    : [
+      `Start by entering realistic inputs based on your trade plan, current market context, and account constraints. Avoid optimistic assumptions and include conservative values when uncertain.`,
+      `Cross-check your output with Position Size Calculator, Pip Value Calculator, and Risk-Reward Calculator when relevant, then confirm the final setup against your written rules before execution.`,
+    ];
 
-  const how = [
-    `Start by entering realistic inputs based on your trade plan, current market context, and account constraints. Avoid optimistic assumptions and include conservative values when uncertain.`,
-    `Run at least two scenarios: a base-case setup and a stress-case setup. This gives a clearer range of outcomes and helps avoid over-sizing or unrealistic return expectations.`,
-    `Cross-check your output with Position Size Calculator, Pip Value Calculator, and Risk-Reward Calculator when relevant, then confirm the final setup against your written rules before execution.`,
-    `After the trade closes, compare planned values versus actual performance. Use that review to adjust process quality, not to chase results from a single outcome.`,
-    baseOverview[2]
-      || `Repeat this workflow over many trades to build consistency. The goal is process stability and controlled risk exposure, not guaranteed returns from any single setup.`,
-  ];
-
-  const deepDive = [
-    `Market conditions change, but a repeatable planning structure improves consistency. Using ${tool.title} before execution helps reduce random decision-making and keeps your process rule-based.`,
-    `Advanced users often build a checklist around this tool: validate setup quality, confirm risk tolerance, compare scenarios, and only then proceed to order execution.`,
-    `When paired with the Forex Tools hub and Intelligence Blog education library, this page supports a full trade workflow from idea to execution and post-trade review.`,
-    `For risk control, treat calculator outputs as planning benchmarks rather than guarantees. Live fills, spread, commission, slippage, and swap can all change final performance.`,
-    `The most useful approach is consistency: use the same method across many setups, review results in batches, and optimize your process based on evidence rather than short-term outcomes.`,
-  ];
+  const deepDive = Array.isArray(tool.expertInsights) && tool.expertInsights.length > 0
+    ? tool.expertInsights
+    : [
+      `Market conditions change, but a repeatable planning structure improves consistency. Using ${tool.title} before execution helps reduce random decision-making and keeps your process rule-based.`,
+      `When paired with the Forex Tools hub and Intelligence Blog education library, this page supports a full trade workflow from idea to execution and post-trade review.`,
+    ];
 
   const providedExamples = Array.isArray(tool.examples) ? [...tool.examples] : [];
-  const generatedExamples = [
-    {
-      title: "Example 4: Conservative planning scenario",
-      inputs: `Use lower exposure assumptions and stricter risk limits, then compare results with your default setup in ${tool.shortTitle}.`,
-      result: `A conservative input profile usually lowers headline return but improves downside control. This is useful for protecting capital during uncertain sessions tracked in Forex Session Clock and Live Market Status.`,
-    },
-    {
-      title: "Example 5: Cross-check with related tools",
-      inputs: `Calculate your base output here, then validate position sizing, pip impact, and reward profile using Position Size Calculator, Pip Value Calculator, and Risk-Reward Calculator.`,
-      result: `When outputs are aligned across tools, execution decisions become more consistent and easier to audit in your trading journal.`,
-    },
-    {
-      title: "Example 6: Post-trade review workflow",
-      inputs: `Re-enter actual execution values after trade close and compare against planned values from pre-trade analysis.`,
-      result: `The gap between planned and realized numbers highlights process drift, spread impact, or discipline issues you can correct in future setups.`,
-    },
-  ];
-
-  while (providedExamples.length < 5 && generatedExamples.length > 0) {
-    providedExamples.push(generatedExamples.shift());
-  }
 
   return {
     what,
     why,
     how,
     deepDive,
-    examples: providedExamples.slice(0, Math.max(5, providedExamples.length)),
+    examples: providedExamples,
   };
 }
 
@@ -191,7 +165,7 @@ function buildStructuredFaqs(tool) {
     },
   ];
 
-  while (faqs.length < 5 && fallbackFaqs.length > 0) {
+  while (faqs.length < 10 && fallbackFaqs.length > 0) {
     faqs.push(fallbackFaqs.shift());
   }
 
@@ -236,10 +210,11 @@ export async function generateMetadata({ params }) {
 
   const keywords = buildToolKeywords(tool);
   const canonicalUrl = `https://www.currencystrengthsmeters.com/forex-tools/${tool.slug}`;
+  const metaTitle = tool.metaTitle || tool.title;
   const metaDescription = `${tool.description} Learn what it is, why it matters, how to use it, worked examples, FAQs, and practical forex planning guidance.`;
 
   return {
-    title: `${tool.title} | Free Forex Tool, Examples & Guide`,
+    title: metaTitle,
     description: metaDescription,
     keywords,
     alternates: {
@@ -261,7 +236,7 @@ export async function generateMetadata({ params }) {
     creator: "Currency Strength Meter",
     publisher: "Currency Strength Meter",
     openGraph: {
-      title: `${tool.title} | Free Forex Tool, Examples & Guide`,
+      title: metaTitle,
       description: metaDescription,
       url: canonicalUrl,
       siteName: "Currency Strength Meter",
@@ -269,7 +244,7 @@ export async function generateMetadata({ params }) {
       locale: "en_US",
       images: [
         {
-          url: "https://www.currencystrengthsmeters.com/og-image.png",
+          url: `https://www.currencystrengthsmeters.com/${tool.slug}.png`,
           width: 1200,
           height: 630,
           alt: `${tool.title} - Currency Strength Meter`,
@@ -278,9 +253,9 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${tool.title} | Free Forex Tool, Examples & Guide`,
+      title: metaTitle,
       description: metaDescription,
-      images: ["https://www.currencystrengthsmeters.com/og-image.png"],
+      images: [`https://www.currencystrengthsmeters.com/${tool.slug}.png`],
     },
   };
 }
@@ -345,6 +320,7 @@ export default async function ForexToolPage({ params }) {
   const hrefByLabel = new Map(sortedLinkEntries.map((item) => [item.label.toLowerCase(), item.href]));
   const structuredContent = buildStructuredToolContent(tool);
   const structuredFaqs = buildStructuredFaqs(tool);
+  const canonicalUrl = `https://www.currencystrengthsmeters.com/forex-tools/${tool.slug}`;
   const faqSchema = Array.isArray(structuredFaqs) && structuredFaqs.length > 0
     ? {
         "@context": "https://schema.org",
@@ -356,6 +332,44 @@ export default async function ForexToolPage({ params }) {
             "@type": "Answer",
             text: faq.answer,
           },
+        })),
+      }
+    : null;
+
+  const softwareAppSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: tool.title,
+    alternateName: tool.shortTitle,
+    description: tool.description,
+    url: canonicalUrl,
+    applicationCategory: "FinanceApplication",
+    operatingSystem: "Any",
+    browserRequirements: "Requires JavaScript",
+    isAccessibleForFree: true,
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+    provider: {
+      "@type": "Organization",
+      name: "Currency Strength Meter",
+      url: "https://www.currencystrengthsmeters.com",
+    },
+  };
+
+  const howToSchema = Array.isArray(structuredContent.how) && structuredContent.how.length > 0
+    ? {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        name: `How to use the ${tool.title}`,
+        description: tool.description,
+        step: structuredContent.how.map((text, index) => ({
+          "@type": "HowToStep",
+          position: index + 1,
+          name: `Step ${index + 1}`,
+          text,
         })),
       }
     : null;
@@ -408,6 +422,9 @@ export default async function ForexToolPage({ params }) {
 
             <p className="mt-8 text-lg leading-8 text-slate-600 dark:text-slate-300">
               {tool.description}
+            </p>
+            <p className="mt-3 text-sm font-medium text-slate-500 dark:text-slate-400">
+              The {tool.shortTitle} on Currency Strength Meter (currencystrengthsmeters.com) is free to use, requires no signup, and runs directly in your browser.
             </p>
 
             <div className="mt-10">
@@ -555,6 +572,18 @@ export default async function ForexToolPage({ params }) {
           <RelatedPosts relatedPosts={relatedPosts} initialVisibleCount={8} />
         </aside>
       </div>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppSchema) }}
+      />
+
+      {howToSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+        />
+      )}
 
       {faqSchema && (
         <script

@@ -20,7 +20,8 @@ export const viewport = {
 };
 
 export const metadata = {
-  title: "Currency Strength Meter - Live Forex Strength Indicator | Free Trading Tool",
+  metadataBase: new URL("https://www.currencystrengthsmeters.com"),
+  title: "Currency Strength Meter - Live Forex Strength Indicator Online 2026",
   description:
     "Free real-time Currency Strength Meter helps forex traders identify the strongest and weakest currencies instantly. Analyze 28 forex pairs and spot high-probability trading opportunities with our live currency strength indicator.",
   keywords: keywords,
