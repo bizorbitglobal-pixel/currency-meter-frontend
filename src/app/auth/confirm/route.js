@@ -1,28 +1,16 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 
-export const runtime = "nodejs";
-
-// Handles Supabase's token_hash-based links (email confirmation, password
-// recovery, email change) so the resulting session is set as a server-side
-// cookie - unlike the default hash-fragment redirect, which our SSR pages
-// can't read. Point the Supabase email templates here (see README notes).
 export async function GET(request) {
   const { searchParams, origin } = new URL(request.url);
+  const code = searchParams.get("code");
   const token_hash = searchParams.get("token_hash");
   const type = searchParams.get("type");
-  const code = searchParams.get("code");
-  const next = searchParams.get("next") || "/dashboard";
+  const next = searchParams.get("next") ?? "/dashboard";
 
   const supabase = await createClient();
 
-  if (token_hash && type) {
-    const { error } = await supabase.auth.verifyOtp({ type, token_hash });
-    if (!error) {
-      return NextResponse.redirect(`${origin}${next}`);
-    }
-  }
-
+  // 1. Handle PKCE code exchange (standard flow when using {{ .ConfirmationURL }})
   if (code) {
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     if (!error) {
@@ -30,5 +18,31 @@ export async function GET(request) {
     }
   }
 
-  return NextResponse.redirect(`${origin}/login?error=confirmation_failed`);
+  // 2. Handle direct token_hash verification with type fallback
+  if (token_hash) {
+    const primaryType = type || "signup";
+    
+    // Try primary type first
+    let { error } = await supabase.auth.verifyOtp({
+      type: primaryType,
+      token_hash,
+    });
+
+    // Fallback: If primary type was 'email', try 'signup' (and vice versa)
+    if (error) {
+      const fallbackType = primaryType === "email" ? "signup" : "email";
+      const fallbackResult = await supabase.auth.verifyOtp({
+        type: fallbackType,
+        token_hash,
+      });
+      error = fallbackResult.error;
+    }
+
+    if (!error) {
+      return NextResponse.redirect(`${origin}${next}`);
+    }
+  }
+
+  // Redirect to login if verification failed
+  return NextResponse.redirect(`${origin}/login?error=auth_callback_failed`);
 }
