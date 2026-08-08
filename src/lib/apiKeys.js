@@ -77,10 +77,14 @@ export async function checkAndConsumeApiKey(rawKey) {
   const admin = createAdminClient();
   const keyToMatch = rawKey.trim();
 
-  // Direct match against plaintext key
+  // Extract the 13-character prefix (e.g. csm_live_XXXX) from the raw key
+  const keyPrefix = keyToMatch.slice(0, 13);
+
+  // Match against both key_prefix and key_hash for extra accuracy
   const { data: apiKey } = await admin
     .from("api_keys")
     .select("id, user_id, status")
+    .eq("key_prefix", keyPrefix)
     .eq("key_hash", keyToMatch)
     .maybeSingle();
 
