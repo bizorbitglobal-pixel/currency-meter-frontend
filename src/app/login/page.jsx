@@ -28,12 +28,14 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isUserNotFound, setIsUserNotFound] = useState(false);
+  const [autoResendMessage, setAutoResendMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
     setError("");
     setIsUserNotFound(false);
+    setAutoResendMessage("");
     setLoading(true);
 
     const supabase = createClient();
@@ -42,10 +44,36 @@ function LoginForm() {
       password,
     });
 
-    setLoading(false);
-
     if (signInError) {
       const msg = signInError.message.toLowerCase();
+
+      // Automatically resend confirmation email if unconfirmed
+      if (msg.includes("email not confirmed")) {
+        setError("Email not confirmed.");
+        setAutoResendMessage("Sending a new confirmation link to your email…");
+
+        const siteUrl =
+          process.env.NEXT_PUBLIC_SITE_URL || "https://www.currencystrengthsmeters.com";
+
+        const { error: resendError } = await supabase.auth.resend({
+          type: "signup",
+          email,
+          options: {
+            emailRedirectTo: `${siteUrl}/auth/callback`,
+          },
+        });
+
+        setLoading(false);
+
+        if (resendError) {
+          setAutoResendMessage("Could not automatically resend email. Please try again later.");
+        } else {
+          setAutoResendMessage("Confirmation email resent! Please check your inbox.");
+        }
+        return;
+      }
+
+      setLoading(false);
 
       // Catch invalid credentials or non-existent user
       if (msg.includes("invalid login credentials")) {
@@ -58,6 +86,7 @@ function LoginForm() {
       return;
     }
 
+    setLoading(false);
     router.push(redirectedFrom);
     router.refresh();
   }
@@ -124,12 +153,21 @@ function LoginForm() {
             />
           </div>
 
-          {/* Error Message with Signup prompt */}
+          {/* Error & Automated Resend Message Box */}
           {error && (
-            <div className="p-3 rounded-lg bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900 space-y-1">
-              <p className="text-sm text-red-600 dark:text-red-400 font-medium">
+            <div className="p-3.5 rounded-lg bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-900 space-y-1.5">
+              <p className="text-sm font-bold text-red-600 dark:text-red-400">
                 {error}
               </p>
+
+              {/* Automatic Resend Notice */}
+              {autoResendMessage && (
+                <p className="text-xs font-semibold text-slate-700 dark:text-slate-300 border-t border-red-200/60 dark:border-red-900/60 pt-1.5">
+                  {autoResendMessage}
+                </p>
+              )}
+
+              {/* User Not Found Prompt */}
               {isUserNotFound && (
                 <p className="text-xs text-red-700 dark:text-red-300">
                   Don&apos;t have an account?{" "}
