@@ -71,7 +71,7 @@ export default async function DashboardPage() {
     ? await supabase
         .from("usage_counters")
         .select("request_count, period_end")
-        .eq("api_key_id", apiKeyRow.id)
+        .eq("user_id", user.id)
         .maybeSingle()
     : { data: null };
 

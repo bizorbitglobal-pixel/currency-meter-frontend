@@ -1,44 +1,45 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getFullApiKey } from "@/app/dashboard/actions";
 
 export default function ApiKeyCard({ keyPrefix, initialFullKey }) {
   const [showKey, setShowKey] = useState(false);
   const [fullKey, setFullKey] = useState(initialFullKey || null);
-  const [fetching, setFetching] = useState(false);
+  const [fetching, setFetching] = useState(!initialFullKey);
   const [copied, setCopied] = useState(false);
 
   const maskedKey = keyPrefix
-    ? `${keyPrefix}••••••••••••••••••••••••`
-    : "••••••••••••••••••••••••••••••••";
+    ? `${keyPrefix}••••••••••••••••••••`
+    : "•••••••••••••••••••••••••••••••••";
 
-  async function handleToggleShow() {
-    if (showKey) {
-      setShowKey(false);
-      return;
-    }
+  // Automatically fetch the complete key when the component loads
+  useEffect(() => {
+    let isMounted = true;
 
     if (!fullKey) {
       setFetching(true);
-      const fetchedKey = await getFullApiKey();
-      if (fetchedKey) setFullKey(fetchedKey);
+      getFullApiKey().then((fetchedKey) => {
+        if (isMounted) {
+          if (fetchedKey) setFullKey(fetchedKey);
+          setFetching(false);
+        }
+      });
+    } else {
       setFetching(false);
     }
 
-    setShowKey(true);
+    return () => {
+      isMounted = false;
+    };
+  }, [fullKey]);
+
+  function handleToggleShow() {
+    setShowKey((prev) => !prev);
   }
 
   async function handleCopy() {
-    let textToCopy = fullKey;
-
-    if (!textToCopy) {
-      setFetching(true);
-      textToCopy = await getFullApiKey();
-      if (textToCopy) setFullKey(textToCopy);
-      setFetching(false);
-    }
-
+    const textToCopy = fullKey || keyPrefix || "";
     if (!textToCopy) return;
 
     try {
@@ -59,13 +60,7 @@ export default function ApiKeyCard({ keyPrefix, initialFullKey }) {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 rounded-xl bg-slate-50/80 dark:bg-gray-800/50 p-2 border border-slate-100 dark:border-gray-800">
         {/* Key Display */}
         <code className="flex-1 truncate px-3 py-1 text-xs font-mono text-slate-800 dark:text-slate-200 select-all">
-          {fetching ? (
-            <span className="text-slate-400">Loading key…</span>
-          ) : showKey && fullKey ? (
-            fullKey
-          ) : (
-            maskedKey
-          )}
+          {showKey && fullKey ? fullKey : maskedKey}
         </code>
 
         {/* Action Buttons */}
