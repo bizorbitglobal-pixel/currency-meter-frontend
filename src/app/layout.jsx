@@ -4,8 +4,7 @@ import "./globals.css";
 import keywords from "./keywords.json";
 import { Analytics } from "@vercel/analytics/next";
 import CookieConsent from "@/components/CookieConsent";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import AppChrome from "@/components/AppChrome";
 import ClickableBrandText from "@/components/ClickableBrandText";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -83,11 +82,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.className}`}
       >
-        <div className="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
-          <Header />
-          <div className="pt-20 md:pt-24">{children}</div>
-          <Footer />
-        </div>
+        <AppChrome>{children}</AppChrome>
         <ClickableBrandText />
         <CookieConsent />
         <Analytics />

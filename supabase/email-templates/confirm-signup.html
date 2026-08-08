@@ -1,0 +1,42 @@
+<!--
+  Paste this into: Supabase Dashboard > Authentication > Emails > Templates > "Confirm signup"
+  Subject suggestion: Confirm your Currency Strength Meter account
+
+  IMPORTANT: Also replace the template's link with (note the leading "?"):
+  {{ .RedirectTo }}?token_hash={{ .TokenHash }}&type=email
+-->
+<div style="background-color:#f1f5f9;padding:32px 16px;font-family:Arial,Helvetica,sans-serif;">
+  <table role="presentation" width="100%" style="max-width:480px;margin:0 auto;background:#ffffff;border-radius:16px;overflow:hidden;border:1px solid #e2e8f0;">
+    <tr>
+      <td style="background:linear-gradient(135deg,#2563eb,#059669);padding:28px 32px;">
+        <span style="color:#ffffff;font-size:20px;font-weight:800;letter-spacing:0.02em;">Currency Strength Meter</span>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:32px;">
+        <h1 style="margin:0 0 12px;font-size:20px;color:#0f172a;">Confirm your email address</h1>
+        <p style="margin:0 0 20px;font-size:14px;line-height:1.6;color:#475569;">
+          Thanks for signing up. Confirm your email to activate your free API plan
+          (100 requests, no card required) and access your dashboard.
+        </p>
+        <div style="text-align:center;margin:28px 0;">
+          <a href="{{ .RedirectTo }}?token_hash={{ .TokenHash }}&type=email"
+             style="background:#2563eb;color:#ffffff;text-decoration:none;font-weight:700;font-size:14px;padding:12px 28px;border-radius:9999px;display:inline-block;">
+            Confirm email &amp; go to dashboard
+          </a>
+        </div>
+        <p style="margin:0;font-size:12px;line-height:1.6;color:#94a3b8;">
+          If you didn't create this account, you can safely ignore this email.
+          This link expires in 24 hours.
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding:20px 32px;background:#f8fafc;border-top:1px solid #e2e8f0;">
+        <p style="margin:0;font-size:12px;color:#94a3b8;">
+          &copy; Currency Strength Meter &middot; www.currencystrengthsmeters.com
+        </p>
+      </td>
+    </tr>
+  </table>
+</div>

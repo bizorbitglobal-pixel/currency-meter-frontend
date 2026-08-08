@@ -1,16 +1,10 @@
 import { NextResponse } from "next/server";
+import { checkAndConsumeApiKey } from "@/lib/apiKeys";
 
 export const runtime = "nodejs";
 
 // Upstream realtime data source
 const UPSTREAM_URL = "https://currency-strength-realtime.vercel.app/api/strength";
-
-// List of authorized client API keys
-// You can add your client's key here or store it in your .env / Database
-const VALID_API_KEYS = new Set([
-  process.env.CLIENT_API_KEY || "csm_live_a3f9e2b10c8d7e6f4a5b2c3d1e0f9a8b",
-  "demo_test_key_123",
-]);
 
 // Fallback dataset in case upstream feed is temporarily unavailable
 const FALLBACK_SCORES = {
@@ -26,16 +20,14 @@ const FALLBACK_SCORES = {
 
 export async function GET(request) {
   try {
-    // 1. Verify X-API-KEY header from customer / MT5 EA
+    // 1. Verify X-API-KEY header, then enforce the caller's plan quota
     const apiKey = request.headers.get("x-api-key");
+    const usage = await checkAndConsumeApiKey(apiKey);
 
-    if (!apiKey || !VALID_API_KEYS.has(apiKey)) {
+    if (!usage.ok) {
       return NextResponse.json(
-        {
-          success: false,
-          error: "Unauthorized: Invalid or missing X-API-KEY header.",
-        },
-        { status: 401 }
+        { success: false, error: usage.error },
+        { status: usage.status }
       );
     }
 
@@ -66,6 +58,9 @@ export async function GET(request) {
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Headers": "X-API-KEY, Content-Type",
           "Cache-Control": "no-cache, no-store, must-revalidate",
+          "X-RateLimit-Plan": usage.plan,
+          "X-RateLimit-Used": String(usage.used),
+          "X-RateLimit-Remaining": usage.remaining === null ? "unlimited" : String(usage.remaining),
         },
       }
     );

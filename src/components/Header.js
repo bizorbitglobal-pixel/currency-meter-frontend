@@ -19,9 +19,13 @@ import {
   X,
   Sun,
   Moon,
+  User,
+  LogOut,
 } from "lucide-react";
 import { forexTools } from "@/lib/forexTools";
 import MarketTickHeader from "@/components/MarketTickHeader";
+import { createClient } from "@/lib/supabase/client";
+import { signOutAction } from "@/app/dashboard/actions";
 
 const iconMap = {
   target: Target,
@@ -65,7 +69,9 @@ function ThemeToggle() {
   };
 
   if (!mounted) {
-    return <div className="w-[68px] h-[34px] rounded-full bg-slate-200/60 dark:bg-slate-800/60 animate-pulse border border-slate-200 dark:border-slate-800" />;
+    return (
+      <div className="w-[68px] h-[34px] rounded-full bg-slate-200/60 dark:bg-slate-800/60 animate-pulse border border-slate-200 dark:border-slate-800" />
+    );
   }
 
   return (
@@ -77,12 +83,24 @@ function ThemeToggle() {
       aria-label="Toggle theme"
       className="group relative inline-flex h-[34px] w-[68px] shrink-0 cursor-pointer items-center rounded-full border border-slate-200/80 bg-slate-100 p-1 shadow-inner backdrop-blur-md transition-all duration-300 hover:border-slate-300 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500/40 select-none"
     >
-      <span className={`absolute h-[26px] w-[28px] rounded-full bg-white shadow-md ring-1 ring-black/5 transition-transform duration-300 ease-out dark:bg-blue-600 dark:shadow-blue-900/40 ${theme === "dark" ? "translate-x-[32px]" : "translate-x-0"}`} />
+      <span
+        className={`absolute h-[26px] w-[28px] rounded-full bg-white shadow-md ring-1 ring-black/5 transition-transform duration-300 ease-out dark:bg-blue-600 dark:shadow-blue-900/40 ${
+          theme === "dark" ? "translate-x-[32px]" : "translate-x-0"
+        }`}
+      />
       <span className="relative z-10 flex w-[28px] items-center justify-center">
-        <Sun className={`h-4 w-4 transition-colors duration-200 ${theme === "light" ? "text-amber-500" : "text-slate-400 group-hover:text-slate-300"}`} />
+        <Sun
+          className={`h-4 w-4 transition-colors duration-200 ${
+            theme === "light" ? "text-amber-500" : "text-slate-400 group-hover:text-slate-300"
+          }`}
+        />
       </span>
       <span className="relative z-10 flex w-[28px] items-center justify-center">
-        <Moon className={`h-4 w-4 transition-colors duration-200 ${theme === "dark" ? "text-white" : "text-slate-400 group-hover:text-slate-600 dark:text-slate-500"}`} />
+        <Moon
+          className={`h-4 w-4 transition-colors duration-200 ${
+            theme === "dark" ? "text-white" : "text-slate-400 group-hover:text-slate-600 dark:text-slate-500"
+          }`}
+        />
       </span>
     </button>
   );
@@ -93,6 +111,9 @@ export default function Header() {
   const [desktopToolsOpen, setDesktopToolsOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
+  const [profileMenuOpen, setProfileMenuOpen] = useState(false);
+  const [user, setUser] = useState(null);
+  const [authLoaded, setAuthLoaded] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -100,41 +121,104 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const supabase = createClient();
+    supabase.auth.getUser().then(({ data }) => {
+      setUser(data.user);
+      setAuthLoaded(true);
+    });
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+    });
+    return () => subscription.unsubscribe();
+  }, []);
+
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
     setMobileToolsOpen(false);
   };
 
+  useEffect(() => {
+    const handleClick = () => setProfileMenuOpen(false);
+    window.addEventListener("click", handleClick);
+    return () => window.removeEventListener("click", handleClick);
+  }, []);
+
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-white/95 backdrop-blur-md shadow-sm dark:bg-gray-950/95" : "bg-white dark:bg-gray-950"}`}>
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-white/95 backdrop-blur-md shadow-sm dark:bg-gray-950/95"
+          : "bg-white dark:bg-gray-950"
+      }`}
+    >
       {/* Primary Header Navbar */}
       <div className="relative z-20 flex items-center justify-between max-w-6xl mx-auto px-6 py-2">
-        <Link href="/" onClick={closeMobileMenu} className="text-xl font-bold text-gray-900 dark:text-gray-100 flex items-center">
-          <Image src="/images/logo.png" alt="Logo" width={100} height={40} className="inline-block mr-2 h-9 w-auto object-contain" priority />
+        <Link
+          href="/"
+          onClick={closeMobileMenu}
+          className="text-xl font-bold text-gray-900 dark:text-gray-100 flex items-center"
+        >
+          <Image
+            src="/images/logo.png"
+            alt="Logo"
+            width={100}
+            height={40}
+            className="inline-block mr-2 h-9 w-auto object-contain"
+            priority
+          />
         </Link>
 
         <div className="flex items-center gap-4 sm:gap-6">
           <nav className="hidden md:flex items-center gap-6">
-            <div className="relative" onMouseEnter={() => setDesktopToolsOpen(true)} onMouseLeave={() => setDesktopToolsOpen(false)}>
+            <div
+              className="relative"
+              onMouseEnter={() => setDesktopToolsOpen(true)}
+              onMouseLeave={() => setDesktopToolsOpen(false)}
+            >
               <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-[0.16em] text-slate-600 dark:text-slate-200">
-                <Link href="/forex-tools" onClick={() => setDesktopToolsOpen(false)}>Forex Tools</Link>
-                <button type="button" aria-label="Toggle forex tools menu" onClick={() => setDesktopToolsOpen((open) => !open)} className="transition-colors hover:text-blue-600 dark:hover:text-blue-400">
-                  <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${desktopToolsOpen ? "rotate-180" : ""}`} />
+                <Link
+                  href="/forex-tools"
+                  onClick={() => setDesktopToolsOpen(false)}
+                >
+                  Forex Tools
+                </Link>
+                <button
+                  type="button"
+                  aria-label="Toggle forex tools menu"
+                  onClick={() => setDesktopToolsOpen((open) => !open)}
+                  className="transition-colors hover:text-blue-600 dark:hover:text-blue-400"
+                >
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform duration-200 ${
+                      desktopToolsOpen ? "rotate-180" : ""
+                    }`}
+                  />
                 </button>
               </div>
 
-              {/* High z-index Ensures Dropdown Menu Opens ON TOP of SubHeader */}
               {desktopToolsOpen && (
                 <div className="absolute right-0 top-full w-[360px] pt-3 z-50">
                   <div className="overflow-hidden rounded-[28px] border border-slate-200 bg-white p-4 shadow-2xl dark:border-slate-800 dark:bg-slate-950">
-                    <Link href="/forex-tools" onClick={() => setDesktopToolsOpen(false)} className="mb-3 block rounded-2xl px-4 py-3 text-sm font-bold uppercase tracking-[0.12em] text-slate-600 transition hover:bg-slate-50 hover:text-blue-600 dark:text-slate-200 dark:hover:bg-slate-900 dark:hover:text-blue-400">
+                    <Link
+                      href="/forex-tools"
+                      onClick={() => setDesktopToolsOpen(false)}
+                      className="mb-3 block rounded-2xl px-4 py-3 text-sm font-bold uppercase tracking-[0.12em] text-slate-600 transition hover:bg-slate-50 hover:text-blue-600 dark:text-slate-200 dark:hover:bg-slate-900 dark:hover:text-blue-400"
+                    >
                       All Forex Tools
                     </Link>
                     <div className="space-y-1 max-h-[70vh] overflow-y-auto">
                       {forexTools.map((tool) => {
                         const ToolIcon = iconMap[tool.icon] || Target;
                         return (
-                          <Link key={tool.slug} href={`/forex-tools/${tool.slug}`} onClick={() => setDesktopToolsOpen(false)} className="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold uppercase tracking-[0.08em] text-slate-600 transition hover:bg-slate-50 hover:text-blue-600 dark:text-slate-200 dark:hover:bg-slate-900 dark:hover:text-blue-400">
+                          <Link
+                            key={tool.slug}
+                            href={`/forex-tools/${tool.slug}`}
+                            onClick={() => setDesktopToolsOpen(false)}
+                            className="flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold uppercase tracking-[0.08em] text-slate-600 transition hover:bg-slate-50 hover:text-blue-600 dark:text-slate-200 dark:hover:bg-slate-900 dark:hover:text-blue-400"
+                          >
                             <ToolIcon className="h-4 w-4 shrink-0" />
                             <span>{tool.shortTitle}</span>
                           </Link>
@@ -146,15 +230,77 @@ export default function Header() {
               )}
             </div>
 
-            <Link href="/blog" className="text-sm font-bold uppercase tracking-[0.16em] text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-200 dark:hover:text-blue-400">
+            <Link
+              href="/blog"
+              className="text-sm font-bold uppercase tracking-[0.16em] text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-200 dark:hover:text-blue-400"
+            >
               Blogs
             </Link>
+
+            <Link
+              href="/forex-api"
+              className="text-sm font-bold uppercase tracking-[0.16em] text-slate-600 transition-colors hover:text-blue-600 dark:text-slate-200 dark:hover:text-blue-400"
+            >
+              API
+            </Link>
+
+            {authLoaded &&
+              (user ? (
+                <div className="relative" onClick={(e) => e.stopPropagation()}>
+                  <button
+                    type="button"
+                    onClick={() => setProfileMenuOpen((open) => !open)}
+                    aria-label="Open profile menu"
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900 transition"
+                  >
+                    <User className="h-5 w-5" />
+                  </button>
+                  {profileMenuOpen && (
+                    <div className="absolute right-0 top-12 w-44 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl dark:border-slate-800 dark:bg-slate-950">
+                      <Link
+                        href="/dashboard"
+                        className="block px-4 py-3 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900"
+                        onClick={() => setProfileMenuOpen(false)}
+                      >
+                        Profile
+                      </Link>
+                      <form action={signOutAction}>
+                        <button
+                          type="submit"
+                          className="w-full flex items-center gap-2 px-4 py-3 text-sm font-semibold text-left text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900"
+                        >
+                          <LogOut className="h-4 w-4" />
+                          Sign out
+                        </button>
+                      </form>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="flex items-center">
+                  <Link
+                    href="/login"
+                    className="rounded-full bg-[#34d399] px-5 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition hover:opacity-90 active:scale-95"
+                  >
+                    Log in / Sign up
+                  </Link>
+                </div>
+              ))}
           </nav>
 
           <ThemeToggle />
 
-          <button type="button" onClick={() => setMobileMenuOpen((prev) => !prev)} className="md:hidden p-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-label="Toggle mobile menu">
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
+            className="md:hidden p-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+            aria-label="Toggle mobile menu"
+          >
+            {mobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </button>
         </div>
       </div>
@@ -166,28 +312,56 @@ export default function Header() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 top-[102px] bg-black/40 backdrop-blur-sm md:hidden z-40" onClick={closeMobileMenu} />
+        <div
+          className="fixed inset-0 top-[102px] bg-black/40 backdrop-blur-sm md:hidden z-40"
+          onClick={closeMobileMenu}
+        />
       )}
 
-      <div className={`fixed inset-x-0 top-[102px] bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 transition-all duration-300 ease-in-out md:hidden z-50 overflow-y-auto max-h-[calc(100vh-102px)] ${mobileMenuOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"}`}>
+      <div
+        className={`fixed inset-x-0 top-[102px] bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 transition-all duration-300 ease-in-out md:hidden z-50 overflow-y-auto max-h-[calc(100vh-102px)] ${
+          mobileMenuOpen
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 -translate-y-4 pointer-events-none"
+        }`}
+      >
         <nav className="flex flex-col p-6 space-y-4">
           <div className="space-y-2">
             <div className="flex items-center justify-between text-base font-bold uppercase tracking-[0.12em] text-slate-800 dark:text-slate-100">
-              <Link href="/forex-tools" onClick={closeMobileMenu}>Forex Tools</Link>
-              <button type="button" onClick={() => setMobileToolsOpen((prev) => !prev)} className="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800">
-                <ChevronDown className={`h-5 w-5 transition-transform duration-200 ${mobileToolsOpen ? "rotate-180" : ""}`} />
+              <Link href="/forex-tools" onClick={closeMobileMenu}>
+                Forex Tools
+              </Link>
+              <button
+                type="button"
+                onClick={() => setMobileToolsOpen((prev) => !prev)}
+                className="p-1 rounded hover:bg-slate-100 dark:hover:bg-slate-800"
+              >
+                <ChevronDown
+                  className={`h-5 w-5 transition-transform duration-200 ${
+                    mobileToolsOpen ? "rotate-180" : ""
+                  }`}
+                />
               </button>
             </div>
 
             {mobileToolsOpen && (
               <div className="pl-2 pt-2 space-y-1 border-l-2 border-slate-200 dark:border-slate-800 ml-1">
-                <Link href="/forex-tools" onClick={closeMobileMenu} className="block px-3 py-2 text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                <Link
+                  href="/forex-tools"
+                  onClick={closeMobileMenu}
+                  className="block px-3 py-2 text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400"
+                >
                   All Forex Tools
                 </Link>
                 {forexTools.map((tool) => {
                   const ToolIcon = iconMap[tool.icon] || Target;
                   return (
-                    <Link key={tool.slug} href={`/forex-tools/${tool.slug}`} onClick={closeMobileMenu} className="flex items-center gap-3 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400">
+                    <Link
+                      key={tool.slug}
+                      href={`/forex-tools/${tool.slug}`}
+                      onClick={closeMobileMenu}
+                      className="flex items-center gap-3 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400"
+                    >
                       <ToolIcon className="h-4 w-4 shrink-0" />
                       <span>{tool.shortTitle}</span>
                     </Link>
@@ -197,11 +371,73 @@ export default function Header() {
             )}
           </div>
 
-          <hr className="border-slate-100 dark:border-slate-900" />
+          <hr className="border-slate-200 dark:border-slate-800" />
 
-          <Link href="/blog" onClick={closeMobileMenu} className="text-base font-bold uppercase tracking-[0.12em] text-slate-800 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-400">
+          <Link
+            href="/blog"
+            onClick={closeMobileMenu}
+            className="text-base font-bold uppercase tracking-[0.12em] text-slate-800 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-400"
+          >
             Blogs
           </Link>
+
+          {/* Line between Blogs and API */}
+          <hr className="border-slate-200 dark:border-slate-800" />
+
+          <Link
+            href="/forex-api"
+            onClick={closeMobileMenu}
+            className="text-base font-bold uppercase tracking-[0.12em] text-slate-800 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-400"
+          >
+            API &amp; Pricing
+          </Link>
+
+          <hr className="border-slate-200 dark:border-slate-800" />
+
+          {authLoaded &&
+            (user ? (
+              <div className="flex flex-col gap-3">
+                <Link
+                  href="/dashboard"
+                  onClick={closeMobileMenu}
+                  className="text-base font-bold uppercase tracking-[0.12em] text-slate-800 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-400"
+                >
+                  API Dashboard
+                </Link>
+                <Link
+                  href="/dashboard"
+                  onClick={closeMobileMenu}
+                  className="text-base font-bold uppercase tracking-[0.12em] text-slate-800 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-400"
+                >
+                  Profile
+                </Link>
+                <form action={signOutAction}>
+                  <button
+                    type="submit"
+                    className="w-full text-center rounded-full border border-slate-300 dark:border-slate-700 text-sm font-bold uppercase tracking-wide px-4 py-2.5 text-slate-700 dark:text-slate-200"
+                  >
+                    Log out
+                  </button>
+                </form>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-3">
+                <Link
+                  href="/login"
+                  onClick={closeMobileMenu}
+                  className="text-center rounded-full border border-slate-300 dark:border-slate-700 text-sm font-bold uppercase tracking-wide px-4 py-2.5 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900 transition"
+                >
+                  Log in
+                </Link>
+                <Link
+                  href="/signup"
+                  onClick={closeMobileMenu}
+                  className="text-center rounded-full bg-[#34d399] hover:opacity-90 text-white text-sm font-bold uppercase tracking-wide px-4 py-2.5 transition"
+                >
+                  Create Free Account
+                </Link>
+              </div>
+            ))}
         </nav>
       </div>
     </header>

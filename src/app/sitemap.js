@@ -86,6 +86,12 @@ export default async function sitemap() {
       priority: 0.7,
     },
     {
+      url: `${baseUrl}/forex-api`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: `${baseUrl}/forex-tools/position-size-calculator`,
       lastModified: new Date(),
       changeFrequency: "monthly",
