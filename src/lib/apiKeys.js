@@ -1,72 +1,77 @@
 import crypto from "crypto";
 import { createAdminClient } from "@/lib/supabase/server";
 
-const KEY_BYTES = 24; // 32 base64url chars of entropy
-
+// Generates 15 hex characters
 function randomToken() {
-  return crypto.randomBytes(KEY_BYTES).toString("base64url");
+  return crypto.randomBytes(10).toString("hex").slice(0, 15);
 }
 
-export function hashApiKey(fullKey) {
-  return crypto.createHash("sha256").update(fullKey).digest("hex");
-}
-
-// csm_live_<random> for real keys - easy to recognize in logs/dashboards.
+// Generates API key: csm_live_ + 15 characters (total 24 chars)
 export function generateApiKeyMaterial() {
-  const token = randomToken();
+  const token = randomToken(); // Exactly 15 characters
   const fullKey = `csm_live_${token}`;
-  const keyPrefix = fullKey.slice(0, 16);
-  const keyHash = hashApiKey(fullKey);
-  return { fullKey, keyPrefix, keyHash };
+  const keyPrefix = fullKey.slice(0, 13); // csm_live_ + first 4 chars for prefix display
+  return { fullKey, keyPrefix };
 }
 
 // Revokes any existing active key for the user and issues a brand new one.
-// Returns the full plaintext key ONCE - callers must show it to the user
-// immediately and never persist the plaintext value anywhere.
+// Plaintext fullKey is saved to DB so it can be retrieved by the user later.
+// Usage counters are tied to user_id, preserving request history across regenerations.
 export async function createApiKeyForUser(userId) {
   const admin = createAdminClient();
 
+  // Revoke previous active keys for this user
   await admin
     .from("api_keys")
     .update({ status: "revoked", revoked_at: new Date().toISOString() })
     .eq("user_id", userId)
     .eq("status", "active");
 
-  const { fullKey, keyPrefix, keyHash } = generateApiKeyMaterial();
+  const { fullKey, keyPrefix } = generateApiKeyMaterial();
 
+  // Store the plaintext key directly in key_hash
   const { data: apiKey, error } = await admin
     .from("api_keys")
-    .insert({ user_id: userId, key_prefix: keyPrefix, key_hash: keyHash })
+    .insert({ user_id: userId, key_prefix: keyPrefix, key_hash: fullKey })
     .select()
     .single();
 
   if (error) throw error;
 
-  await admin.from("usage_counters").insert({
-    api_key_id: apiKey.id,
-    period_start: new Date().toISOString(),
-    period_end: null,
-    request_count: 0,
-  });
+  // Ensure a usage counter row exists for the user (by user_id) without overwriting existing usage
+  const { data: existingCounter } = await admin
+    .from("usage_counters")
+    .select("id")
+    .eq("user_id", userId)
+    .maybeSingle();
+
+  if (!existingCounter) {
+    await admin.from("usage_counters").insert({
+      user_id: userId,
+      period_start: new Date().toISOString(),
+      period_end: null,
+      request_count: 0,
+    });
+  }
 
   return { fullKey, apiKey };
 }
 
-// Validates an incoming X-API-KEY header, enforces the caller's plan quota,
-// and atomically increments usage if the request is allowed.
-// Returns { ok: true, plan, remaining } or { ok: false, status, error }.
+// Validates incoming X-API-KEY header using plaintext matching,
+// enforces the caller's plan quota based on user_id, and updates usage.
 export async function checkAndConsumeApiKey(rawKey) {
   if (!rawKey || typeof rawKey !== "string") {
     return { ok: false, status: 401, error: "Missing X-API-KEY header." };
   }
 
   const admin = createAdminClient();
-  const keyHash = hashApiKey(rawKey.trim());
+  const keyToMatch = rawKey.trim();
 
+  // Direct match against plaintext key
   const { data: apiKey } = await admin
     .from("api_keys")
     .select("id, user_id, status")
-    .eq("key_hash", keyHash)
+    .eq("key_hash", keyToMatch)
     .maybeSingle();
 
   if (!apiKey || apiKey.status !== "active") {
@@ -92,10 +97,11 @@ export async function checkAndConsumeApiKey(rawKey) {
       ? subscription.plans?.trial_request_limit
       : subscription.plans?.monthly_request_limit;
 
+  // Fetch usage stats tied to user_id
   const { data: counter } = await admin
     .from("usage_counters")
     .select("request_count")
-    .eq("api_key_id", apiKey.id)
+    .eq("user_id", apiKey.user_id)
     .maybeSingle();
 
   const used = counter?.request_count ?? 0;
@@ -111,10 +117,21 @@ export async function checkAndConsumeApiKey(rawKey) {
     };
   }
 
-  await admin
-    .from("usage_counters")
-    .update({ request_count: used + 1, updated_at: new Date().toISOString() })
-    .eq("api_key_id", apiKey.id);
+  // Increment counter by user_id
+  if (counter) {
+    await admin
+      .from("usage_counters")
+      .update({ request_count: used + 1, updated_at: new Date().toISOString() })
+      .eq("user_id", apiKey.user_id);
+  } else {
+    await admin.from("usage_counters").insert({
+      user_id: apiKey.user_id,
+      period_start: new Date().toISOString(),
+      period_end: null,
+      request_count: 1,
+      updated_at: new Date().toISOString(),
+    });
+  }
 
   return {
     ok: true,

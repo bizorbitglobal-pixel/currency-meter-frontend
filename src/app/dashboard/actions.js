@@ -62,3 +62,19 @@ export async function signOutAction() {
   await supabase.auth.signOut();
   redirect("/");
 }
+
+// Fetch the active API key for the signed-in user
+export async function getFullApiKey() {
+  const { supabase, user } = await requireUser();
+
+  const { data, error } = await supabase
+    .from("api_keys")
+    .select("key_hash")
+    .eq("user_id", user.id)
+    .eq("status", "active")
+    .maybeSingle();
+
+  if (error || !data) return null;
+
+  return data.key_hash; // Returns the unhashed key string stored in DB
+}
