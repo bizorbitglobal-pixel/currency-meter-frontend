@@ -53,6 +53,7 @@ function SidebarNav({ sections, activeTab, onSelect, plan }) {
 export default function DashboardShell({ userEmail, plan, usage, sections }) {
   const [activeTab, setActiveTab] = useState(sections[0]?.id);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [signingOut, setSigningOut] = useState(false);
 
   const activeSection = sections.find((s) => s.id === activeTab) || sections[0];
 
@@ -107,13 +108,42 @@ export default function DashboardShell({ userEmail, plan, usage, sections }) {
               {userEmail}
             </span>
 
-            <form action={signOutAction}>
+            <form action={signOutAction} onSubmit={() => setSigningOut(true)}>
               <button
                 type="submit"
-                className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 dark:border-gray-700 px-3.5 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-gray-800 transition"
+                disabled={signingOut}
+                className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 dark:border-gray-700 px-3.5 py-2 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-gray-800 transition disabled:opacity-60 shadow-sm"
               >
-                <LogOut className="h-3.5 w-3.5" />
-                Sign out
+                {signingOut ? (
+                  <>
+                    <svg
+                      className="animate-spin h-3.5 w-3.5 text-slate-700 dark:text-slate-200"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                    <span>Signing out…</span>
+                  </>
+                ) : (
+                  <>
+                    <LogOut className="h-3.5 w-3.5" />
+                    <span>Sign out</span>
+                  </>
+                )}
               </button>
             </form>
           </div>

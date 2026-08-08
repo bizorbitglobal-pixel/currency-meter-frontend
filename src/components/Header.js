@@ -21,6 +21,7 @@ import {
   Moon,
   User,
   LogOut,
+  LayoutDashboard,
 } from "lucide-react";
 import { forexTools } from "@/lib/forexTools";
 import MarketTickHeader from "@/components/MarketTickHeader";
@@ -114,6 +115,7 @@ export default function Header() {
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   const [user, setUser] = useState(null);
   const [authLoaded, setAuthLoaded] = useState(false);
+  const [mobileSigningOut, setMobileSigningOut] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -310,7 +312,7 @@ export default function Header() {
         <MarketTickHeader />
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer Overlay */}
       {mobileMenuOpen && (
         <div
           className="fixed inset-0 top-[102px] bg-black/40 backdrop-blur-sm md:hidden z-40"
@@ -318,6 +320,7 @@ export default function Header() {
         />
       )}
 
+      {/* Mobile Navigation Content */}
       <div
         className={`fixed inset-x-0 top-[102px] bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 transition-all duration-300 ease-in-out md:hidden z-50 overflow-y-auto max-h-[calc(100vh-102px)] ${
           mobileMenuOpen
@@ -325,9 +328,9 @@ export default function Header() {
             : "opacity-0 -translate-y-4 pointer-events-none"
         }`}
       >
-        <nav className="flex flex-col p-6 space-y-4">
+        <nav className="flex flex-col p-5 space-y-4">
           <div className="space-y-2">
-            <div className="flex items-center justify-between text-base font-bold uppercase tracking-[0.12em] text-slate-800 dark:text-slate-100">
+            <div className="flex items-center justify-between text-sm font-bold uppercase tracking-[0.12em] text-slate-800 dark:text-slate-100 py-1">
               <Link href="/forex-tools" onClick={closeMobileMenu}>
                 Forex Tools
               </Link>
@@ -376,63 +379,112 @@ export default function Header() {
           <Link
             href="/blog"
             onClick={closeMobileMenu}
-            className="text-base font-bold uppercase tracking-[0.12em] text-slate-800 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-400"
+            className="text-sm font-bold uppercase tracking-[0.12em] text-slate-800 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-400 py-1"
           >
             Blogs
           </Link>
 
-          {/* Line between Blogs and API */}
           <hr className="border-slate-200 dark:border-slate-800" />
 
           <Link
             href="/forex-api"
             onClick={closeMobileMenu}
-            className="text-base font-bold uppercase tracking-[0.12em] text-slate-800 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-400"
+            className="text-sm font-bold uppercase tracking-[0.12em] text-slate-800 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-400 py-1"
           >
             API &amp; Pricing
           </Link>
 
           <hr className="border-slate-200 dark:border-slate-800" />
 
+          {/* User Account Section inside Mobile Drawer */}
           {authLoaded &&
             (user ? (
-              <div className="flex flex-col gap-3">
-                <Link
-                  href="/dashboard"
-                  onClick={closeMobileMenu}
-                  className="text-base font-bold uppercase tracking-[0.12em] text-slate-800 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-400"
-                >
-                  API Dashboard
-                </Link>
-                <Link
-                  href="/dashboard"
-                  onClick={closeMobileMenu}
-                  className="text-base font-bold uppercase tracking-[0.12em] text-slate-800 dark:text-slate-100 hover:text-blue-600 dark:hover:text-blue-400"
-                >
-                  Profile
-                </Link>
-                <form action={signOutAction}>
+              <div className="rounded-2xl bg-slate-50 dark:bg-slate-900/60 p-4 border border-slate-200/80 dark:border-slate-800 space-y-3">
+                <div className="flex items-center gap-3">
+                  <div className="h-10 w-10 shrink-0 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold">
+                    <User className="h-5 w-5" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                      Signed in as
+                    </p>
+                    <p className="text-xs font-bold text-slate-900 dark:text-slate-100 truncate">
+                      {user.email}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2 pt-1">
+                  <Link
+                    href="/dashboard"
+                    onClick={closeMobileMenu}
+                    className="flex items-center justify-center gap-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-2.5 px-3 text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm hover:bg-slate-100 dark:hover:bg-slate-700 transition"
+                  >
+                    <LayoutDashboard className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                    <span>Dashboard</span>
+                  </Link>
+                  <Link
+                    href="/dashboard"
+                    onClick={closeMobileMenu}
+                    className="flex items-center justify-center gap-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-2.5 px-3 text-xs font-bold text-slate-800 dark:text-slate-200 shadow-sm hover:bg-slate-100 dark:hover:bg-slate-700 transition"
+                  >
+                    <User className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+                    <span>Profile</span>
+                  </Link>
+                </div>
+
+                <form action={signOutAction} onSubmit={() => setMobileSigningOut(true)}>
                   <button
                     type="submit"
-                    className="w-full text-center rounded-full border border-slate-300 dark:border-slate-700 text-sm font-bold uppercase tracking-wide px-4 py-2.5 text-slate-700 dark:text-slate-200"
+                    disabled={mobileSigningOut}
+                    className="w-full flex items-center justify-center gap-2 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200/80 dark:border-red-900/60 py-2.5 text-xs font-bold text-red-600 dark:text-red-400 hover:bg-red-100 dark:hover:bg-red-900/40 transition disabled:opacity-60 shadow-sm"
                   >
-                    Log out
+                    {mobileSigningOut ? (
+                      <>
+                        <svg
+                          className="animate-spin h-3.5 w-3.5 text-red-600 dark:text-red-400"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          ></circle>
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          ></path>
+                        </svg>
+                        <span>Signing out…</span>
+                      </>
+                    ) : (
+                      <>
+                        <LogOut className="h-4 w-4" />
+                        <span>Sign out</span>
+                      </>
+                    )}
                   </button>
                 </form>
               </div>
             ) : (
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-3 pt-1">
                 <Link
                   href="/login"
                   onClick={closeMobileMenu}
-                  className="text-center rounded-full border border-slate-300 dark:border-slate-700 text-sm font-bold uppercase tracking-wide px-4 py-2.5 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900 transition"
+                  className="text-center rounded-full border border-slate-300 dark:border-slate-700 text-xs font-bold uppercase tracking-wider px-4 py-2.5 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900 transition"
                 >
                   Log in
                 </Link>
                 <Link
                   href="/signup"
                   onClick={closeMobileMenu}
-                  className="text-center rounded-full bg-[#34d399] hover:opacity-90 text-white text-sm font-bold uppercase tracking-wide px-4 py-2.5 transition"
+                  className="text-center rounded-full bg-[#34d399] hover:opacity-90 text-white text-xs font-bold uppercase tracking-wider px-4 py-2.5 transition shadow-sm"
                 >
                   Create Free Account
                 </Link>
