@@ -50,30 +50,21 @@ export default async function DashboardPage() {
 
   if (!user) redirect("/login");
 
-  const [{ data: profile }, { data: subscription }, keyInfo] = await Promise.all([
+  // Query profiles, subscriptions, keyInfo, and usage_counters concurrently
+  const [{ data: profile }, { data: subscription }, { data: usage }, keyInfo] = await Promise.all([
     supabase.from("profiles").select("full_name, email").eq("id", user.id).maybeSingle(),
     supabase
       .from("subscriptions")
       .select("plan_id, status, current_period_end, plans(name, monthly_request_limit, trial_request_limit)")
       .eq("user_id", user.id)
       .maybeSingle(),
+    supabase
+      .from("usage_counters")
+      .select("request_count, period_end")
+      .eq("user_id", user.id)
+      .maybeSingle(),
     ensureApiKey(),
   ]);
-
-  const { data: apiKeyRow } = await supabase
-    .from("api_keys")
-    .select("id")
-    .eq("user_id", user.id)
-    .eq("status", "active")
-    .maybeSingle();
-
-  const { data: usage } = apiKeyRow
-    ? await supabase
-        .from("usage_counters")
-        .select("request_count, period_end")
-        .eq("user_id", user.id)
-        .maybeSingle()
-    : { data: null };
 
   const planId = subscription?.plan_id || "free";
   const plan = PLAN_META[planId] || PLAN_META.free;
