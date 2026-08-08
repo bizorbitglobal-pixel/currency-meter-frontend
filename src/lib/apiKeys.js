@@ -19,18 +19,16 @@ export function generateApiKeyMaterial() {
   const keyPrefix = `csm_live_${randomAlphanumeric(4)}`; // Exactly 13 characters
   const secretPart = randomAlphanumeric(20); // Exactly 20 characters
   const fullKey = `${keyPrefix}${secretPart}`; // 33 characters total
-  const secretToken = secretPart; // 20 characters, used for signing requests   
+  const secretToken = secretPart;
 
   return { fullKey, keyPrefix, secretToken };
 }
 
-// Revokes any existing active key for the user and issues a brand new one.
-// Plaintext fullKey is saved to DB so it can be retrieved by the user later.
-// Usage counters are tied to user_id, preserving request history across regenerations.
+// Issues key and stores keyPrefix and secretToken separately in DB
 export async function createApiKeyForUser(userId) {
   const admin = createAdminClient();
 
-  // Revoke previous active keys for this user
+  // Revoke previous active keys
   await admin
     .from("api_keys")
     .update({ status: "revoked", revoked_at: new Date().toISOString() })
@@ -39,16 +37,15 @@ export async function createApiKeyForUser(userId) {
 
   const { fullKey, keyPrefix, secretToken } = generateApiKeyMaterial();
 
-  // Store the plaintext key directly in key_hash
+  // Store secretToken in key_hash
   const { data: apiKey, error } = await admin
     .from("api_keys")
-    .insert({ user_id: userId, key_prefix: keyPrefix, key_hash: secretToken})
+    .insert({ user_id: userId, key_prefix: keyPrefix, key_hash: secretToken })
     .select()
     .single();
 
   if (error) throw error;
 
-  // Ensure a usage counter row exists for the user (by user_id) without overwriting existing usage
   const { data: existingCounter } = await admin
     .from("usage_counters")
     .select("id")
@@ -67,8 +64,7 @@ export async function createApiKeyForUser(userId) {
   return { fullKey, apiKey };
 }
 
-// Validates incoming X-API-KEY header using plaintext matching,
-// enforces the caller's plan quota based on user_id, and updates usage.
+// Validates X-API-KEY header by splitting prefix and secret part
 export async function checkAndConsumeApiKey(rawKey) {
   if (!rawKey || typeof rawKey !== "string") {
     return { ok: false, status: 401, error: "Missing X-API-KEY header." };
@@ -77,15 +73,20 @@ export async function checkAndConsumeApiKey(rawKey) {
   const admin = createAdminClient();
   const keyToMatch = rawKey.trim();
 
-  // Extract the 13-character prefix (e.g. csm_live_XXXX) from the raw key
-  const keyPrefix = keyToMatch.slice(0, 13);
+  if (keyToMatch.length < 33) {
+    return { ok: false, status: 401, error: "Invalid API key format." };
+  }
 
-  // Match against both key_prefix and key_hash for extra accuracy
+  // Extract prefix (first 13 chars) and secret token (remaining 20 chars)
+  const keyPrefix = keyToMatch.slice(0, 13);
+  const secretToken = keyToMatch.slice(13);
+
+  // Match against prefix and secret token stored in key_hash
   const { data: apiKey } = await admin
     .from("api_keys")
     .select("id, user_id, status")
     .eq("key_prefix", keyPrefix)
-    .eq("key_hash", keyToMatch)
+    .eq("key_hash", secretToken)
     .maybeSingle();
 
   if (!apiKey || apiKey.status !== "active") {
@@ -111,7 +112,6 @@ export async function checkAndConsumeApiKey(rawKey) {
       ? subscription.plans?.trial_request_limit
       : subscription.plans?.monthly_request_limit;
 
-  // Fetch usage stats tied to user_id
   const { data: counter } = await admin
     .from("usage_counters")
     .select("request_count")
@@ -131,7 +131,6 @@ export async function checkAndConsumeApiKey(rawKey) {
     };
   }
 
-  // Increment counter by user_id
   if (counter) {
     await admin
       .from("usage_counters")
