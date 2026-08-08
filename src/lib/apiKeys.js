@@ -1,16 +1,25 @@
 import crypto from "crypto";
 import { createAdminClient } from "@/lib/supabase/server";
 
-// Generates 15 hex characters
-function randomToken() {
-  return crypto.randomBytes(10).toString("hex").slice(0, 15);
+// Generates cryptographically secure alphanumeric random strings
+function randomAlphanumeric(length) {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let result = "";
+  const bytes = crypto.randomBytes(length);
+  for (let i = 0; i < length; i++) {
+    result += chars[bytes[i] % chars.length];
+  }
+  return result;
 }
 
-// Generates API key: csm_live_ + 15 characters (total 24 chars)
+// Prefix: 13 characters ("csm_live_" + 4 random chars)
+// Secret Token: 20 random characters
+// Full Key: 33 characters total
 export function generateApiKeyMaterial() {
-  const token = randomToken(); // Exactly 15 characters
-  const fullKey = `csm_live_${token}`;
-  const keyPrefix = fullKey.slice(0, 13); // csm_live_ + first 4 chars for prefix display
+  const keyPrefix = `csm_live_${randomAlphanumeric(4)}`; // Exactly 13 characters
+  const secretPart = randomAlphanumeric(20); // Exactly 20 characters
+  const fullKey = `${keyPrefix}${secretPart}`; // 33 characters total
+
   return { fullKey, keyPrefix };
 }
 
