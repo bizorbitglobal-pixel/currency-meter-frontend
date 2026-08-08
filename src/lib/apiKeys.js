@@ -19,8 +19,9 @@ export function generateApiKeyMaterial() {
   const keyPrefix = `csm_live_${randomAlphanumeric(4)}`; // Exactly 13 characters
   const secretPart = randomAlphanumeric(20); // Exactly 20 characters
   const fullKey = `${keyPrefix}${secretPart}`; // 33 characters total
+  const secretToken = secretPart; // 20 characters, used for signing requests   
 
-  return { fullKey, keyPrefix };
+  return { fullKey, keyPrefix, secretToken };
 }
 
 // Revokes any existing active key for the user and issues a brand new one.
@@ -36,12 +37,12 @@ export async function createApiKeyForUser(userId) {
     .eq("user_id", userId)
     .eq("status", "active");
 
-  const { fullKey, keyPrefix } = generateApiKeyMaterial();
+  const { fullKey, keyPrefix, secretToken } = generateApiKeyMaterial();
 
   // Store the plaintext key directly in key_hash
   const { data: apiKey, error } = await admin
     .from("api_keys")
-    .insert({ user_id: userId, key_prefix: keyPrefix, key_hash: fullKey })
+    .insert({ user_id: userId, key_prefix: keyPrefix, key_hash: secretToken})
     .select()
     .single();
 
