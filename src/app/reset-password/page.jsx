@@ -20,11 +20,14 @@ export default function ResetPasswordPage() {
         ? window.location.origin
         : process.env.NEXT_PUBLIC_SITE_URL || "https://www.currencystrengthsmeters.com";
 
+    // Encode the target callback URL cleanly to prevent parameter stripping in Supabase redirects
+    const redirectToUrl = `${origin}/auth/callback?next=${encodeURIComponent("/update-password")}`;
+
     const supabase = createClient();
     const { error: resetError } = await supabase.auth.resetPasswordForEmail(
       email,
       {
-        redirectTo: `${origin}/auth/callback?next=/update-password`,
+        redirectTo: redirectToUrl,
       }
     );
 
