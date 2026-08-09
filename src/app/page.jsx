@@ -93,15 +93,21 @@ export default async function Home() {
       <div className="max-w-4xl mx-auto px-4 mt-0 mb-2">
         <Link
           href="/forex-api"
-          className="group relative flex items-center justify-between gap-2.5 sm:gap-3 overflow-hidden rounded-2xl sm:rounded-full border border-blue-200/80 dark:border-blue-800/60 bg-gradient-to-r from-blue-50/90 via-indigo-50/50 to-blue-50/90 dark:from-slate-900 dark:via-blue-950/40 dark:to-slate-900 p-2.5 sm:p-1.5 sm:pr-4 shadow-sm hover:shadow-md hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300"
+          className="group relative flex items-center justify-between gap-2 sm:gap-3 overflow-hidden rounded-2xl sm:rounded-full border border-blue-200/80 dark:border-blue-800/60 bg-gradient-to-r from-blue-50/90 via-indigo-50/50 to-blue-50/90 dark:from-slate-900 dark:via-blue-950/40 dark:to-slate-900 p-2 sm:p-1.5 sm:pr-4 shadow-sm hover:shadow-md hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300 cursor-pointer block"
         >
           <div className="flex items-center gap-2 sm:gap-2.5 min-w-0 flex-1">
             <span className="inline-flex items-center gap-1 shrink-0 rounded-full bg-blue-600 px-2 sm:px-2.5 py-1 text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-white shadow-sm">
               <Zap className="h-3 w-3 fill-current animate-pulse" />
               Live API
             </span>
-            <p className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 leading-tight whitespace-normal sm:truncate">
-              Integrate real-time strength data into MT4/MT5 &amp; Telegram bots
+            <p className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 leading-tight whitespace-nowrap overflow-hidden text-ellipsis">
+              <span className="inline sm:hidden">
+                Forex Currency Strength API
+              </span>
+              <span className="hidden sm:inline">
+                Get Real-Time Currency Strength API for MT4/MT5 &amp; Telegram
+                Bots
+              </span>
             </p>
           </div>
 
@@ -111,6 +117,7 @@ export default async function Home() {
           </div>
         </Link>
       </div>
+
       {/* Main Currency Strength Meter */}
       <div className="max-w-6xl mx-auto w-full px-4 pt-1 pb-4 sm:py-6">
         <CurrencyList />
