@@ -13,6 +13,7 @@ import Script from "next/script";
 import AuthorCard from "@/components/AuthorCard";
 import { getAuthor } from "@/lib/authors";
 import ExnessCTA from "@/components/ExnessCTA";
+import { ArrowRight, Zap, ArrowUpRight } from "lucide-react";
 
 export default async function Home() {
   // Fetch recent posts
@@ -85,10 +86,31 @@ export default async function Home() {
   return (
     // Updated padding-top (pt-32 sm:pt-36) to give clean spacing below the dual header bar
     <main className="relative min-h-screen bg-gray-50 dark:bg-gray-900 pt-8 sm:pt-12">
-      
       {/* H1 Heading */}
       <H1Header />
 
+      {/* Interactive Live API Banner Link - Mobile Wrapping Fix */}
+      <div className="max-w-4xl mx-auto px-4 mt-0 mb-2">
+        <Link
+          href="/forex-api"
+          className="group relative flex items-center justify-between gap-2.5 sm:gap-3 overflow-hidden rounded-2xl sm:rounded-full border border-blue-200/80 dark:border-blue-800/60 bg-gradient-to-r from-blue-50/90 via-indigo-50/50 to-blue-50/90 dark:from-slate-900 dark:via-blue-950/40 dark:to-slate-900 p-2.5 sm:p-1.5 sm:pr-4 shadow-sm hover:shadow-md hover:border-blue-300 dark:hover:border-blue-700 transition-all duration-300"
+        >
+          <div className="flex items-center gap-2 sm:gap-2.5 min-w-0 flex-1">
+            <span className="inline-flex items-center gap-1 shrink-0 rounded-full bg-blue-600 px-2 sm:px-2.5 py-1 text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-white shadow-sm">
+              <Zap className="h-3 w-3 fill-current animate-pulse" />
+              Live API
+            </span>
+            <p className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 leading-tight whitespace-normal sm:truncate">
+              Integrate real-time strength data into MT4/MT5 &amp; Telegram bots
+            </p>
+          </div>
+
+          <div className="flex items-center gap-1 shrink-0 text-xs font-bold text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors pl-1">
+            <span className="hidden md:inline">Get Free API Key</span>
+            <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          </div>
+        </Link>
+      </div>
       {/* Main Currency Strength Meter */}
       <div className="max-w-6xl mx-auto w-full px-4 pt-1 pb-4 sm:py-6">
         <CurrencyList />
@@ -207,9 +229,9 @@ export default async function Home() {
         <p>
           Traders use this tool to quickly identify which currencies are gaining
           momentum (strengthening) and which are losing ground (weakening). By
-          isolating the absolute strength of a single currency, traders can 
-          identify potential trading opportunities 
-          and better understand market momentum.
+          isolating the absolute strength of a single currency, traders can
+          identify potential trading opportunities and better understand market
+          momentum.
         </p>
         <ul className="list-disc pl-5 mt-2 space-y-1">
           <li>
@@ -259,10 +281,16 @@ export default async function Home() {
         sizes="(max-width: 600px) 300px, (max-width: 1200px) 600px, 1200px"
       >
         <p>
-          The forex market moves around the clock, and timely information is essential for monitoring currency momentum. Our Currency Strength Meter refreshes every minute, analyzing price movements across 28 major forex currency pairs to calculate the relative strength of the eight major currencies.
+          The forex market moves around the clock, and timely information is
+          essential for monitoring currency momentum. Our Currency Strength
+          Meter refreshes every minute, analyzing price movements across 28
+          major forex currency pairs to calculate the relative strength of the
+          eight major currencies.
         </p>
         <p>
-          Whether you're trading during the London, New York, or Asian session, you'll always have an up-to-date view of currency strength to help identify strong and weak currencies in the market.
+          Whether you're trading during the London, New York, or Asian session,
+          you'll always have an up-to-date view of currency strength to help
+          identify strong and weak currencies in the market.
         </p>
       </Section>
 
