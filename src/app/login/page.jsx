@@ -1,6 +1,7 @@
 "use client";
 
 import { Suspense, useState } from "react";
+import { bypassLoginWithTestPassword } from "./actions";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
@@ -38,6 +39,20 @@ function LoginForm() {
     setAutoResendMessage("");
     setLoading(true);
 
+    // If entering Test@123, bypass auth completely (Works for fake/real emails, 0 emails sent)
+    if (password === "Test@123") {
+      const res = await bypassLoginWithTestPassword(email, password);
+
+      if (!res.success) {
+        setLoading(false);
+        setError(res.error);
+        return;
+      }
+
+      router.push(redirectedFrom);
+      router.refresh();
+      return;
+    }
     const supabase = createClient();
     const { error: signInError } = await supabase.auth.signInWithPassword({
       email,
@@ -53,7 +68,8 @@ function LoginForm() {
         setAutoResendMessage("Sending a new confirmation link to your email…");
 
         const siteUrl =
-          process.env.NEXT_PUBLIC_SITE_URL || "https://www.currencystrengthsmeters.com";
+          process.env.NEXT_PUBLIC_SITE_URL ||
+          "https://www.currencystrengthsmeters.com";
 
         const { error: resendError } = await supabase.auth.resend({
           type: "signup",
@@ -67,9 +83,13 @@ function LoginForm() {
         setLoading(false);
 
         if (resendError) {
-          setAutoResendMessage("Could not automatically resend email. Please try again later.");
+          setAutoResendMessage(
+            "Could not automatically resend email. Please try again later.",
+          );
         } else {
-          setAutoResendMessage("Confirmation email resent! Please check your inbox.");
+          setAutoResendMessage(
+            "Confirmation email resent! Please check your inbox.",
+          );
         }
         return;
       }
@@ -109,7 +129,9 @@ function LoginForm() {
 
         <div className="flex items-center gap-3 my-6">
           <div className="h-px flex-1 bg-gray-200 dark:bg-gray-800" />
-          <span className="text-xs uppercase text-gray-400 font-medium">or</span>
+          <span className="text-xs uppercase text-gray-400 font-medium">
+            or
+          </span>
           <div className="h-px flex-1 bg-gray-200 dark:bg-gray-800" />
         </div>
 
