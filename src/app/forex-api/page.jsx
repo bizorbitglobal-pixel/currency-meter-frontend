@@ -219,13 +219,13 @@ export default async function ForexApiPage() {
   }
 
   return (
-    <div className="font-sans max-w-6xl mx-auto px-4 py-10 space-y-16">
+    <div className="font-sans max-w-6xl mx-auto px-4 py-10 space-y-6">
       <div className="max-w-4xl mx-auto w-full">
         <Breadcrumbs />
       </div>
 
       {/* Hero */}
-      <section className="rounded-[32px] bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-800 px-6 py-14 sm:py-16 text-center space-y-6 shadow-sm">
+      <section className="rounded-[32px] bg-white dark:bg-gray-900 border border-slate-200 dark:border-gray-800 px-6 py-12 sm:py-12 text-center space-y-6 shadow-sm">
         <span className="inline-flex items-center gap-2 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-100 dark:border-blue-900 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-blue-700 dark:text-blue-400 shadow-sm">
           <ShieldCheck className="h-3.5 w-3.5" />
           Live REST API
@@ -263,7 +263,7 @@ export default async function ForexApiPage() {
       </section>
 
       {/* Pricing - front and center */}
-      <section id="pricing" className="space-y-8 scroll-mt-24">
+      <section id="pricing" className="space-y-8 mt-8 scroll-mt-24">
         <div className="text-center space-y-2">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
             Simple, usage-based pricing
