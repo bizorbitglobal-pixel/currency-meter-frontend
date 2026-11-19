@@ -187,7 +187,7 @@ export default function MarketTickHeader() {
         {/* Right Section */}
         <div className="hidden lg:flex items-center gap-5">
           <Link
-            href="/forex-tools/forex-session-clock"
+            href="/currency-strength-chart-analysis"
             className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
           >
             <span>Full Dashboard</span>

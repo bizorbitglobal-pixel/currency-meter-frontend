@@ -118,6 +118,26 @@ export default async function Home() {
         </Link>
       </div>
 
+      <div className="max-w-4xl mx-auto px-4 mb-4">
+        <Link
+          href="/currency-strength-chart-analysis"
+          className="group flex items-center justify-between gap-4 rounded-2xl border border-indigo-200 bg-gradient-to-r from-indigo-50 via-blue-50 to-sky-50 p-4 shadow-sm transition hover:border-blue-300 hover:shadow-md dark:border-indigo-900/70 dark:from-slate-900 dark:via-indigo-950/40 dark:to-slate-900 dark:hover:border-blue-800 sm:px-5"
+        >
+          <div>
+            <p className="text-sm font-extrabold text-slate-900 dark:text-white sm:text-base">
+              Explore the Forex Market Dashboard
+            </p>
+            <p className="mt-1 text-xs leading-5 text-slate-600 dark:text-slate-300 sm:text-sm">
+              Live charts, currency pairs, and global market data in one place.
+            </p>
+          </div>
+          <span className="flex shrink-0 items-center gap-1 text-xs font-bold text-blue-700 transition group-hover:gap-2 dark:text-blue-300 sm:text-sm">
+            Open dashboard
+            <ArrowRight className="h-4 w-4" />
+          </span>
+        </Link>
+      </div>
+
       {/* Main Currency Strength Meter */}
       <div className="max-w-6xl mx-auto w-full px-4 pt-1 pb-4 sm:py-6">
         <CurrencyList />

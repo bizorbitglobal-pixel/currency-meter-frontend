@@ -62,6 +62,12 @@ export default async function sitemap() {
       priority: 0.6,
     },
     {
+      url: `${baseUrl}/currency-strength-chart-analysis`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/privacy-policy`,
       lastModified: new Date(),
       changeFrequency: "yearly",
